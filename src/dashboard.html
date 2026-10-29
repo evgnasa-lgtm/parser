@@ -1,0 +1,485 @@
+<div id="promet-monitor-v2"><style>
+#promet-monitor-v2{--pm-bg:light-dark(#f1f4f7,#151c24);--pm-card:light-dark(#ffffff,#202b37);--pm-ink:light-dark(#203349,#edf3f8);--pm-muted:light-dark(#596b7c,#b3c1cf);--pm-line:light-dark(#dce4eb,#41505f);--pm-mark:light-dark(#3063a0,#84b2ec);--pm-warn:light-dark(#80541a,#f0c582);--pm-soft:light-dark(#edf2f8,#293a4c);background:var(--pm-bg);color:var(--pm-ink);font:14px/1.45 Arial,sans-serif;border-radius:12px;overflow:hidden}
+#promet-monitor-v2 *{box-sizing:border-box}#promet-monitor-v2 header{padding:22px 110px 20px 22px;background:var(--pm-card);border-bottom:1px solid var(--pm-line)}#promet-monitor-v2 h2{margin:6px 0;font-size:23px;font-weight:500}#promet-monitor-v2 h3{font-size:16px;font-weight:500;margin:0 0 14px}#promet-monitor-v2 .pm-brand{letter-spacing:2px;font-weight:500}#promet-monitor-v2 .pm-muted{color:var(--pm-muted);font-size:12px}#promet-monitor-v2 main{padding:20px}#promet-monitor-v2 .pm-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}#promet-monitor-v2 label{display:grid;gap:6px}#promet-monitor-v2 select{width:100%;font:inherit;color:var(--pm-ink);background:var(--pm-card);border:1px solid var(--pm-line);border-radius:7px;padding:11px;min-width:0}#promet-monitor-v2 .pm-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}#promet-monitor-v2 .pm-metric{background:var(--pm-card);padding:15px;border-radius:8px}#promet-monitor-v2 .pm-value{font-size:25px;margin:5px 0;font-variant-numeric:tabular-nums}#promet-monitor-v2 .pm-panel{background:var(--pm-card);padding:18px;border-radius:8px;margin-bottom:16px}#promet-monitor-v2 .pm-own{display:flex;gap:12px;flex-wrap:wrap}#promet-monitor-v2 .pm-own-item{padding:10px 14px;background:var(--pm-soft);border-radius:6px;min-width:180px}#promet-monitor-v2 a{color:var(--pm-mark);text-underline-offset:3px}#promet-monitor-v2 .pm-table-wrap{overflow-x:auto}#promet-monitor-v2 table{width:100%;border-collapse:collapse}#promet-monitor-v2 th,#promet-monitor-v2 td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--pm-line);vertical-align:top}#promet-monitor-v2 th{font-size:12px;color:var(--pm-muted);font-weight:500}#promet-monitor-v2 .pm-price{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:500}#promet-monitor-v2 .pm-bar{height:4px;background:var(--pm-mark);margin-top:7px;opacity:.65;border-radius:2px}#promet-monitor-v2 .pm-warn{color:var(--pm-warn)}#promet-monitor-v2 details{margin-top:5px}#promet-monitor-v2 summary{color:var(--pm-mark)}#promet-monitor-v2 .pm-detail{max-width:420px;padding-top:8px;font-size:12px}#promet-monitor-v2 .pm-empty{padding:24px 0;color:var(--pm-muted)}#promet-monitor-v2 .pm-caption{margin:0 0 13px;color:var(--pm-muted);font-size:12px}#promet-monitor-v2 footer{color:var(--pm-muted);font-size:12px}#promet-monitor-v2 .pm-result{margin-bottom:12px;color:var(--pm-muted)}@media(max-width:620px){#promet-monitor-v2 .pm-filters{grid-template-columns:1fr}#promet-monitor-v2 main{padding:12px}#promet-monitor-v2 .pm-metrics{gap:6px}#promet-monitor-v2 .pm-metric{padding:10px}#promet-monitor-v2 header{padding-left:14px}#promet-monitor-v2 .pm-panel{padding:12px}#promet-monitor-v2 table{min-width:650px}}
+#promet-monitor-v2 .pm-own-history{display:grid;grid-template-columns:minmax(0,1fr);gap:0;align-items:start}
+#promet-monitor-v2 .pm-own-history>.pm-panel{min-width:0}
+#promet-monitor-v2 .pm-history-plot{width:100%;display:block;overflow:visible}
+#promet-monitor-v2 .pm-history-plot text{fill:var(--pm-muted);font:12px Arial,sans-serif}
+#promet-monitor-v2 .pm-history-plot .pm-point-label{fill:var(--pm-ink);font-size:14px}
+#promet-monitor-v2 .pm-history-site{margin:12px 0 4px;color:var(--pm-ink)}
+#promet-monitor-v2 .pm-history-values{overflow-wrap:anywhere;margin-bottom:14px}
+#promet-monitor-v2 .pm-own-item{min-width:0;flex:1 1 200px;overflow-wrap:anywhere}
+#promet-monitor-v2 .pm-comparison-note{margin:0 0 12px;color:var(--pm-muted);font-size:12px}
+#promet-monitor-v2 [hidden]{display:none!important}
+#promet-monitor-v2 .pm-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+#promet-monitor-v2 .pm-tabs button{font:inherit;padding:12px 16px;border:0;border-radius:6px;background:var(--pm-card);color:var(--pm-ink)}
+#promet-monitor-v2 .pm-tabs button[aria-selected="true"]{background:var(--pm-ink);color:var(--pm-card)}
+#promet-monitor-v2 .pm-history-plot .pm-point-label{font-size:14px;font-weight:400;fill:var(--pm-ink)}
+@media(max-width:760px){#promet-monitor-v2 .pm-own-history{grid-template-columns:minmax(0,1fr);gap:0}}
+#promet-monitor-v2 .pm-sort-button{font:inherit;font-weight:500;color:var(--pm-ink);background:transparent;border:0;padding:8px 0;text-align:left;text-decoration:underline;text-underline-offset:4px}
+#promet-monitor-v2 .pm-cheaper-filter{display:flex;align-items:center;gap:10px;min-height:44px;margin-bottom:10px;font-weight:500}
+#promet-monitor-v2 .pm-cheaper-filter input{width:18px;height:18px;accent-color:var(--pm-mark)}
+#promet-monitor-v2 .pm-caption,#promet-monitor-v2 .pm-comparison-note,#promet-monitor-v2 #pm-history-status{display:none!important}
+#promet-monitor-v2 .pm-own-sales{margin:12px 0;font-size:12px;color:var(--pm-muted)}
+#promet-monitor-v2 .pm-own-sales .pm-price{font-size:20px;color:var(--pm-ink);margin-top:3px}
+#promet-monitor-v2 .pm-chart-model{max-width:360px;margin-bottom:20px}
+#promet-monitor-v2 .pm-export{font:inherit;color:var(--pm-mark);background:var(--pm-blue-soft);border:1px solid var(--pm-line);border-radius:8px;padding:10px 14px;margin-bottom:16px}
+#promet-monitor-v2 .pm-export:disabled{opacity:.5}
+</style>
+<style>
+#promet-monitor-v2{--pm-bg:light-dark(#f7f7f7,#171717);--pm-card:light-dark(#ffffff,#242424);--pm-ink:light-dark(#242424,#f2f2f2);--pm-muted:light-dark(#626262,#b9b9b9);--pm-soft:light-dark(#f0efed,#30302e);--pm-line:light-dark(#e5e3e0,#42413e);--pm-red:light-dark(#b42332,#ff929b);--pm-green:light-dark(#08733f,#72d8a3);font-family:'Segoe UI',Arial,sans-serif;border-radius:20px}
+#promet-monitor-v2 header{padding-top:18px;padding-bottom:18px}
+#promet-monitor-v2 .pm-brand{letter-spacing:1px;font-size:12px}
+#promet-monitor-v2 h2{font-size:28px;letter-spacing:-.6px}
+#promet-monitor-v2 h3{font-size:19px;letter-spacing:-.25px}
+#promet-monitor-v2 .pm-panel{border-radius:20px;border:1px solid var(--pm-line);padding:22px}
+#promet-monitor-v2 .pm-metric{border-radius:14px;background:var(--pm-soft);padding:14px 18px}
+#promet-monitor-v2 .pm-value{font-size:28px;letter-spacing:-.5px}
+#promet-monitor-v2 .pm-own-item{background:var(--pm-card);border:1px solid var(--pm-line);border-radius:18px;padding:16px}
+#promet-monitor-v2 .pm-own-item>.pm-price{font-size:24px;margin:8px 0 4px}
+#promet-monitor-v2 select{border-radius:12px;background:var(--pm-card)}
+#promet-monitor-v2 .pm-tabs button{border-radius:14px;border:1px solid var(--pm-line)}
+#promet-monitor-v2 td{font-size:13px;padding:14px 10px}
+#promet-monitor-v2 th{background:var(--pm-soft)}
+#promet-monitor-v2 .pm-delta-cell{min-width:175px;font-variant-numeric:tabular-nums}
+#promet-monitor-v2 .pm-delta-entry+.pm-delta-entry{margin-top:12px}
+#promet-monitor-v2 .pm-delta-lower{color:var(--pm-red);fill:var(--pm-red);font-weight:500}
+#promet-monitor-v2 .pm-delta-higher{color:var(--pm-green);fill:var(--pm-green);font-weight:500}
+#promet-monitor-v2 .pm-delta-equal,#promet-monitor-v2 .pm-delta-neutral{color:var(--pm-muted);fill:var(--pm-muted)}
+#promet-monitor-v2 .pm-delta-legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12px;margin-bottom:16px}
+@media(max-width:620px){#promet-monitor-v2 .pm-panel{padding:12px}#promet-monitor-v2 h2{font-size:24px}}
+</style>
+<style>
+#promet-monitor-v2{--pm-bg:light-dark(#eef1ed,#151c1a);--pm-card:light-dark(#ffffff,#202a26);--pm-soft:light-dark(#f7f8f5,#28332e);--pm-ink:light-dark(#17211e,#edf4ef);--pm-muted:light-dark(#68736f,#b4c4bb);--pm-line:light-dark(#d8ded9,#405148);--pm-mark:light-dark(#0b53b3,#83b8ff);--pm-warn:light-dark(#a84b00,#ffb46d);--pm-blue-soft:light-dark(#e8f1fc,#223a55);--pm-orange:light-dark(#f58214,#ffad61);font-family:Inter,ui-sans-serif,'Segoe UI',sans-serif;font-variant-numeric:tabular-nums;border-radius:16px}
+#promet-monitor-v2 header{background:var(--pm-card);border-top:4px solid var(--pm-mark);padding:20px 110px 20px 24px;position:relative}
+#promet-monitor-v2 .pm-brand{color:var(--pm-mark);font-size:12px;letter-spacing:1.5px}
+#promet-monitor-v2 h2{font-size:27px;letter-spacing:-.8px;margin:6px 0 8px}
+#promet-monitor-v2 header .pm-muted{display:inline-block;background:var(--pm-blue-soft);color:var(--pm-mark);padding:5px 10px;border-radius:7px}
+#promet-monitor-v2 main{padding:20px 24px}
+#promet-monitor-v2 .pm-filters{padding:16px;background:var(--pm-card);border:1px solid var(--pm-line);border-radius:16px;gap:16px;margin-bottom:8px}
+#promet-monitor-v2 .pm-filters label,#promet-monitor-v2 .pm-chart-model{font-size:12px;color:var(--pm-muted)}
+#promet-monitor-v2 select{background:var(--pm-soft);border-radius:8px;padding:11px;font-size:14px;color:var(--pm-ink)}
+#promet-monitor-v2 #pm-reset-filters{color:var(--pm-mark);font-size:12px;margin-bottom:12px}
+#promet-monitor-v2 .pm-tabs{gap:4px;padding:5px;background:var(--pm-card);border:1px solid var(--pm-line);border-radius:12px;margin-bottom:20px}
+#promet-monitor-v2 .pm-tabs button{flex:1 1 160px;border:0;border-radius:8px;background:transparent;padding:12px 10px}
+#promet-monitor-v2 .pm-tabs button[aria-selected=true]{background:var(--pm-mark);color:var(--pm-card)}
+#promet-monitor-v2 .pm-panel{border-radius:16px;padding:20px;border:1px solid var(--pm-line)}
+#promet-monitor-v2 h3{font-size:18px;letter-spacing:-.4px;padding-left:12px;border-left:3px solid var(--pm-orange)}
+#promet-monitor-v2 .pm-own-item{background:var(--pm-soft);border-radius:12px;border:0;padding:16px}
+#promet-monitor-v2 .pm-own-item>.pm-price{color:var(--pm-mark);font-size:28px}
+#promet-monitor-v2 th{background:var(--pm-soft);font-weight:500;padding:12px 10px}
+#promet-monitor-v2 td{padding:16px 10px}
+#promet-monitor-v2 tbody tr:hover{background:var(--pm-soft)}
+#promet-monitor-v2 .pm-history-site{font-size:16px;margin:24px 0 12px;font-weight:500}
+#promet-monitor-v2 .pm-quote{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px 16px;margin:0 0 16px;padding:14px 18px;border-left:3px solid var(--pm-mark);background:var(--pm-blue-soft);border-radius:10px}
+#promet-monitor-v2 .pm-quote strong{font-size:28px;font-weight:500;letter-spacing:-.7px}
+#promet-monitor-v2 .pm-chart-key{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;color:var(--pm-muted);font-size:12px}
+#promet-monitor-v2 .pm-history-plot{background:var(--pm-soft);border-radius:16px;margin-bottom:22px}
+#promet-monitor-v2 .pm-cheaper-filter{display:inline-flex;margin-right:20px;font-size:13px}
+#promet-monitor-v2 .pm-chart-model{max-width:360px;margin-top:12px}
+@media(max-width:620px){#promet-monitor-v2 main{padding:12px}#promet-monitor-v2 .pm-panel{padding:12px}#promet-monitor-v2 h2{font-size:23px}#promet-monitor-v2 .pm-filters{padding:12px}#promet-monitor-v2 .pm-tabs button{flex-basis:120px}#promet-monitor-v2 .pm-quote strong{font-size:24px}}
+
+</style>
+<style>
+#promet-monitor-v2{border-radius:10px;font-size:13px}
+#promet-monitor-v2 header{padding:10px 110px 10px 16px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+#promet-monitor-v2 .pm-brand{display:none}
+#promet-monitor-v2 h2{font-size:20px;margin:0}
+#promet-monitor-v2 header .pm-muted{font-size:11px;padding:3px 8px}
+#promet-monitor-v2 main{padding:10px 14px}
+#promet-monitor-v2 .pm-filters{padding:8px 10px;margin:0;gap:12px;border-radius:8px}
+#promet-monitor-v2 .pm-filters label{gap:3px;font-size:11px}
+#promet-monitor-v2 select{padding:6px 8px;font-size:13px}
+#promet-monitor-v2 #pm-result,#promet-monitor-v2 .pm-delta-legend,#promet-monitor-v2 .pm-chart-model{display:none!important}
+#promet-monitor-v2 #pm-reset-filters{margin:0;padding:4px 0;font-size:11px}
+#promet-monitor-v2 .pm-tabs{padding:3px;margin:0 0 8px;border-radius:8px}
+#promet-monitor-v2 .pm-tabs button{padding:8px;flex-basis:120px;font-size:13px}
+#promet-monitor-v2 .pm-panel{padding:10px 12px;margin-bottom:8px;border-radius:10px;position:relative}
+#promet-monitor-v2 h3{font-size:15px;margin:0 0 8px;min-height:25px;padding-top:3px}
+#promet-monitor-v2 .pm-export{position:absolute;right:10px;top:8px;padding:5px 9px;margin:0;font-size:11px}
+#promet-monitor-v2 .pm-own{gap:8px;flex-wrap:nowrap}
+#promet-monitor-v2 .pm-own-item{padding:7px 10px;border-radius:8px;font-size:12px;flex:1 1 0}
+#promet-monitor-v2 .pm-own-item>.pm-price{font-size:21px;margin:3px 0}
+#promet-monitor-v2 .pm-own-item>a{font-size:11px}
+#promet-monitor-v2 .pm-own-sales{margin:3px 0;display:flex;gap:8px;align-items:baseline;font-size:11px}
+#promet-monitor-v2 .pm-own-sales .pm-price{font-size:15px;margin:0}
+#promet-monitor-v2 .pm-pager{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:6px;font-size:11px;color:var(--pm-muted)}
+#promet-monitor-v2 .pm-pager button{padding:3px 9px;border:1px solid var(--pm-line);border-radius:5px;background:var(--pm-card);color:var(--pm-mark)}
+#promet-monitor-v2 .pm-pager button:disabled{opacity:.3}
+#promet-monitor-v2 table{table-layout:fixed;min-width:0}
+#promet-monitor-v2 th,#promet-monitor-v2 td{padding:7px 5px;font-size:11px;overflow-wrap:anywhere}
+#promet-monitor-v2 td:first-child,#promet-monitor-v2 th:first-child{width:19%}
+#promet-monitor-v2 .pm-delta-cell{min-width:0}
+#promet-monitor-v2 .pm-delta-entry+.pm-delta-entry{margin-top:4px}
+#promet-monitor-v2 .pm-bar{display:none}
+#promet-monitor-v2 .pm-sort-button{padding:3px 0;font-size:11px}
+#promet-monitor-v2 .pm-cheaper-filter{font-size:11px;min-height:30px;margin:0 14px 6px 0;gap:5px}
+#promet-monitor-v2 .pm-history-site{font-size:13px;margin:6px 0}
+#promet-monitor-v2 .pm-quote{padding:6px 10px;margin:0 0 6px;gap:8px}
+#promet-monitor-v2 .pm-quote strong{font-size:22px}
+#promet-monitor-v2 .pm-chart-key{margin:6px 0;font-size:11px}
+#promet-monitor-v2 .pm-history-plot{margin-bottom:0}
+#promet-monitor-v2 .pm-empty{padding:12px 0}
+#promet-monitor-v2 .pm-dealer-picker{margin:3px 0 0;border:1px solid var(--pm-line);border-radius:8px;background:var(--pm-soft);padding:6px 8px}
+#promet-monitor-v2 .pm-dealer-picker summary{color:var(--pm-ink)}
+#promet-monitor-v2 #pm-dealers-options label,#promet-monitor-v2 #pm-makers-options label{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:12px}
+#promet-monitor-v2 .pm-history-controls{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0}
+#promet-monitor-v2 .pm-history-controls label{flex:1 1 140px}
+#promet-monitor-v2 .pm-dealer-chart{margin:16px 0 24px}
+
+#promet-monitor-v2 .pm-filters{align-items:start}
+#promet-monitor-v2 .pm-filters>label{align-content:start}
+#promet-monitor-v2 .pm-filters select{height:36px}
+#promet-monitor-v2 .pm-dealer-picker{position:relative;min-height:36px;padding:8px 10px}
+#promet-monitor-v2 .pm-dealer-picker summary{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:18px}
+#promet-monitor-v2 #pm-makers-options,#promet-monitor-v2 #pm-dealers-options{position:absolute;top:calc(100% + 5px);left:0;right:0;z-index:100;background:var(--pm-card);border:1px solid var(--pm-line);border-radius:8px;box-shadow:0 8px 24px #0002;padding:8px 12px;max-height:280px;overflow-y:auto}
+#promet-monitor-v2 #pm-selected-filters{font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+</style><header><div class="pm-brand">ПРОМЕТ / МОНИТОРИНГ</div><h2>Цены, наличие и конкуренты</h2><div class="pm-muted">МЕБЕЛЬ · Москва · Неделя 44</div></header>
+<main><div class="pm-filters"><label>Модель ПРОМЕТ<select id="pm-model" aria-label="Модель ПРОМЕТ"></select></label><div><span>Дилеры</span><select id="pm-dealer" aria-label="Дилер" hidden></select><details id="pm-dealers-picker" class="pm-dealer-picker"><summary id="pm-dealers-summary">Дилеры</summary><div id="pm-dealers-options"></div></details></div><div><span>Производители</span><select id="pm-maker" aria-label="Конкуренты" hidden></select><details id="pm-makers-picker" class="pm-dealer-picker"><summary id="pm-makers-summary">Все производители</summary><div id="pm-makers-options"></div></details></div></div>
+<div id="pm-selected-filters" aria-live="polite" style="display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0"></div><button type="button" id="pm-reset-filters" class="pm-sort-button">Сбросить фильтры</button>
+<div class="pm-result" id="pm-result" aria-live="polite"></div>
+<div class="pm-delta-legend" aria-label="Разница с ПРОМЕТ у того же дилера"><span class="pm-delta-lower">▼ Дешевле ПРОМЕТ</span><span class="pm-delta-higher">▲ Дороже ПРОМЕТ</span><span class="pm-delta-equal">= Одинаковая цена</span></div>
+<div class="pm-tabs" role="tablist" aria-label="Разделы мониторинга"><button type="button" role="tab" id="pm-tab-main" aria-selected="true" aria-controls="pm-panel-main">Цены и предложения</button><button type="button" role="tab" id="pm-tab-history" aria-selected="false" aria-controls="pm-panel-history">Динамика цен</button><button type="button" role="tab" id="pm-tab-audit" aria-selected="false" aria-controls="pm-panel-audit">Предложения по сайтам</button><button type="button" role="tab" id="pm-tab-summary" aria-selected="false" aria-controls="pm-panel-summary">Сводка за период</button></div>
+<div id="pm-panel-main" role="tabpanel" aria-labelledby="pm-tab-main">
+<div class="pm-metrics" hidden><div class="pm-metric"><span class="pm-muted">Предложения аналогов</span><div class="pm-value" id="pm-total"></div><span class="pm-muted">Уникальные карточки</span></div><div class="pm-metric"><span class="pm-muted">В наличии</span><div class="pm-value" id="pm-stock"></div><span class="pm-muted" id="pm-supplier"></span></div><div class="pm-metric"><span class="pm-muted">Требуют уточнения</span><div class="pm-value" id="pm-flags"></div><span class="pm-muted">Отличия и оговорки</span></div></div>
+<section class="pm-panel" hidden><details><summary id="pm-coverage-title">Полнота проверки цен ПРОМЕТ</summary><div class="pm-table-wrap"><table><thead id="pm-coverage-head"></thead><tbody id="pm-coverage"></tbody></table></div><p class="pm-caption">«Не найдена» — точная карточка не подтверждена поиском. Цены не включают доставку и сборку; наличие и условия — в карточке выбранного предложения.</p></details></section>
+<div class="pm-own-history"><section class="pm-panel"><h3 id="pm-own-title">Предложения ПРОМЕТ</h3><div class="pm-own" id="pm-own"></div><div class="pm-pager"><button type="button" id="pm-own-prev">←</button><span id="pm-own-page"></span><button type="button" id="pm-own-next">→</button></div></section>
+</div>
+<section class="pm-panel"><h3>Предложения конкурентов</h3><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:8px"><span id="pm-offer-count"></span><button type="button" id="pm-all-makers" class="pm-sort-button">Все производители</button></div><button type="button" class="pm-export" id="pm-export-offers">Excel · выбранная модель</button><p class="pm-caption" id="pm-sort-caption" aria-live="polite"></p><p class="pm-caption">Рубли за единицу, как на сайте. Доставка и сборка отдельно; условия НДС требуют сверки.</p><div class="pm-table-wrap"><table><thead><tr><th>Модель / производитель</th><th>Дилер</th><th>Цена</th><th id="pm-delta-sort-head" aria-sort="ascending"><button type="button" id="pm-delta-sort" class="pm-sort-button">Разница с ПРОМЕТ, % ↑</button><div>у того же дилера</div></th><th id="pm-sales-head" aria-sort="none"><button type="button" id="pm-sales-sort" class="pm-sort-button">Продажи ЖМ, шт. ↕</button></th><th id="pm-sales-delta-head" aria-sort="none"><button type="button" id="pm-sales-delta-sort" class="pm-sort-button" data-tooltip="Сортировка по разнице продаж в процентах. Для аналога нескольких моделей — по наибольшей разнице.">Продажи к ПРОМЕТ, % ↕</button><div>шт. / %</div></th><th>Наличие</th><th>Акции и условия</th></tr></thead><tbody id="pm-rows"></tbody></table></div><div class="pm-pager"><label style="display:flex;align-items:center;gap:6px;margin-right:auto">Строк на странице<select id="pm-offers-size" style="width:auto"><option value="5">5</option><option value="10">10</option><option value="all">Все</option></select></label><button type="button" id="pm-offers-prev">←</button><span id="pm-offers-page"></span><button type="button" id="pm-offers-next">→</button></div><p id="pm-sales-note" class="pm-caption">Счётчик «Этот товар купили уже» на сайте «Железная мебель», снимок 28.10.2026. Период сайтом не указан. Это не продажи за неделю. «Нет данных» — счётчик не найден в сохранённой карточке; «—» — другой дилер.</p><div id="pm-empty" class="pm-empty" hidden>Для этого сочетания фильтров предложений нет.</div></section>
+</div><div id="pm-panel-history" role="tabpanel" aria-labelledby="pm-tab-history" hidden><section class="pm-panel"><h3>Динамика цен · ПРОМЕТ и конкуренты</h3><button type="button" class="pm-export" id="pm-export-chart">Excel · выбранная модель</button><label class="pm-cheaper-filter"><input type="checkbox" id="pm-cheaper"> Только дешевле ПРОМЕТ</label><label class="pm-cheaper-filter"><input type="checkbox" id="pm-stock-only"> Только в наличии</label><label class="pm-cheaper-filter"><input type="checkbox" id="pm-better-only"> Продаются лучше ПРОМЕТ · Железная мебель</label><label class="pm-chart-model">Модель ПРОМЕТ<select id="pm-history-model" aria-label="Модель ПРОМЕТ на графике"></select></label><p class="pm-caption" id="pm-history-caption"></p><p class="pm-comparison-note">● / ○ ПРОМЕТ — всегда на графике. ■ / □ Конкуренты — по фильтру. Полые маркеры ○ □ — нет в наличии; закрашенные — остальные предложения, подробности — при наведении на точку.</p><div class="pm-history-controls"><label>Период<select id="pm-period"><option value="month">Месяц</option><option value="quarter">Квартал</option><option value="4">4 недели</option><option value="8">8 недель</option><option value="13">13 недель</option><option value="26">26 недель</option><option value="52">52 недели</option></select></label><label>По неделю<select id="pm-week-end"></select></label><label>Модель конкурента<select id="pm-series"><option value="all">Все модели</option></select></label></div><div id="pm-history"></div><div class="pm-pager"><button type="button" id="pm-chart-prev">←</button><span id="pm-chart-page"></span><button type="button" id="pm-chart-next">→</button></div><div class="pm-muted" id="pm-history-status" aria-live="polite"></div></section></div><div id="pm-panel-audit" role="tabpanel" aria-labelledby="pm-tab-audit" hidden>
+<section class="pm-panel"><h3>Предложения по сайтам</h3><button type="button" class="pm-export" id="pm-export-sites">Excel · выбранная модель</button><div class="pm-table-wrap"><table><thead id="pm-audit-head"></thead><tbody id="pm-audit-rows"></tbody></table></div><div class="pm-pager"><button type="button" id="pm-audit-prev">←</button><span id="pm-audit-page"></span><button type="button" id="pm-audit-next">→</button></div><p class="pm-caption">Нажмите на число предложений, чтобы увидеть модели, цены и ссылки. Таблица охватывает все 13 моделей и 4 сайта. Ноль означает отсутствие подтверждённой записи в реестре, а не отсутствие товара на сайте.</p></section>
+<section class="pm-panel" hidden><h3>Исключённые предложения · причины</h3><div id="pm-candidates"></div></section>
+</div><div id="pm-panel-summary" role="tabpanel" aria-labelledby="pm-tab-summary" hidden><section class="pm-panel"><h3>Сводка за период</h3><button type="button" id="pm-summary-download" class="pm-export">Скачать Word</button><label>Интервал<select id="pm-summary-period"><option value="4">4 недели</option><option value="month">Месяц</option><option value="quarter">Квартал</option><option value="52">52 недели</option></select></label><label style="margin-top:10px">Критичное изменение цены, %<input id="pm-critical-threshold" type="number" min="1" max="100" value="5" style="max-width:100px"></label><div id="pm-summary-text" style="white-space:pre-wrap;line-height:1.65;margin-top:16px"></div></section></div></main>
+<script type="application/json" id="pm-data">DATA_PLACEHOLDER</script>
+<script>
+(()=>{
+const root=document.getElementById('promet-monitor-v2'),d=JSON.parse(root.querySelector('#pm-data').textContent),q=id=>root.querySelector('#pm-'+id),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),money=x=>x==null?'—':new Intl.NumberFormat('ru-RU').format(x)+' ₽';
+const state={model:d.selected[0].sku,dealer:'Железная мебель',maker:'all',dealers:null,manufacturers:null,period:'4',weekEnd:'latest',series:'all',offerSize:'5',cheaperOnly:false,stockOnly:false,betterOnly:false};
+const pages={own:0,offers:0,audit:0,chart:0};let pageKey='';
+function pageItems(items,key,size){const max=Math.max(1,Math.ceil(items.length/size));pages[key]=Math.min(pages[key],max-1);q(key+'-prev').disabled=pages[key]===0;q(key+'-next').disabled=pages[key]>=max-1;q(key+'-page').textContent=items.length?((pages[key]*size+1)+'–'+Math.min(items.length,(pages[key]+1)*size)+' из '+items.length):'0';return items.slice(pages[key]*size,(pages[key]+1)*size)}
+let locallyChanged=false;
+let activeTab='main',deltaSort='asc',sortBy='delta',salesSort='desc',salesDeltaSort='desc';
+function showTab(){for(const tab of ['main','history','audit','summary']){q('panel-'+tab).hidden=activeTab!==tab;q('tab-'+tab).setAttribute('aria-selected',String(activeTab===tab))}}
+function saveState(){locallyChanged=true;window.openai?.setWidgetState?.({modelContent:{filters:{...state}},privateContent:{activeTab,deltaSort,sortBy,salesSort,salesDeltaSort}})?.catch(()=>{})}
+const dealers=[...new Set([...d.analogs,...d.own].map(x=>x.site))],makers=[...new Set([...d.analogs,...(d.candidates||[])].map(x=>x.maker))];
+const labelDealer=x=>x==='profsafe.ru'?'Альфа-Гарант · profsafe.ru':x;
+const chosenDealers=()=>Array.isArray(state.dealers)?state.dealers:state.dealer==='all'?dealers:[state.dealer];
+const matchesDealer=site=>chosenDealers().includes(site);
+root.addEventListener?.('click',e=>{for(const name of ['dealers','makers']){const picker=q(name+'-picker');if(!picker.contains(e.target))picker.open=false}});
+root.addEventListener?.('keydown',e=>{if(e.key==='Escape')for(const name of ['dealers','makers'])q(name+'-picker').open=false});
+const chosenMakers=()=>Array.isArray(state.manufacturers)?state.manufacturers:state.maker==='all'?makers:[state.maker];
+const matchesMaker=maker=>chosenMakers().includes(maker);
+const makerLabel=()=>chosenMakers().length===makers.length?'Все производители':chosenMakers().join(', ')||'Не выбраны';
+function renderMakers(){const selected=chosenMakers();q('makers-summary').textContent=selected.length===makers.length?'Все производители':selected.length?selected.join(', '):'Выберите производителей';q('makers-options').innerHTML=`<label><input type="checkbox" value="all" ${selected.length===makers.length?'checked':''}>Все производители</label>`+makers.map(m=>`<label><input type="checkbox" value="${esc(m)}" ${selected.includes(m)?'checked':''}>${esc(m)}</label>`).join('');q('selected-filters').textContent='Дилеры: '+(chosenDealers().map(labelDealer).join(', ')||'не выбраны')+' · Производители: '+makerLabel()}
+q('makers-options').addEventListener('change',e=>{const v=e.target.value,selected=chosenMakers();state.manufacturers=v==='all'?(e.target.checked?[...makers]:[]):e.target.checked?[...new Set([...selected,v])]:selected.filter(m=>m!==v);state.series='all';render();q('makers-picker').open=false;q('makers-picker').removeAttribute('open');setTimeout(()=>{q('makers-picker').open=false;q('makers-picker').removeAttribute('open')},0);saveState()});
+function renderDealers(){const selected=chosenDealers();q('dealers-summary').textContent=selected.length===dealers.length?'Все дилеры':selected.length?selected.map(labelDealer).join(', '):'Выберите дилеров';q('dealers-options').innerHTML=`<label><input type="checkbox" value="all" ${selected.length===dealers.length?'checked':''}>Все дилеры</label>`+dealers.map(site=>`<label><input type="checkbox" value="${esc(site)}" ${selected.includes(site)?'checked':''}>${esc(labelDealer(site))}</label>`).join('')}
+q('dealers-options').addEventListener('change',e=>{const value=e.target.value;const selected=chosenDealers();state.dealers=value==='all'?(e.target.checked?[...dealers]:[]):e.target.checked?[...new Set([...selected,value])]:selected.filter(x=>x!==value);if(!matchesDealer('Железная мебель'))state.betterOnly=false;q('dealers-picker').open=false;render();saveState()});
+for(const key of ['period','week-end','series'])q(key).addEventListener('change',()=>{state[key==='week-end'?'weekEnd':key]=q(key).value;renderHistory();saveState()});
+
+q('model').innerHTML='<option value="all">Все 13 моделей</option>'+d.selected.map(x=>`<option value="${esc(x.sku)}">${esc(x.models)}</option>`).join('');
+q('history-model').innerHTML=q('model').innerHTML;
+q('dealer').innerHTML='<option value="all">Все дилеры</option>'+dealers.map(x=>`<option value="${esc(x)}">${esc(labelDealer(x))}</option>`).join('');
+q('maker').innerHTML='<option value="all">Все производители</option>'+makers.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
+function restore(s){if(['asc','desc'].includes(s?.privateContent?.salesDeltaSort))salesDeltaSort=s.privateContent.salesDeltaSort;sortBy='delta';if(['asc','desc'].includes(s?.privateContent?.salesSort))salesSort=s.privateContent.salesSort;if(['asc','desc'].includes(s?.privateContent?.deltaSort))deltaSort=s.privateContent.deltaSort;if(['main','history','audit','summary'].includes(s?.privateContent?.activeTab))activeTab=s.privateContent.activeTab;const x=s?.modelContent?.filters||s?.filters;if(!x)return;state.manufacturers=Array.isArray(x.manufacturers)?x.manufacturers.filter(v=>makers.includes(v)):null;state.dealers=Array.isArray(x.dealers)?x.dealers.filter(v=>dealers.includes(v)):null;if(['month','quarter','4','8','13','26','52'].includes(x.period))state.period=x.period;state.weekEnd=x.weekEnd||'latest';state.series=x.series||'all';if(['5','10','all'].includes(x.offerSize))state.offerSize=x.offerSize;state.cheaperOnly=x.cheaperOnly===true;state.stockOnly=x.stockOnly===true;state.betterOnly=x.betterOnly===true;for(const k of ['model','dealer','maker'])if([...q(k).options].some(o=>o.value===x[k]))state[k]=x[k]}
+const matchesCompetitor=x=>(state.model==='all'||x.skus.includes(state.model))&&matchesDealer(x.site)&&matchesMaker(x.maker);
+const matchesPrice=x=>(!state.betterOnly||(relativeSales(x)!=null&&relativeSales(x)>0))&&(!state.stockOnly||x.statusObserved==='В наличии')&&(!state.cheaperOnly||(relativeDifference(x)!=null&&relativeDifference(x)<0));
+function priceDelta(price,base){
+ if(price==null)return {tone:'neutral',text:'Нет цены конкурента'};
+ if(!(base>0))return {tone:'neutral',text:'Нет цены ПРОМЕТ'};
+ const delta=price-base,pct=Math.abs(delta)/base*100,sign=delta<0?'−':'+';
+ const percent=pct>0&&pct<.01?'<0,01':new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(pct);
+ return {tone:delta<0?'lower':delta>0?'higher':'equal',text:delta===0?'0 ₽ (0%)':`${delta<0?'Дешевле':'Дороже'}: ${sign}${money(Math.abs(delta))} (${sign}${percent}%)`};
+}
+function salesComparison(x){
+ if(x.site!=='Железная мебель')return '—';
+ const skus=state.model==='all'?x.skus:[state.model];
+ const fmt=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n);
+ return skus.map(sku=>{
+  const b=d.own.find(o=>o.sku===sku&&o.site===x.site),base=b?.soldUnits;
+  let text,tone='neutral';
+  if(x.soldUnits==null)text='Нет данных конкурента';
+  else if(base==null)text='Нет данных ПРОМЕТ';
+  else{
+   const delta=x.soldUnits-base,sign=delta>0?'+':delta<0?'−':'';
+   tone=delta>0?'lower':delta<0?'higher':'equal';
+   const pct=base>0?Math.abs(delta)/base*100:null;
+   const pctText=pct==null?'% —':sign+(pct>0&&pct<.01?'<0,01':fmt(pct))+'%';
+   text=(delta>0?'Больше':delta<0?'Меньше':'Столько же')+': '+sign+fmt(Math.abs(delta))+' шт. ('+pctText+')';
+  }
+  return `<div class="pm-delta-entry">${state.model==='all'?`<div class="pm-muted">${esc(d.selected.find(s=>s.sku===sku)?.models||sku)}</div>`:''}<div class="pm-delta-${tone}">${esc(text)}</div></div>`;
+ }).join('');
+}
+function tableComparison(x){
+ const skus=state.model==='all'?x.skus:[state.model];
+ const date=t=>new Intl.DateTimeFormat('ru-RU',{timeZone:'Europe/Moscow',day:'2-digit',month:'2-digit',year:'numeric'}).format(new Date(t));
+ return skus.map(sku=>{
+  const b=d.own.find(o=>o.sku===sku&&o.site===x.site),base=b?.price??b?.unavailablePrice,delta=priceDelta(x.price??x.unavailablePrice,base);
+  let note='';
+  if(b?.statusObserved==='Нет в наличии')note+=(note?' · ':'')+'ПРОМЕТ нет в наличии';
+  return `<div class="pm-delta-entry">${state.model==='all'?`<div class="pm-muted">${esc(d.selected.find(s=>s.sku===sku)?.models||sku)}</div>`:''}<div class="pm-delta-${delta.tone}">${esc(delta.text)}</div>${note?`<div class="pm-muted">${esc(note)}</div>`:''}</div>`;
+ }).join('');
+}
+function periodStart(end,period){
+ if(period==='month'||period==='quarter'){const t=new Date(end+3*86400000);return Date.UTC(t.getUTCFullYear(),period==='quarter'?Math.floor(t.getUTCMonth()/3)*3:t.getUTCMonth(),1)}
+ return end-(Number(period)-1)*604800000;
+}
+function marketingText(x){return [x.oldPrice!=null&&x.price!=null&&x.oldPrice>x.price?'Старая цена на сайте: '+money(x.oldPrice):'',x.conditionalPrice!=null?'Спеццена '+money(x.conditionalPrice)+' · '+(x.conditionalType||'условия не указаны'):'',typeof x.promo==='string'?x.promo:''].filter(Boolean).join('; ')}
+function marketing(x){const text=marketingText(x);return text?`<details class="pm-marketing"><summary>Акции и условия</summary><div class="pm-detail">${esc(text)}</div></details>`:''}
+let summaryText='';
+function renderSummary(){
+ const period=q('summary-period').value||'4',all=[...(d.history?.own||[]),...(d.history?.analogs||[]),...d.own,...d.analogs];
+ const selected=all.filter(x=>matchesDealer(x.site)&&(state.model==='all'||x.sku===state.model||x.skus?.includes(state.model))&&(!x.skus||matchesMaker(x.maker))&&weekStamp(x.checkedAt)!=null);
+ if(!selected.length){summaryText='Нет наблюдений для выбранных моделей и дилеров.';q('summary-text').textContent=summaryText;return}
+ const end=state.weekEnd!=='latest'?Number(state.weekEnd):Math.max(...selected.map(x=>weekStamp(x.checkedAt))),start=periodStart(end,period),rows=selected.filter(x=>new Date(x.checkedAt).getTime()+10800000>=start&&weekStamp(x.checkedAt)<=end);
+ const groups=new Map();for(const x of rows){const k=x.site+'|'+(x.url||x.model);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x)}
+ const changes=[],latest=[],growth=[],decline=[],availability=[],promotionChanges=[],critical=[];const threshold=Math.max(1,Number(q('critical-threshold').value)||5);let comparable=0;
+ for(const list of groups.values()){list.sort((a,b)=>new Date(a.checkedAt)-new Date(b.checkedAt));const first=list[0],last=list.at(-1);latest.push(last);if(weekStamp(first.checkedAt)===weekStamp(last.checkedAt))continue;comparable++;
+ const label=last.model+' · '+labelDealer(last.site),a=first.price??first.unavailablePrice,b=last.price??last.unavailablePrice;
+ if(a!=null&&b!=null&&a!==b)changes.push(label+': цена '+money(a)+' → '+money(b)+' ('+(b>a?'+':'')+new Intl.NumberFormat('ru-RU',{maximumFractionDigits:1}).format((b-a)/a*100)+'%).');
+ if(a>0&&b!=null&&a!==b){const text=label+': '+money(a)+' → '+money(b)+' ('+(b>a?'+':'')+((b-a)/a*100).toFixed(1)+'%).';(b>a?growth:decline).push(text);if(Math.abs((b-a)/a*100)>=threshold)critical.push(text)}
+ if(first.statusObserved!==last.statusObserved)availability.push(label+': наличие «'+first.statusObserved+'» → «'+last.statusObserved+'».');
+ if(marketingText(first)!==marketingText(last))promotionChanges.push(label+': изменились условия акции — '+(marketingText(last)||'не зафиксированы в последнем наблюдении')+'.');
+ }
+ changes.push(...availability,...promotionChanges);
+ const date=n=>new Intl.DateTimeFormat('ru-RU',{timeZone:'UTC'}).format(new Date(n));
+ const weeks=new Set(rows.map(x=>weekStamp(x.checkedAt))).size;
+ const lines=['СВОДКА МОНИТОРИНГА ЦЕН',date(start)+' — '+date(end+6*86400000), 'Модель: '+(state.model==='all'?'все модели':d.selected.find(x=>x.sku===state.model)?.models), 'Дилеры: '+chosenDealers().map(labelDealer).join(', '),'Конкуренты: '+makerLabel(),'','Главное за период', 'Наблюдений по неделям: '+weeks+'. Предложений: '+latest.length+'.'];
+ if(!comparable)lines.push('Изменения цен, наличия и акций пока определить нельзя: нет предложений с наблюдениями за две разные недели.');
+ else lines.push(...(changes.length?changes:['По '+comparable+' сопоставимым предложениям изменений между первым и последним наблюдением периода не зафиксировано.']));
+ const noChange=comparable?'Изменений между первым и последним наблюдением не зафиксировано.':'Недостаточно недельных наблюдений для оценки изменений.';
+ lines.push('','Критичные изменения цен','Порог внимания: '+threshold+'% по модулю.',...(critical.length?critical:[noChange]),'','Рост цен',...(growth.length?growth:[noChange]),'','Снижение цен',...(decline.length?decline:[noChange]),'','Изменения наличия',...(availability.length?availability:[noChange]),'','Изменения акций',...(promotionChanges.length?promotionChanges:[noChange]));
+ lines.push('','Состояние по последним наблюдениям', 'В наличии: '+latest.filter(x=>x.statusObserved==='В наличии').length+'; нет в наличии: '+latest.filter(x=>x.statusObserved==='Нет в наличии').length+'; без цены: '+latest.filter(x=>(x.price??x.unavailablePrice)==null).length+'.');
+ const promos=latest.filter(x=>marketingText(x));lines.push('','Акции и маркетинговые условия',...(promos.length?promos.map(x=>x.model+' · '+labelDealer(x.site)+': '+marketingText(x)+'\n'+x.url):['В выбранных наблюдениях акции не зафиксированы.']));
+ const cheaper=[];for(const x of latest.filter(x=>x.skus)){const price=x.price??x.unavailablePrice;for(const sku of x.skus.filter(sku=>state.model==='all'||sku===state.model)){const base=latest.find(b=>b.sku===sku&&b.site===x.site&&!b.skus&&weekStamp(b.checkedAt)===weekStamp(x.checkedAt)),bp=base?.price??base?.unavailablePrice;if(price!=null&&bp>price)cheaper.push({delta:(price-bp)/bp,text:x.model+' · '+labelDealer(x.site)+' — '+priceDelta(price,bp).text+' относительно '+(base.model||sku)+'; '+x.statusObserved+'.'})}}
+ lines.push('','Конкуренты дешевле ПРОМЕТ',...(cheaper.length?cheaper.sort((a,b)=>a.delta-b.delta).slice(0,5).map(x=>x.text):['Среди сопоставимых цен за одну неделю более дешёвые предложения не выявлены.']));
+ lines.push('','Вывод',comparable?'Проверить предложения с изменением цены или наличия и условия спеццен перед корректировкой своих цен.':'Это исходный срез. Для выводов о динамике нужен следующий недельный снимок.');
+ summaryText=lines.join('\n');q('summary-text').textContent=summaryText;
+}
+q('summary-period').addEventListener('change',renderSummary);q('critical-threshold').addEventListener('change',renderSummary);
+function makeSummaryWord(){
+ const x=excelXml,ns='http://schemas.openxmlformats.org/wordprocessingml/2006/main';
+ const headings=new Set(['Главное за период','Критичные изменения цен','Рост цен','Снижение цен','Изменения наличия','Изменения акций','Состояние по последним наблюдениям','Акции и маркетинговые условия','Конкуренты дешевле ПРОМЕТ','Вывод']);
+ const paragraphs=summaryText.split('\n').filter(Boolean).map((line,i)=>{const title=i===0,heading=headings.has(line),style=title?'Title':heading?'Heading1':'Normal';return `<w:p><w:pPr><w:pStyle w:val="${style}"/>${heading||title?'<w:keepNext/>':''}</w:pPr><w:r><w:t xml:space="preserve">${x(title?'Сводка мониторинга цен ПРОМЕТ':line)}</w:t></w:r></w:p>`}).join('');
+ return excelZip({
+ '[Content_Types].xml':'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>',
+ '_rels/.rels':'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="r1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>',
+ 'word/_rels/document.xml.rels':'<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="s1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>',
+ 'word/styles.xml':`<w:styles xmlns:w="${ns}"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/><w:sz w:val="22"/><w:lang w:val="ru-RU"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="276" w:lineRule="auto"/><w:widowControl/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style><w:style w:type="paragraph" w:styleId="Title"><w:name w:val="Title"/><w:basedOn w:val="Normal"/><w:pPr><w:spacing w:after="240"/><w:keepNext/></w:pPr><w:rPr><w:b/><w:color w:val="000000"/><w:sz w:val="36"/></w:rPr></w:style><w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:keepNext/><w:spacing w:before="240" w:after="120"/><w:outlineLvl w:val="0"/></w:pPr><w:rPr><w:b/><w:color w:val="0B53B3"/><w:sz w:val="27"/></w:rPr></w:style></w:styles>`,
+ 'word/document.xml':`<w:document xmlns:w="${ns}"><w:body>${paragraphs}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134"/></w:sectPr></w:body></w:document>`
+ });
+}
+q('summary-download').addEventListener('click',()=>{renderSummary();const url=URL.createObjectURL(new Blob([makeSummaryWord()],{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}));const a=document.createElement('a');a.href=url;a.download='Сводка-мониторинга-ПРОМЕТ.docx';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000)});
+
+function weekStamp(value){
+ const t=new Date(new Date(value).getTime()+10800000);if(!Number.isFinite(+t))return null;
+ const day=new Date(Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate()));day.setUTCDate(day.getUTCDate()-((day.getUTCDay()+6)%7));return +day;
+}
+function weekLabel(stamp){const t=new Date(stamp);t.setUTCDate(t.getUTCDate()+3);const year=t.getUTCFullYear(),first=Date.UTC(year,0,1);return 'Н'+Math.ceil(((t-first)/86400000+1)/7)+' · '+year}
+const printableCharts=new Map();
+function renderHistory(){
+ printableCharts.clear();
+ q('history-model').value=state.model;q('period').value=state.period;
+ const host=q('history');q('chart-prev').hidden=true;q('chart-next').hidden=true;q('chart-page').textContent='';
+ if(state.model==='all'){host.innerHTML='<div class="pm-empty">Выберите одну модель, чтобы посмотреть историю цен.</div>';return}
+ const historical=d.history||{};
+ const allOwn=[...(historical.own||[]),...d.own],allCompetitors=[...(historical.analogs||[]),...d.analogs];
+ const own=allOwn.filter(x=>x.sku===state.model&&matchesDealer(x.site));
+ const competitors=allCompetitors.filter(matchesCompetitor);
+ const options=[...new Set(competitors.map(x=>x.model))].sort();
+ if(state.series!=='all'&&!options.includes(state.series))state.series='all';
+ q('series').innerHTML='<option value="all">Все модели</option>'+options.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');q('series').value=state.series;
+ const weeks=[...new Set([...own,...competitors].map(x=>weekStamp(x.checkedAt)).filter(x=>x!=null))].sort((a,b)=>a-b);
+ q('week-end').innerHTML='<option value="latest">Последняя неделя</option>'+weeks.map(w=>`<option value="${w}">${weekLabel(w)}</option>`).join('');
+ if(state.weekEnd!=='latest'&&!weeks.includes(Number(state.weekEnd)))state.weekEnd='latest';q('week-end').value=state.weekEnd;
+ if(!weeks.length){host.innerHTML='<div class="pm-empty">Нет наблюдений у выбранных дилеров.</div>';return}
+ const end=state.weekEnd==='latest'?weeks[weeks.length-1]:Number(state.weekEnd),start=periodStart(end,state.period);
+ const record=(x,maker)=>({...x,chartMaker:maker,week:weekStamp(x.checkedAt),chartPrice:x.price??x.unavailablePrice,outOfStock:x.statusObserved==='Нет в наличии'||(x.price==null&&x.unavailablePrice!=null)});
+ function weekly(rows,maker){const map=new Map();for(const x of rows){const r=record(x,maker||x.maker);if(r.week==null||new Date(r.checkedAt).getTime()+10800000<start||r.week>end)continue;const key=r.site+'|'+(r.url||r.model)+'|'+r.week;const prev=map.get(key);if(!prev||new Date(prev.checkedAt)<=new Date(r.checkedAt))map.set(key,r)}return [...map.values()]}
+ const ownPoints=weekly(own,'ПРОМЕТ');
+ const baseFor=r=>ownPoints.find(x=>x.site===r.site&&x.week===r.week);
+ const competitorPoints=weekly(competitors).filter(r=>(state.series==='all'||r.model===state.series)&&(!state.stockOnly||r.statusObserved==='В наличии')&&(!state.cheaperOnly||(r.chartPrice!=null&&baseFor(r)?.chartPrice>0&&r.chartPrice<baseFor(r).chartPrice))&&(!state.betterOnly||(r.site==='Железная мебель'&&r.soldUnits!=null&&baseFor(r)?.soldUnits!=null&&r.soldUnits>baseFor(r).soldUnits)));
+ const points=[...ownPoints,...competitorPoints].filter(r=>r.chartPrice!=null);
+ const width=Math.max(280,Math.round(host.getBoundingClientRect?.().width||700)),left=72,right=width-20,top=30,height=290,bottom=240;
+ const minWeek=weekStamp(Math.max(start,Math.min(...weeks))),span=Math.max(604800000,end-minWeek),px=w=>end===minWeek?(left+right)/2:left+12+(w-minWeek)/span*(right-left-24);
+ const visibleWeeks=weeks.filter(w=>w>=weekStamp(start)&&w<=end),tickCount=Math.min(visibleWeeks.length,Math.max(2,Math.min(6,Math.floor((right-left)/110)+1)));
+ const tickWeeks=[...new Set(Array.from({length:tickCount},(_,i)=>visibleWeeks[Math.round(i*(visibleWeeks.length-1)/Math.max(1,tickCount-1))]))];
+ const vals=points.map(r=>r.chartPrice),low=Math.min(...vals),high=Math.max(...vals),pad=Math.max((high-low)*.15,high*.04,1),min=Math.max(0,low-pad),max=high+pad;
+ const y=v=>bottom-(v-min)/(max-min)*(bottom-top);
+ const comparison=r=>r.chartMaker==='ПРОМЕТ'?'ПРОМЕТ':priceDelta(r.chartPrice,baseFor(r)?.chartPrice).text;
+ host.innerHTML=chosenDealers().map(site=>{
+  const group=points.filter(r=>r.site===site);
+  if(!group.length)return `<section class="pm-dealer-chart"><h4>${esc(labelDealer(site))}</h4><div class="pm-empty">Нет цен за выбранный период.</div></section>`;
+  const series=new Map();for(const r of group){const key=r.chartMaker+'|'+(r.url||r.model);if(!series.has(key))series.set(key,[]);series.get(key).push(r)}
+  const color=r=>r.chartMaker==='ПРОМЕТ'?'var(--pm-mark)':priceDelta(r.chartPrice,baseFor(r)?.chartPrice).tone==='lower'?'var(--pm-red)':priceDelta(r.chartPrice,baseFor(r)?.chartPrice).tone==='higher'?'var(--pm-green)':'var(--pm-muted)';
+  let lines='';for(const rows of series.values()){rows.sort((a,b)=>a.week-b.week);for(let i=1;i<rows.length;i++){const a=rows[i-1],b=rows[i];if(b.week-a.week!==604800000)continue;lines+=`<line x1="${px(a.week)}" y1="${y(a.chartPrice)}" x2="${px(b.week)}" y2="${y(b.chartPrice)}" stroke="${color(b)}" stroke-width="${b.chartMaker==='ПРОМЕТ'?3:1.5}" ${a.outOfStock||b.outOfStock?'stroke-dasharray="5 4"':''}/>`}}
+  const tip=r=>group.filter(v=>v.week===r.week&&Math.abs(y(v.chartPrice)-y(r.chartPrice))<10).map(v=>v.chartMaker+' · '+v.model+' · '+money(v.chartPrice)+' · '+weekLabel(v.week)+' · '+v.statusObserved+' · '+comparison(v)).join(' | ');
+  const markers=group.sort((a,b)=>(a.chartMaker==='ПРОМЕТ')-(b.chartMaker==='ПРОМЕТ')).map(r=>{const c=color(r),props=`data-tooltip="${esc(tip(r))}" data-availability="${r.outOfStock?'unavailable':'available'}" fill="${r.outOfStock?'var(--pm-card)':c}" stroke="${c}" stroke-width="2"`;return r.chartMaker==='ПРОМЕТ'?`<circle ${props} cx="${px(r.week)}" cy="${y(r.chartPrice)}" r="6"/>`:`<rect ${props} x="${px(r.week)-4}" y="${y(r.chartPrice)-4}" width="8" height="8"/>`}).join('');
+  printableCharts.set(site,{group,period:weekLabel(minWeek)+' — '+weekLabel(end)});
+  return `<section class="pm-dealer-chart" data-print-site="${esc(site)}"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><h4>${esc(labelDealer(site))}</h4><button type="button" class="pm-sort-button" data-print-chart="${esc(site)}">Печать графика</button></div><div class="pm-chart-key">● ПРОМЕТ · ■ Конкуренты · ○ □ Нет в наличии</div><svg class="pm-history-plot" width="100%" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(labelDealer(site))}: цены по неделям"><rect data-chart-frame x="${left}" y="${top}" width="${right-left}" height="${bottom-top}" fill="none" stroke="var(--pm-line)"/>${[0,.25,.5,.75,1].map(f=>{const v=min+f*(max-min);return `<line x1="${left}" x2="${right}" y1="${y(v)}" y2="${y(v)}" stroke="var(--pm-line)"/><text x="${left-8}" y="${y(v)+4}" text-anchor="end">${new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0}).format(v)}</text>`}).join('')}<text class="axis-title" data-axis="y" x="0" y="16">Цена, ₽</text>${lines}${markers}${tickWeeks.map(w=>`<text x="${px(w)}" y="${bottom+22}" text-anchor="${w===minWeek?'start':w===end?'end':'middle'}">${weekLabel(w)}</text>`).join('')}<text class="axis-title" data-axis="x" x="${right}" y="${height-3}" text-anchor="end">Неделя</text></svg></section>`;
+ }).join('');
+}
+
+q('history').addEventListener('click',e=>{
+ const button=e.target.closest?.('[data-print-chart]');if(!button)return;
+ const site=button.getAttribute('data-print-chart'),data=printableCharts.get(site),chart=button.closest('.pm-dealer-chart')?.querySelector('svg');if(!data||!chart)return;
+ const colors={'--pm-mark':'#0b53b3','--pm-red':'#b42332','--pm-green':'#08733f','--pm-muted':'#596b7c','--pm-card':'#ffffff','--pm-line':'#d8ded9'};
+ const svg=chart.outerHTML.replace(/var\((--pm-[a-z-]+)\)/g,(_,k)=>colors[k]||'#17211e');
+ const model=d.selected.find(x=>x.sku===state.model)?.models||state.model;
+ const content='<!doctype html><html lang="ru"><meta charset="utf-8"><title>'+esc(model+' · '+labelDealer(site))+'</title><style>@page{size:A4 landscape;margin:14mm}body{font:12px Arial;color:#17211e;margin:20px}h1{font-size:21px}svg{width:100%;height:auto;max-height:125mm}svg text{font:12px Arial;fill:#596b7c}table{border-collapse:collapse;width:100%;font-size:11px}td,th{padding:6px;text-align:left;border-bottom:1px solid #ddd}tr,svg{break-inside:avoid}thead{display:table-header-group}@media print{button{display:none}body{margin:0}}</style><button onclick="window.print()">Печать / сохранить PDF</button><h1>Динамика цен · '+esc(model)+'</h1><p>'+esc(labelDealer(site)+' · '+data.period)+'</p><p>Производители: '+esc(makerLabel())+' · Модель конкурента: '+esc(state.series==='all'?'все':state.series)+'</p><p>'+esc([state.cheaperOnly?'Только дешевле ПРОМЕТ':'',state.stockOnly?'Только в наличии':'',state.betterOnly?'Продаются лучше ПРОМЕТ':''].filter(Boolean).join(' · '))+'</p><p>● ПРОМЕТ · ■ Конкуренты · ○ □ Нет в наличии. Красный — дешевле ПРОМЕТ, зелёный — дороже.</p>'+svg+'<table><thead><tr><th>Модель</th><th>Производитель</th><th>Неделя</th><th>Цена</th><th>Наличие</th></tr></thead><tbody>'+data.group.map(r=>'<tr><td>'+esc(r.model)+'</td><td>'+esc(r.chartMaker)+'</td><td>'+weekLabel(r.week)+'</td><td>'+money(r.chartPrice)+'</td><td>'+esc(r.statusObserved)+'</td></tr>').join('')+'</tbody></table></html>';
+ let preview;try{preview=window.open('','_blank')}catch{}
+ if(preview){preview.document.open();preview.document.write(content);preview.document.close();preview.focus();return}
+ const url=URL.createObjectURL(new Blob([content],{type:'text/html;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=('График_'+model+'_'+site).replace(/[\\/:*?"<>|]/g,'-')+'.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);
+});
+function relativeDifference(x){
+ const price=x.price??x.unavailablePrice;
+ if(price==null)return null;
+ const skus=state.model==='all'?x.skus:[state.model];
+ const values=skus.map(sku=>{const b=d.own.find(o=>o.sku===sku&&o.site===x.site),base=b?.price??b?.unavailablePrice;return base>0?(price-base)/base*100:null}).filter(v=>v!=null);
+ return values.length?Math.min(...values):null;
+}
+function relativeSales(x){
+ if(x.site!=='Железная мебель'||x.soldUnits==null)return null;
+ const values=(state.model==='all'?x.skus:[state.model]).map(sku=>{const base=d.own.find(o=>o.sku===sku&&o.site===x.site)?.soldUnits;return base>0?(x.soldUnits-base)/base*100:null}).filter(v=>v!=null);
+ return values.length?Math.max(...values):null;
+}
+function compareOffers(a,b){
+ if(sortBy==='salesDelta'&&matchesDealer('Железная мебель')){
+  const av=relativeSales(a),bv=relativeSales(b);
+  if(av==null&&bv!=null)return 1;
+  if(av!=null&&bv==null)return -1;
+  if(av!=null&&bv!=null&&av!==bv)return (salesDeltaSort==='desc'?-1:1)*(av-bv);
+  return String(a.id).localeCompare(String(b.id),'ru',{numeric:true});
+ }
+
+ if(sortBy==='sales'&&matchesDealer('Железная мебель')){
+  const av=a.site==='Железная мебель'?a.soldUnits:null,bv=b.site==='Железная мебель'?b.soldUnits:null;
+  if(av==null&&bv!=null)return 1;
+  if(av!=null&&bv==null)return -1;
+  if(av!=null&&bv!=null&&av!==bv)return (salesSort==='desc'?-1:1)*(av-bv);
+  return String(a.id).localeCompare(String(b.id),'ru',{numeric:true});
+ }
+
+ const av=relativeDifference(a),bv=relativeDifference(b);
+ if(av==null&&bv!=null)return 1;
+ if(av!=null&&bv==null)return -1;
+ if(av!=null&&bv!=null&&av!==bv)return (deltaSort==='asc'?1:-1)*(av-bv);
+ return String(a.id).localeCompare(String(b.id),'ru',{numeric:true});
+}
+function render(){
+ const currentKey=JSON.stringify(state);if(currentKey!==pageKey){for(const k in pages)pages[k]=0;pageKey=currentKey}
+ for(const kind of ['chart','offers','sites']){q('export-'+kind).disabled=state.model==='all';q('export-'+kind).textContent=state.model==='all'?'Выберите модель для Excel':'Excel · выбранная модель';}
+ q('cheaper').checked=state.cheaperOnly;q('stock-only').checked=state.stockOnly;q('better-only').checked=state.betterOnly;
+ q('empty').textContent='Для выбранной модели и дилера предложений нет.';
+ showTab();
+ for(const k of ['model','dealer','maker'])q(k).value=state[k];renderDealers();renderMakers();
+ renderHistory();renderSummary();
+ const rows=d.analogs.filter(matchesCompetitor).sort(compareOffers);
+ const unfilteredCount=d.analogs.filter(x=>(state.model==='all'||x.skus.includes(state.model))&&matchesDealer(x.site)).length;
+ q('offers-size').value=state.offerSize;
+ q('offer-count').textContent=chosenMakers().length===makers.length?'Всего предложений: '+rows.length:makerLabel()+' · '+rows.length+' из '+unfilteredCount+' предложений';q('all-makers').hidden=chosenMakers().length===makers.length;
+ const salesDeltaActive=sortBy==='salesDelta'&&matchesDealer('Железная мебель');
+ q('sales-delta-head').setAttribute('aria-sort',salesDeltaActive?(salesDeltaSort==='desc'?'descending':'ascending'):'none');
+ q('sales-delta-sort').textContent='Продажи к ПРОМЕТ, % '+(salesDeltaActive?(salesDeltaSort==='desc'?'↓':'↑'):'↕');
+ q('sales-delta-sort').setAttribute('aria-label',salesDeltaActive&&salesDeltaSort==='desc'?'Сначала наибольшее превышение продаж ПРОМЕТ. Нажмите для обратного порядка':'Продажи к ПРОМЕТ: сначала наибольшее превышение');
+ const salesActive=sortBy==='sales'&&matchesDealer('Железная мебель');
+ q('sales-head').setAttribute('aria-sort',salesActive?(salesSort==='desc'?'descending':'ascending'):'none');
+ q('sales-sort').textContent='Продажи ЖМ, шт. '+(salesActive?(salesSort==='desc'?'↓':'↑'):'↕');
+ q('sales-sort').setAttribute('aria-label',salesActive&&salesSort==='desc'?'Продажи: сначала самые продаваемые. Нажмите: сначала наименьшие продажи':'Продажи: нажмите, чтобы показать самые продаваемые сверху');
+ q('delta-sort-head').setAttribute('aria-sort',(salesActive||salesDeltaActive)?'none':deltaSort==='asc'?'ascending':'descending');
+ q('delta-sort').textContent='Разница с ПРОМЕТ, % '+((salesActive||salesDeltaActive)?'↕':deltaSort==='asc'?'↑':'↓');
+ q('delta-sort').setAttribute('aria-label',deltaSort==='asc'?'Сначала дешевле. Нажмите: сначала дороже':'Сначала дороже. Нажмите: сначала дешевле');
+ q('sort-caption').textContent=(deltaSort==='asc'?'Сначала самые дешёвые относительно ПРОМЕТ':'Сначала самые дорогие относительно ПРОМЕТ')+' · по разнице в %. Без сравнения — внизу.'+(state.model==='all'?' Для аналога нескольких моделей — по наименьшей разнице.':'');
+ const own=d.own.filter(x=>(state.model==='all'||x.sku===state.model)&&matchesDealer(x.site));
+ q('result').textContent=`${q('model').selectedOptions[0].text} · ${q('dealer').selectedOptions[0].text} · ${q('maker').selectedOptions[0].text}`;
+ q('total').textContent=rows.length;q('stock').textContent=rows.filter(x=>x.statusObserved==='В наличии').length;q('supplier').textContent=`${rows.filter(x=>x.statusObserved==='От поставщика').length} от поставщика · ${rows.filter(x=>x.statusObserved==='Нет в наличии').length} нет в наличии`;q('flags').textContent=rows.filter(x=>x.flag).length;
+ q('own-title').textContent='Предложения ПРОМЕТ'+(state.model==='all'?' · 13 моделей':'');
+ q('own').innerHTML=own.length?pageItems(own,'own',4).map(x=>`<div class="pm-own-item"><div>${esc(x.model)} · ${esc(labelDealer(x.site))}</div><div class="pm-price">${money(x.price)}</div><div class="pm-muted">${esc(x.statusObserved)}</div>${x.site==='Железная мебель'?`<div class="pm-own-sales">Продажи ЖМ, шт.<div class="pm-price">${x.soldUnits==null?'Нет данных':new Intl.NumberFormat('ru-RU').format(x.soldUnits)}</div></div>`:''}<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">Карточка товара ↗</a>${marketing(x)}</div>`).join(''):'<div class="pm-empty">Базовое предложение для выбранной модели и дилера не зафиксировано.</div>';
+ const gaps=(d.coverage||[]).filter(x=>x.price==null&&(state.model==='all'||x.sku===state.model)&&matchesDealer(x.site));
+ if(!own.length&&gaps.length)q('own').innerHTML='';
+ q('own').innerHTML+=(state.model==='all'?[]:gaps).map(x=>`<div class="pm-own-item"><div>${esc(x.model)} · ${esc(labelDealer(x.site))}</div><div class="pm-warn">Цена не указана</div></div>`).join('');
+ const allSites=['КОМУС','ВсеИнструменты','Железная мебель','profsafe.ru'];
+ q('audit-head').innerHTML='<tr><th>Модель ПРОМЕТ</th>'+allSites.filter(matchesDealer).map(s=>'<th>'+esc(labelDealer(s))+'</th>').join('')+'</tr>';
+ const countLabel=(n,forms)=>n+' '+forms[n%100>=11&&n%100<=14?2:n%10===1?0:n%10>=2&&n%10<=4?1:2];
+ q('audit-rows').innerHTML=pageItems(d.selected.filter(m=>state.model==='all'||m.sku===state.model),'audit',3).map(s=>'<tr><td>'+esc(s.models)+'</td>'+allSites.filter(matchesDealer).map(site=>{
+  const offers=d.analogs.filter(x=>x.skus.includes(s.sku)&&x.site===site&&matchesMaker(x.maker));
+  const ownOffer=d.own.find(x=>x.sku===s.sku&&x.site===site);
+  const ownPrice=ownOffer?.price??ownOffer?.unavailablePrice;
+  const ownDetails=`<div class="pm-site-own" style="margin:8px 0 14px;padding:8px;background:var(--pm-blue-soft);border-radius:6px"><div>ПРОМЕТ · ${esc(s.models)}</div><div class="pm-price">${ownPrice==null?'Цена не указана':money(ownPrice)}</div>${ownOffer?.price==null&&ownOffer?.unavailablePrice!=null?'<div>Цена отсутствующего товара</div>':''}${ownOffer?.statusObserved?`<div>${esc(ownOffer.statusObserved)}</div>`:''}${ownOffer?.url?`<a href="${esc(ownOffer.url)}" target="_blank" rel="noopener noreferrer">Карточка ПРОМЕТ ↗</a>`:''}</div>`;
+  const candidates=(d.candidates||[]).filter(x=>x.skus.includes(s.sku)&&x.site===site&&matchesMaker(x.maker));
+  const label=countLabel(candidates.length,['кандидат','кандидата','кандидатов']);
+  const offerLabel=countLabel(offers.length,['предложение','предложения','предложений']);
+  const offerDetails=offers.length?`<details class="pm-coverage-offers"><summary aria-label="${esc(offerLabel+' · '+s.models+' · '+labelDealer(site))}">${offerLabel}</summary><div class="pm-detail">${ownDetails}${offers.map(x=>`<div style="margin:8px 0 12px"><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.model)} ↗</a><div>${esc(x.maker)}</div><div class="pm-price">${x.price==null?'Цена не указана':money(x.price)}</div>${x.conditionalPrice?`<div>${money(x.conditionalPrice)} · ${esc(x.conditionalType)}</div>`:''}${x.unavailablePrice?`<div>${money(x.unavailablePrice)} · цена отсутствующего товара</div>`:''}<div>${esc(x.statusObserved)}</div>${marketing(x)}</div>`).join('')}</div></details>`:ownDetails+offerLabel;
+  return '<td>'+offerDetails+(candidates.length?`, <details class="pm-coverage-candidates"><summary aria-label="${esc(label+' · '+s.models+' · '+labelDealer(site))}">${label}</summary><div class="pm-detail">${candidates.map(x=>`<div style="margin:8px 0 12px"><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.model)} ↗</a><div>${esc(x.maker)}</div><div>${esc(x.reason)}</div></div>`).join('')}</div></details>`:'')+'</td>';
+ }).join('')+'</tr>').join('');
+ const candidates=(d.excluded||[]).filter(matchesCompetitor);
+ q('candidates').innerHTML=candidates.length?candidates.map(x=>`<details><summary>${esc(x.maker)} · ${esc(x.model)} · ${esc(labelDealer(x.site))}${x.price?' · '+money(x.price):''}</summary><div class="pm-detail">${esc(x.reason)}<br><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">Карточка товара ↗</a></div></details>`).join(''):'<div class="pm-muted">Для выбранных фильтров исключённых предложений нет.</div>';
+ q('coverage-title').textContent=`Проверка ПРОМЕТ: ${(d.coverage||[]).filter(x=>x.price!=null).length} цен из 52 · все 13 моделей × 4 дилера`;
+ q('coverage-head').innerHTML='<tr><th>Модель</th>'+allSites.filter(matchesDealer).map(x=>'<th>'+esc(labelDealer(x))+'</th>').join('')+'</tr>';
+ q('coverage').innerHTML=d.selected.map(x=>'<tr><td>'+esc(x.models)+'</td>'+allSites.filter(matchesDealer).map(site=>{const r=(d.coverage||[]).find(c=>c.sku===x.sku&&c.site===site);const o=d.own.find(o=>o.sku===x.sku&&o.site===site);return '<td>'+(o?`<a href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">${money(o.price)}</a><div class="pm-muted">${esc(o.statusObserved)}</div>`:'<span class="pm-warn">Не найдена</span>')+'</td>'}).join('')+'</tr>').join('');
+ const showSales=false;
+ q('sales-head').hidden=!showSales;q('sales-delta-head').hidden=!showSales;q('sales-note').hidden=!showSales;
+ const max=Math.max(1,...rows.map(x=>x.price||0));
+ q('rows').innerHTML=pageItems(rows,'offers',state.offerSize==='all'?Math.max(1,rows.length):Number(state.offerSize)).map(x=>{const matches=d.pairs.filter(p=>p.model===x.model&&(state.model==='all'||p.sku===state.model));return `<tr><td><a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.model)} ↗</a><div class="pm-muted">${esc(x.maker)}</div>${state.model==='all'?'<div class="pm-muted">'+x.skus.map(s=>esc(d.selected.find(t=>t.sku===s)?.models||s)).join('; ')+'</div>':''}</td><td>${esc(labelDealer(x.site))}</td><td><div class="pm-price">${money(x.price)}</div>${x.price&&state.model!=='all'?`<div class="pm-bar" style="width:${Math.round(x.price/max*100)}%"></div>`:''}${x.conditionalPrice?`<div class="pm-muted">${money(x.conditionalPrice)} · ${esc(x.conditionalType)}</div>`:''}${x.unavailablePrice?`<div class="pm-muted">${money(x.unavailablePrice)}<br>Цена отсутствующего товара</div>`:''}</td><td class="pm-delta-cell">${tableComparison(x)}</td>${showSales?`<td>${x.site==='Железная мебель'?(x.soldUnits==null?'<span class="pm-muted">Нет данных</span>':`<span class="pm-price">${new Intl.NumberFormat('ru-RU').format(x.soldUnits)}</span>`):'—'}</td><td class="pm-delta-cell">${salesComparison(x)}</td>`:''}<td>${esc(x.statusObserved)}</td><td>${marketingText(x)?esc(marketingText(x)):'—'}</td></tr>`}).join('');q('empty').hidden=rows.length>0;
+}
+q('offers-size').addEventListener('change',()=>{state.offerSize=q('offers-size').value;pages.offers=0;render();saveState()});
+q('all-makers').addEventListener('click',()=>{state.maker='all';state.manufacturers=null;state.series='all';render();saveState()});
+q('history-model').addEventListener('change',()=>{state.model=q('history-model').value;render();saveState()});
+q('better-only').addEventListener('change',()=>{state.betterOnly=q('better-only').checked;if(state.betterOnly&&!matchesDealer('Железная мебель'))state.dealers=[...chosenDealers(),'Железная мебель'];render();saveState()});
+q('reset-filters').addEventListener('click',()=>{Object.assign(state,{model:'all',dealer:'all',dealers:null,maker:'all',manufacturers:null,cheaperOnly:false,stockOnly:false,betterOnly:false});render();saveState()});
+q('stock-only').addEventListener('change',()=>{state.stockOnly=q('stock-only').checked;render();saveState()});
+q('cheaper').addEventListener('change',()=>{state.cheaperOnly=q('cheaper').checked;render();saveState()});
+q('sales-delta-sort').addEventListener('click',()=>{salesDeltaSort=sortBy==='salesDelta'?(salesDeltaSort==='desc'?'asc':'desc'):'desc';sortBy='salesDelta';render();saveState()});
+q('sales-sort').addEventListener('click',()=>{salesSort=sortBy==='sales'?(salesSort==='desc'?'asc':'desc'):'desc';sortBy='sales';render();saveState()});
+q('delta-sort').addEventListener('click',()=>{deltaSort=sortBy==='delta'?(deltaSort==='asc'?'desc':'asc'):'asc';sortBy='delta';render();saveState()});
+function excelXml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]))}
+function excelZip(files){
+ const enc=new TextEncoder(),parts=[],central=[];let offset=0;
+ const crc=bytes=>{let c=0xffffffff;for(const b of bytes){c^=b;for(let k=0;k<8;k++)c=(c>>>1)^((c&1)?0xedb88320:0)}return (c^0xffffffff)>>>0};
+ const pack=(size,values)=>{const b=new Uint8Array(size),v=new DataView(b.buffer);for(const [at,value,len] of values)len===2?v.setUint16(at,value,true):v.setUint32(at,value,true);return b};
+ for(const [name,text] of Object.entries(files)){const n=enc.encode(name),b=enc.encode(text),c=crc(b);const h=pack(30,[[0,0x04034b50,4],[4,20,2],[6,2048,2],[14,c,4],[18,b.length,4],[22,b.length,4],[26,n.length,2]]);parts.push(h,n,b);const ch=pack(46,[[0,0x02014b50,4],[4,20,2],[6,20,2],[8,2048,2],[16,c,4],[20,b.length,4],[24,b.length,4],[28,n.length,2],[42,offset,4]]);central.push(ch,n);offset+=h.length+n.length+b.length}
+ const cs=central.reduce((a,b)=>a+b.length,0),end=pack(22,[[0,0x06054b50,4],[8,central.length/2,2],[10,central.length/2,2],[12,cs,4],[16,offset,4]]),all=[...parts,...central,end],out=new Uint8Array(offset+cs+22);let at=0;for(const b of all){out.set(b,at);at+=b.length}return out;
+}
+function makeExcel(rows,chartPoints){
+ const x=excelXml,ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main',rel='http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+ const col=i=>{let s='';for(i++;i;i=Math.floor((i-1)/26))s=String.fromCharCode(65+(i-1)%26)+s;return s};
+ const start=chartPoints?23:1,last=start+rows.length-1;
+ const sheetRows=rows.map((r,i)=>`<row r="${start+i}" ht="${i<2?32:130}" customHeight="1">${r.map((v,j)=>{const ref=col(j)+(start+i),style=i===0?1:i===1?2:typeof v==='number'?4:3;return typeof v==='number'?`<c r="${ref}" s="${style}"><v>${v}</v></c>`:`<c r="${ref}" s="${style}" t="inlineStr"><is><t xml:space="preserve">${x(v)}</t></is></c>`}).join('')}</row>`).join('');
+ const files={
+ '[Content_Types].xml':`<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${chartPoints?'<Override PartName="/xl/charts/chart1.xml" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/><Override PartName="/xl/drawings/drawing1.xml" ContentType="application/vnd.openxmlformats-officedocument.drawing+xml"/>':''}</Types>`,
+ '_rels/.rels':`<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${rel}/officeDocument" Target="xl/workbook.xml"/></Relationships>`,
+ 'xl/workbook.xml':`<workbook xmlns="${ns}" xmlns:r="${rel}"><sheets><sheet name="Отчёт" sheetId="1" r:id="rId1"/></sheets><definedNames><definedName name="_xlnm.Print_Area" localSheetId="0">'Отчёт'!$A$1:$${col(rows[1].length-1)}$${last}</definedName><definedName name="_xlnm.Print_Titles" localSheetId="0">'Отчёт'!$${start+1}:$${start+1}</definedName></definedNames></workbook>`,
+ 'xl/_rels/workbook.xml.rels':`<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${rel}/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="${rel}/styles" Target="styles.xml"/></Relationships>`,
+ 'xl/styles.xml':`<styleSheet xmlns="${ns}"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="12"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF0B53B3"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="1"><border/></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="5"><xf/><xf fontId="1" fillId="2" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf><xf fontId="1" fillId="2" applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf><xf applyAlignment="1"><alignment vertical="center" wrapText="1"/></xf><xf numFmtId="4" applyNumberFormat="1" applyAlignment="1"><alignment vertical="center"/></xf></cellXfs></styleSheet>`,
+ 'xl/worksheets/sheet1.xml':`<worksheet xmlns="${ns}" xmlns:r="${rel}"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><sheetViews><sheetView workbookViewId="0"><pane ySplit="${start+1}" topLeftCell="A${start+2}" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols>${rows[1].map((_,i)=>`<col min="${i+1}" max="${i+1}" width="${i===0?22:i===1?38:i===2?22:42}" customWidth="1"/>`).join('')}</cols><sheetData>${sheetRows}</sheetData><autoFilter ref="A${start+1}:${col(rows[1].length-1)}${last}"/><mergeCells count="1"><mergeCell ref="A${start}:${col(rows[1].length-1)}${start}"/></mergeCells><pageMargins left="0.25" right="0.25" top="0.4" bottom="0.4" header="0.2" footer="0.2"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/><headerFooter><oddFooter>&amp;CСтраница &amp;P</oddFooter></headerFooter>${chartPoints?'<drawing r:id="rId1"/>':''}</worksheet>`};
+ if(chartPoints){
+ files['xl/worksheets/_rels/sheet1.xml.rels']=`<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${rel}/drawing" Target="../drawings/drawing1.xml"/></Relationships>`;
+ files['xl/drawings/_rels/drawing1.xml.rels']=`<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="${rel}/chart" Target="../charts/chart1.xml"/></Relationships>`;
+ files['xl/drawings/drawing1.xml']=`<xdr:wsDr xmlns:xdr="http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><xdr:twoCellAnchor><xdr:from><xdr:col>0</xdr:col><xdr:colOff>0</xdr:colOff><xdr:row>0</xdr:row><xdr:rowOff>0</xdr:rowOff></xdr:from><xdr:to><xdr:col>8</xdr:col><xdr:colOff>0</xdr:colOff><xdr:row>21</xdr:row><xdr:rowOff>0</xdr:rowOff></xdr:to><xdr:graphicFrame macro=""><xdr:nvGraphicFramePr><xdr:cNvPr id="2" name="Цены · Неделя 44"/><xdr:cNvGraphicFramePr/></xdr:nvGraphicFramePr><xdr:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/></xdr:xfrm><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart"><c:chart xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="${rel}" r:id="rId1"/></a:graphicData></a:graphic></xdr:graphicFrame><xdr:clientData/></xdr:twoCellAnchor></xdr:wsDr>`;
+ const series=chartPoints.map((p,i)=>`<c:ser><c:idx val="${i}"/><c:order val="${i}"/><c:tx><c:v>${x(p.name)}</c:v></c:tx><c:spPr><a:ln><a:noFill/></a:ln></c:spPr><c:marker><c:symbol val="${p.own?'circle':'square'}"/><c:size val="7"/></c:marker><c:xVal><c:numLit><c:formatCode>0</c:formatCode><c:ptCount val="1"/><c:pt idx="0"><c:v>44</c:v></c:pt></c:numLit></c:xVal><c:yVal><c:numLit><c:formatCode>0</c:formatCode><c:ptCount val="1"/><c:pt idx="0"><c:v>${p.price}</c:v></c:pt></c:numLit></c:yVal></c:ser>`).join('');
+ files['xl/charts/chart1.xml']=`<c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><c:chart><c:plotArea><c:layout/><c:scatterChart><c:scatterStyle val="marker"/>${series}<c:axId val="1"/><c:axId val="2"/></c:scatterChart><c:valAx><c:axId val="1"/><c:scaling><c:orientation val="minMax"/><c:max val="45"/><c:min val="43"/></c:scaling><c:axPos val="b"/><c:numFmt formatCode="&quot;Неделя &quot;0" sourceLinked="0"/><c:crossAx val="2"/><c:crosses val="autoZero"/><c:majorUnit val="1"/></c:valAx><c:valAx><c:axId val="2"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:axPos val="l"/><c:majorGridlines/><c:numFmt formatCode="# ##0 &quot;₽&quot;" sourceLinked="0"/><c:crossAx val="1"/><c:crosses val="autoZero"/></c:valAx></c:plotArea><c:legend><c:legendPos val="r"/></c:legend><c:plotVisOnly val="1"/></c:chart></c:chartSpace>`;
+ }
+ return excelZip(files);
+}
+function exportModel(kind){
+ if(state.model==='all')return;
+ try{
+ const model=d.selected.find(m=>m.sku===state.model),own=d.own.filter(r=>r.sku===state.model),analogs=d.analogs.filter(r=>r.skus.includes(state.model));
+ const sites=['КОМУС','ВсеИнструменты','Железная мебель','profsafe.ru'];
+ const groups=new Map();groups.set('own',{maker:'ПРОМЕТ',model:model.models,sku:model.sku,offers:own});
+ for(const r of analogs){const key=r.maker+'|'+r.model;if(!groups.has(key))groups.set(key,{maker:r.maker,model:r.model,sku:'—',offers:[]});groups.get(key).offers.push(r)}
+ const cell=(entry,site)=>{const matches=entry.offers.filter(x=>x.site===site);return matches.length?matches.map(r=>{const p=r.price??r.unavailablePrice,base=own.find(x=>x.site===site),bp=base?.price??base?.unavailablePrice;return [p==null?'Цена не указана':money(p),entry.maker==='ПРОМЕТ'?'База сравнения':priceDelta(p,bp).text,r.statusObserved,marketingText(r),r.url].filter(Boolean).join('\n')}).join('\n\n'):'Нет предложения'};
+ const rows=[['Сравнение цен · '+model.models+' · Неделя 44 · все дилеры и производители'],['Бренд','Товар','Артикул ПРОМЕТ',...sites.map(labelDealer)],...[...groups.values()].map(g=>[g.maker,g.model,g.sku,...sites.map(site=>cell(g,site))])];
+ const chartPoints=kind==='chart'?[...own,...analogs].filter(r=>(r.price??r.unavailablePrice)!=null).map(r=>({name:(own.includes(r)?'ПРОМЕТ':r.maker)+' · '+r.model+' · '+labelDealer(r.site),price:r.price??r.unavailablePrice,own:own.includes(r)})):null;
+ const bytes=makeExcel(rows,chartPoints),url=URL.createObjectURL(new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})),a=document.createElement('a');a.href=url;a.download='Сравнение_'+model.models.replace(/[\\/:*?"<>|]/g,'-')+'_неделя44.xlsx';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
+ }catch(error){q('export-'+kind).textContent='Ошибка выгрузки — повторить';console.error('Excel export failed',error)}
+}
+
+for(const kind of ['chart','offers','sites'])q('export-'+kind).addEventListener('click',()=>exportModel(kind));
+for(const key of ['own','offers','audit','chart'])for(const direction of ['prev','next'])q(key+'-'+direction).addEventListener('click',()=>{pages[key]+=direction==='next'?1:-1;render()});
+restore(window.openai?.widgetState);render();
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>renderHistory()).observe(q('history'));
+for(const k of ['model','dealer','maker'])q(k).addEventListener('change',()=>{state[k]=q(k).value;if(k==='dealer')state.dealers=null;if(k==='maker')state.manufacturers=null;if(!matchesDealer('Железная мебель'))state.betterOnly=false;render();saveState()});
+for(const tab of ['main','history','audit','summary']){q('tab-'+tab).addEventListener('click',()=>{activeTab=tab;showTab();if(tab==='history')renderHistory();if(tab==='summary')renderSummary();saveState()});q('tab-'+tab).addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const tabs=['main','history','audit','summary'];activeTab=e.key==='Home'?'main':e.key==='End'?'summary':tabs[(tabs.indexOf(tab)+(e.key==='ArrowRight'?1:3))%4];showTab();q('tab-'+activeTab).focus();if(activeTab==='history')renderHistory();saveState()}})}
+window.addEventListener('openai:set_globals',e=>{if(!locallyChanged&&e.detail?.globals?.widgetState){restore(e.detail.globals.widgetState);render()}});
+})();
+</script></div>
