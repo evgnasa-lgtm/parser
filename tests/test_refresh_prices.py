@@ -81,7 +81,7 @@ class RefreshTests(unittest.TestCase):
             data = json.loads((args.state / 'observations.json').read_text())
             self.assertEqual(data['own'][0]['price'], baseline['own'][0]['price'])
             self.assertEqual(data['own'][0]['checkedAt'], baseline['own'][0]['checkedAt'])
-            self.assertEqual(data['history']['own'], [])
+            self.assertEqual(data['history']['own'], baseline['history']['own'])
             self.assertIn('HTTP 403', data['own'][0]['refreshError'])
             self.assertTrue((args.publish / 'index.html').exists())
 
@@ -92,7 +92,7 @@ class RefreshTests(unittest.TestCase):
             self.assertEqual(run(args, lambda _: result), 0)
             first = json.loads((args.state / 'observations.json').read_text())
             self.assertEqual(first['own'][0]['price'], 13000)
-            self.assertEqual(first['history']['own'][0]['price'], 13471)
+            self.assertTrue(any(x['price'] == json.loads((ROOT / 'data/observations.json').read_text())['own'][0]['price'] for x in first['history']['own']))
             self.assertEqual(run(args, lambda _: dict(result, price=14000)), 0)
             second = json.loads((args.state / 'observations.json').read_text())
             self.assertEqual(second['own'][0]['price'], 14000)

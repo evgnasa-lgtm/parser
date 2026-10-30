@@ -16,6 +16,7 @@ from urllib.request import Request, urlopen, HTTPRedirectHandler, build_opener
 from urllib.robotparser import RobotFileParser
 
 from build import ROOT, atomic_write, render
+from merge_release import merge_release
 
 AGENT = 'PrometPriceMonitor/1.0'
 HOSTS = {'www.vseinstrumenti.ru', 'vseinstrumenti.ru', 'www.komus.ru',
@@ -217,7 +218,7 @@ def apply_result(row, result, now, allow_large=False):
         raise ValueError('Изменение цены более 50%; требуется ручная проверка')
     old = copy.deepcopy(row)
     row.update(result)
-    row.update(checkedAt=now, lastAttemptAt=now, refreshError=None,
+    row.update(checkedAt=now, lastAttemptAt=now, refreshError=None, collectionError=None, lastAttemptStatus="verified",
                collectionMethod='Product/Offer structured data', availability=result['statusObserved'],
                delivery='Автоматически не проверено', oldPrice=None, conditionalPrice=None,
                conditionalType='', promo='Акции автоматически не проверены',
@@ -232,6 +233,7 @@ def run(args, fetch=None):
         path = state / 'observations.json'
         data = json.loads((path if path.exists() else ROOT / 'data/observations.json').read_text())
         original = copy.deepcopy(data)
+        data = merge_release(json.loads((ROOT / "data/observations.json").read_text(encoding="utf-8")), data)
         now = datetime.now(timezone.utc).isoformat()
         report = {'attemptedAt': now, 'running': True, 'updated': 0, 'failed': 0, 'sources': {}, 'errors': []}
         backup = state / 'backups' / (now.replace(':', '-') + '.json')
