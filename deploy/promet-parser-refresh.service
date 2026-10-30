@@ -1,0 +1,22 @@
+[Unit]
+Description=PROMET product price collection
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=promet-parser
+Group=promet-parser
+WorkingDirectory=/opt/promet-parser
+ExecStart=/usr/bin/python3 /opt/promet-parser/scripts/refresh_prices.py --state /var/lib/promet-parser --publish /var/www/pars.promet.pw/public
+TimeoutStartSec=8h
+Nice=10
+CPUQuota=30%
+MemoryMax=384M
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/promet-parser /var/www/pars.promet.pw/public
+UMask=0027
+

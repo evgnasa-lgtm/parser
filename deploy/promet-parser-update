@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+[[ $EUID -eq 0 ]] || exec sudo /usr/local/bin/promet-parser-update "$@"
+exec 9>/run/lock/promet-parser-update.lock
+flock -n 9 || { echo 'Обновление программы уже выполняется'; exit 1; }
+cd /opt/promet-parser
+git pull --ff-only
+if [[ ${1:-} == --code-only ]]; then
+    runuser -u promet-parser -- python3 scripts/build.py --data /var/lib/promet-parser/observations.json --output /var/www/pars.promet.pw/public/index.html
+else
+    runuser -u promet-parser -- python3 scripts/build.py --data /var/lib/promet-parser/observations.json --output /var/www/pars.promet.pw/public/index.html
+    systemctl start --no-block promet-parser-refresh.service
+    echo 'Программа обновлена. Сбор цен запущен в фоне; ход обновления виден на сайте.'
+    echo 'Журнал: journalctl -u promet-parser-refresh.service -f'
+fi

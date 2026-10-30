@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily PROMET price refresh at 07:00 Moscow
+
+[Timer]
+OnCalendar=*-*-* 07:00:00 Europe/Moscow
+Persistent=true
+RandomizedDelaySec=30
+Unit=promet-parser-refresh.service
+
+[Install]
+WantedBy=timers.target
