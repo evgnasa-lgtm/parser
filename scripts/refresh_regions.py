@@ -6,6 +6,7 @@ try:
 except ImportError:  # Windows development; production uses flock on Ubuntu.
     fcntl = None
 import html
+from http.cookiejar import CookieJar
 from html.parser import HTMLParser
 import json
 import math
@@ -15,7 +16,7 @@ import time
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
 from urllib.parse import urlsplit
-from urllib.request import Request, urlopen, HTTPRedirectHandler, build_opener
+from urllib.request import Request, urlopen, HTTPRedirectHandler, HTTPCookieProcessor, build_opener
 from urllib.robotparser import RobotFileParser
 
 from build import ROOT, atomic_write, render
@@ -23,7 +24,7 @@ from merge_release import merge_release
 
 AGENT = 'PrometPriceMonitor/1.0'
 HOSTS = {'www.vseinstrumenti.ru', 'vseinstrumenti.ru', 'www.komus.ru',
-         'komus.ru', 'profsafe.ru', 'www.profsafe.ru',
+         'komus.ru', 'profsafe.ru', 'www.profsafe.ru', 'spb.profsafe.ru',
          'xn----7sbenacbbl2bhik1tlb.xn--p1ai',
          'www.xn----7sbenacbbl2bhik1tlb.xn--p1ai'}
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
@@ -44,11 +45,11 @@ class SafeRedirect(HTTPRedirectHandler):
         validate_url(newurl)
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
-def download(url, limit=8_000_000, headers=None):
+def download(url, limit=8_000_000, headers=None, opener=None):
     validate_url(url)
     req = Request(url, headers={'User-Agent': AGENT, 'Accept-Language': 'ru-RU,ru;q=0.9',
                                 'Accept': 'text/html,application/xhtml+xml', **(headers or {})})
-    with build_opener(SafeRedirect()).open(req, timeout=25) as response:
+    with (opener or build_opener(SafeRedirect())).open(req, timeout=25) as response:
         body = response.read(limit + 1)
         if len(body) > limit:
             raise ValueError('Слишком большой ответ')
@@ -182,16 +183,32 @@ def parse_product(source, url):
             'unavailablePrice': price if status == 'Нет в наличии' else None,
             'statusObserved': status, 'soldUnits': sold}
 
+def regional_adapter(host, city):
+    if city not in ('Москва', 'Санкт-Петербург'):
+        raise ValueError('Неизвестный город')
+    if host in ('komus.ru', 'www.komus.ru'):
+        return {'initUrl': 'https://www.komus.ru/region/change?region=' + ('77' if city == 'Москва' else '78'),
+                'cityPattern': r'gtm-current-region[^>]*>[\s\S]{0,500}?b-enterAccount__link[^>]*>\s*(?P<city>[^<]+)'}
+    if host in ('profsafe.ru', 'www.profsafe.ru', 'spb.profsafe.ru'):
+        return {'host': 'profsafe.ru' if city == 'Москва' else 'spb.profsafe.ru',
+                'cityPattern': r'js_city_chooser[^>]*>\s*<span>(?P<city>[^<]+)</span>'}
+    return None
+
 class Collector:
     def __init__(self, region_config=None):
         self.robots, self.last_request = {}, {}
         self.region_config = region_config or {}
+        self.sessions = {}
 
     def fetch(self, url, city):
         validate_url(url)
-        region = self.region_config.get(city, {}).get(urlsplit(url).hostname)
+        original_host = urlsplit(url).hostname
+        region = self.region_config.get(city, {}).get(original_host) or regional_adapter(original_host, city)
         if not region or not region.get("cityPattern"):
             raise ValueError("Регион не настроен: требуется проверенный адаптер выбора города " + city)
+        if region.get('host'):
+            url = urlsplit(url)._replace(netloc=region['host']).geturl()
+            validate_url(url)
         u = urlsplit(url)
         origin = f'{u.scheme}://{u.netloc}'
         if origin not in self.robots:
@@ -220,12 +237,22 @@ class Collector:
                 if '\r' in cookie or '\n' in cookie:
                     raise ValueError('Некорректный региональный cookie')
                 headers['Cookie'] = cookie
-            source = download(url, headers=headers)
+            session_key = (city, original_host)
+            if session_key not in self.sessions:
+                opener = build_opener(SafeRedirect(), HTTPCookieProcessor(CookieJar()))
+                if region.get('initUrl'):
+                    validate_url(region['initUrl'])
+                    if not robot.can_fetch(AGENT, region['initUrl']):
+                        raise ValueError('Выбор региона запрещён robots.txt')
+                    download(region['initUrl'], opener=opener)
+                    time.sleep(interval)
+                self.sessions[session_key] = opener
+            source = download(url, headers=headers, opener=self.sessions[session_key])
             match = re.search(region['cityPattern'], source, re.S)
             if not match or 'city' not in match.groupdict() or html.unescape(match.group('city')).strip() != city:
                 raise ValueError('Выбранный город не подтверждён в ответе дилера: ' + city)
             result = parse_product(source, url)
-            result.update(city=city, cityVerified=True)
+            result.update(city=city, cityVerified=True, regionalSourceUrl=url)
             return result
         finally:
             self.last_request[origin] = time.monotonic()

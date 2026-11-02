@@ -10,7 +10,7 @@ import unittest
 from contextlib import redirect_stdout
 from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from refresh_regions import run, Collector
+from refresh_regions import run, Collector, regional_adapter
 
 class RegionsTests(unittest.TestCase):
     def execute(self, fetch, cities=None, limit=0):
@@ -56,6 +56,18 @@ class RegionsTests(unittest.TestCase):
 
     def test_unconfigured_adapter_does_not_guess_region(self):
         with self.assertRaisesRegex(ValueError,'Регион не настроен'):
-            Collector().fetch('https://www.komus.ru/p/1/','Санкт-Петербург')
+            Collector().fetch('https://www.vseinstrumenti.ru/product/1/','Санкт-Петербург')
+
+    def test_confirmed_region_adapters(self):
+        import re
+        for city in ('Москва','Санкт-Петербург'):
+            komus=regional_adapter('www.komus.ru',city)
+            self.assertTrue(komus['initUrl'].endswith('77' if city=='Москва' else '78'))
+            markup='<div class="gtm-current-region"><div><span class="b-enterAccount__link">'+city+'</span></div>'
+            self.assertEqual(re.search(komus['cityPattern'],markup).group('city'),city)
+            prof=regional_adapter('profsafe.ru',city)
+            self.assertEqual(prof['host'],'profsafe.ru' if city=='Москва' else 'spb.profsafe.ru')
+            self.assertEqual(re.search(prof['cityPattern'],'<div class="js_city_chooser"><span>'+city+'</span>').group('city'),city)
+            self.assertIsNone(re.search(prof['cityPattern'],'<a>'+city+'</a>'))
 
 if __name__=='__main__':unittest.main()
