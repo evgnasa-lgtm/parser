@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 import copy
 import json
 from pathlib import Path
@@ -22,7 +23,8 @@ class MergeTests(unittest.TestCase):
         runtime = copy.deepcopy(self.seed)
         runtime.pop('manufacturerPrices')
         runtime['analogs'] = runtime['analogs'][:-2]
-        runtime['own'][0].update(price=15000, checkedAt='2026-11-02T09:00:00+03:00')
+        newer = (datetime.fromisoformat(self.seed['own'][0]['checkedAt'].replace('Z', '+00:00')) + timedelta(days=1)).isoformat()
+        runtime['own'][0].update(price=15000, checkedAt=newer)
         merged = merge_release(self.seed, runtime)
         self.assertEqual(merged['own'][0]['price'], 15000)
         self.assertEqual(len(merged['manufacturerPrices']), 13)

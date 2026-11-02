@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-02",
+  "expected": 340,
+  "verified": 315,
+  "failed": 1,
+  "skipped": 24,
+  "sources": [
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "total": 36,
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "total": 33,
+      "verified": 33,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "total": 36,
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "total": 65,
+      "verified": 65,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "total": 36,
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "total": 33,
+      "verified": 8,
+      "failed": 1,
+      "skipped": 24
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "total": 36,
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "total": 65,
+      "verified": 65,
+      "failed": 0,
+      "skipped": 0
+    }
+  ]
+}
