@@ -31,10 +31,23 @@ class MergeTests(unittest.TestCase):
 
     def test_newer_failure_keeps_successful_price(self):
         runtime = copy.deepcopy(self.seed)
-        runtime['own'][0].update(checkedAt='2026-10-20T00:00:00Z',price=1,lastAttemptAt='2026-11-01T00:00:00Z',refreshError='HTTP 403')
+        runtime['own'][0].update(checkedAt='2026-10-20T00:00:00Z',price=1,lastAttemptAt='2099-11-01T00:00:00Z',refreshError='HTTP 403')
         merged=merge_release(self.seed,runtime)
         self.assertEqual(merged['own'][0]['price'],self.seed['own'][0]['price'])
         self.assertEqual(merged['own'][0]['refreshError'],'HTTP 403')
+
+    def test_city_release_added_to_legacy_runtime(self):
+        runtime = copy.deepcopy(self.seed)
+        runtime.pop('cities')
+        merged = merge_release(self.seed, runtime)
+        self.assertEqual(merged['cities']['Санкт-Петербург'], self.seed['cities']['Санкт-Петербург'])
+
+    def test_newer_city_runtime_survives_without_changing_moscow(self):
+        runtime = copy.deepcopy(self.seed)
+        runtime['cities']['Санкт-Петербург']['own'][0].update(price=12345, checkedAt='2099-01-01T00:00:00Z')
+        merged = merge_release(self.seed, runtime)
+        self.assertEqual(merged['cities']['Санкт-Петербург']['own'][0]['price'], 12345)
+        self.assertEqual(merged['own'][0]['price'], self.seed['own'][0]['price'])
 
     def test_secure_build_and_latest_ui(self):
         self.seed['own'][0]['model']='</script><script>alert(1)</script>'

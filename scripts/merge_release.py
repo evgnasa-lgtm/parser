@@ -59,4 +59,14 @@ def merge_release(seed, runtime):
         out['monitoringRun'] = copy.deepcopy(seed['monitoringRun'])
     elif 'monitoringRun' not in out and 'monitoringRun' in seed:
         out['monitoringRun'] = copy.deepcopy(seed['monitoringRun'])
+    # Regional observations remain independent; legacy top-level records are Moscow.
+    regions = {}
+    for city in set(seed.get('cities', {})) | set(runtime.get('cities', {})):
+        a = seed.get('cities', {}).get(city)
+        b = runtime.get('cities', {}).get(city)
+        regions[city] = merge_release(a, b) if a is not None and b is not None else copy.deepcopy(a if a is not None else b)
+    if regions:
+        out['cities'] = regions
+    if 'citySchemaVersion' in seed:
+        out['citySchemaVersion'] = seed['citySchemaVersion']
     return out

@@ -1,0 +1,3 @@
+# Project workflow
+
+After each user-requested change to this project, validate the relevant behavior, rebuild public/index.html, commit the intended files, and push to evgnasa-lgtm/parser. The owner explicitly authorized this workflow on 2026-11-02. Report the real commit URL; never claim publication when push failed. Preserve remote changes; do not force-push. Do not commit credentials, runtime secrets, personal information, raw browser captures or unrelated files. Keep actual observations and city histories; never generate demonstration prices. Server deployment is separate from GitHub publication.
