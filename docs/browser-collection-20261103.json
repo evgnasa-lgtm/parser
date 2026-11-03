@@ -1,19 +1,19 @@
 {
   "date": "2026-11-03",
   "expected": 405,
-  "verified": 334,
-  "failed": 2,
-  "skipped": 69,
+  "verified": 385,
+  "failed": 1,
+  "skipped": 19,
   "safeReferenceVerified": 13,
   "sources": [
     {
       "city": "Москва",
       "site": "ВсеИнструменты",
-      "review": 15,
+      "review": 0,
       "total": 36,
-      "verified": 21,
-      "failed": 1,
-      "skipped": 14
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
     },
     {
       "city": "Москва",
@@ -63,11 +63,11 @@
     {
       "city": "Санкт-Петербург",
       "site": "ВсеИнструменты",
-      "review": 36,
+      "review": 0,
       "total": 36,
-      "verified": 0,
+      "verified": 36,
       "failed": 0,
-      "skipped": 36
+      "skipped": 0
     },
     {
       "city": "Санкт-Петербург",
@@ -352,6 +352,132 @@
     },
     {
       "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШАМ-11/400",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-sham-11-400-125445-836136/",
+      "field": "price",
+      "before": 11849,
+      "after": 12905.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "METOS ШМ-44 11122310",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-44-11122310-2762762/",
+      "field": "price",
+      "before": 27190,
+      "after": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "METOS ШМ-44 11122310",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-44-11122310-2762762/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 27190.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРК(1850) 24-600 CB003252084",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-odezhdy-metall-zavod-shrk-1850-24-600-cb003252084-19571178/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 18830.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРК(1850) 24-600 CB003252084",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-odezhdy-metall-zavod-shrk-1850-24-600-cb003252084-19571178/",
+      "field": "statusObserved",
+      "before": "От поставщика",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-24",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-24-343100-836432/",
+      "field": "price",
+      "before": 11752,
+      "after": 12430.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-24 11120910",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-24-11120910-2763188/",
+      "field": "price",
+      "before": 15395,
+      "after": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-24 11120910",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-24-11120910-2763188/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 15395.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-У",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-u-683966-836474/",
+      "field": "price",
+      "before": 12110,
+      "after": 11625.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-У",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-u-683966-836474/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "От поставщика"
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ДиКом КД-152",
+      "url": "https://www.vseinstrumenti.ru/product/arhivnyj-shkaf-dikom-kd-152-razbornyj-32-0104-071-1775098/",
+      "field": "price",
+      "before": 35735,
+      "after": 39018.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРС 11-300",
+      "url": "https://www.vseinstrumenti.ru/product/odezhnyj-shkaf-metall-zavod-shrs-11-300-1103447/",
+      "field": "price",
+      "before": null,
+      "after": 6970.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-11",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-11-34391-836426/",
+      "field": "price",
+      "before": 6726,
+      "after": 6590.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШАМ-11/920-370",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-sham-11-920-370-1526743/",
+      "field": "price",
+      "before": 17229,
+      "after": 18759.0
+    },
+    {
+      "city": "Москва",
       "site": "КОМУС",
       "model": "ПАКС ШРМ-АК",
       "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-paks-metall-shrm-ak-seryj-600x500x1860-mm-/p/125453/",
@@ -436,6 +562,123 @@
       "site": "КОМУС",
       "model": "Металл-Завод ШРК(1850) 22-600",
       "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-metall-zavod-shrk-22-600-2-otdeleniya/p/1454483/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "CB-12",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-cb-12-s20499011202-773590/",
+      "field": "price",
+      "before": 13475,
+      "after": 12650.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "CB-22",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-cb-22-s20499012202-1390030/",
+      "field": "price",
+      "before": 17435,
+      "after": 17895.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "M-18",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-m-18-s20499380302-751126/",
+      "field": "price",
+      "before": 12455,
+      "after": 12180.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "LS-41",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-razdevalok-praktik-ls-le-41-s23099541102-750864/",
+      "field": "price",
+      "before": 20075,
+      "after": 20760.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ML-11-30",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ml-11-30-s23099401102-1100144/",
+      "field": "price",
+      "before": 7416,
+      "after": 6470.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ML-11-50U",
+      "url": "https://www.vseinstrumenti.ru/product/universalnyj-shkaf-praktik-ml-11-50u-s23099404602-1100145/",
+      "field": "price",
+      "before": 13535,
+      "after": 14155.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ML-21-60",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ml-21-60-s23099402502-1100143/",
+      "field": "price",
+      "before": 11130,
+      "after": 10570.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ML-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/usilennyj-shkaf-dlya-razdevalok-promet-ml-21-80-s23099403502-10213172/",
+      "field": "price",
+      "before": 15705,
+      "after": 15390.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-600",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-60-s23099521902-763689/",
+      "field": "price",
+      "before": 10130,
+      "after": 10026.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "LS-22",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-razdevalok-praktik-ls-le-22-s23099522102-750849/",
+      "field": "price",
+      "before": 11689,
+      "after": 11805.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-80-s23099552102-763691/",
+      "field": "price",
+      "before": 13409,
+      "after": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-80-s23099552102-763691/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 13140.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-80-s23099552102-763691/",
       "field": "statusObserved",
       "before": "В наличии",
       "after": "Нет в наличии"
@@ -538,6 +781,195 @@
       "field": "statusObserved",
       "before": "В наличии",
       "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРК(1850) 22-600",
+      "url": "https://www.vseinstrumenti.ru/product/odezhnyj-shkaf-metall-zavod-shrk-1850-22-600-1103448/",
+      "field": "price",
+      "before": null,
+      "after": 10694.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-125453-836470/",
+      "field": "price",
+      "before": 9500,
+      "after": 9070.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Церера ШР-22 L600 УТ000001647",
+      "url": "https://www.vseinstrumenti.ru/product/metallicheskij-shkaf-dlya-razdevalok-tserera-mebel-shr-22-l600-2-sektsii-1850x600x500-mm-ut000001647-9221750/",
+      "field": "price",
+      "before": 9785,
+      "after": 9939.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-22 600 11120610",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-22-600-11120610-2762852/",
+      "field": "price",
+      "before": 11590,
+      "after": 11470.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-800-125454-836460/",
+      "field": "price",
+      "before": 15410,
+      "after": 12563.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-500",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-500-125455-836452/",
+      "field": "price",
+      "before": 8720,
+      "after": 9284.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-22 500 11120510",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-22-500-11120510-2762474/",
+      "field": "price",
+      "before": 12430,
+      "after": 12125.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШАМ-11/400",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-sham-11-400-125445-836136/",
+      "field": "price",
+      "before": 11849,
+      "after": 12905.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "METOS ШМ-44 11122310",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-44-11122310-2762762/",
+      "field": "price",
+      "before": 27190,
+      "after": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "METOS ШМ-44 11122310",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-44-11122310-2762762/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 27190.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРК(1850) 24-600 CB003252084",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-odezhdy-metall-zavod-shrk-1850-24-600-cb003252084-19571178/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 18830.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРК(1850) 24-600 CB003252084",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-odezhdy-metall-zavod-shrk-1850-24-600-cb003252084-19571178/",
+      "field": "statusObserved",
+      "before": "От поставщика",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-24",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-24-343100-836432/",
+      "field": "price",
+      "before": 11870,
+      "after": 12430.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-24 11120910",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-24-11120910-2763188/",
+      "field": "price",
+      "before": 15395,
+      "after": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-24 11120910",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-24-11120910-2763188/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 15395.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-У",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-u-683966-836474/",
+      "field": "price",
+      "before": 12110,
+      "after": 11625.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-У",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-u-683966-836474/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "От поставщика"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ДиКом КД-152",
+      "url": "https://www.vseinstrumenti.ru/product/arhivnyj-shkaf-dikom-kd-152-razbornyj-32-0104-071-1775098/",
+      "field": "price",
+      "before": 35735,
+      "after": 39018.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРС 11-300",
+      "url": "https://www.vseinstrumenti.ru/product/odezhnyj-shkaf-metall-zavod-shrs-11-300-1103447/",
+      "field": "price",
+      "before": null,
+      "after": 6970.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-11",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-11-34391-836426/",
+      "field": "price",
+      "before": 6726,
+      "after": 6590.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШАМ-11/920-370",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-sham-11-920-370-1526743/",
+      "field": "price",
+      "before": 17229,
+      "after": 18759.0
     },
     {
       "city": "Санкт-Петербург",
@@ -667,7 +1099,7 @@
     }
   ],
   "limitations": [
-    "ВсеИнструменты: CAPTCHA, неполный сбор.",
+    "ВсеИнструменты: 36 карточек Москвы и 36 Санкт-Петербурга проверены; CAPTCHA пройдены в браузере.",
     "Альфа-Гарант СПб: HTTP 429 после 13 карточек.",
     "ДиМакс и EvroSafe: только Москва; отдельного подтверждения региона СПб нет.",
     "safe.ru: рекомендованная цена Москвы, общая справочная карточка для двух городов по решению пользователя."
