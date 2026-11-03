@@ -24,6 +24,7 @@ from merge_release import merge_release
 
 AGENT = 'PrometPriceMonitor/1.0'
 HOSTS = {'www.vseinstrumenti.ru', 'vseinstrumenti.ru', 'www.komus.ru',
+         'dimaxmet.ru', 'www.dimaxmet.ru', 'evrosafe.ru', 'www.evrosafe.ru',
          'komus.ru', 'profsafe.ru', 'www.profsafe.ru', 'spb.profsafe.ru',
          'xn----7sbenacbbl2bhik1tlb.xn--p1ai',
          'www.xn----7sbenacbbl2bhik1tlb.xn--p1ai'}

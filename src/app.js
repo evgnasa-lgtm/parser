@@ -2,7 +2,7 @@
 const root=document.getElementById('promet-market-real'),$=s=>root.querySelector(s),all=s=>root.querySelectorAll(s),ALL_DATA=JSON.parse($('#real-data').textContent);let D=ALL_DATA;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=n=>n==null?'Нет цены':new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n)+' ₽',date=s=>s?new Date(s).toLocaleDateString('ru-RU',{timeZone:'Europe/Moscow'}):'Не зафиксировано';
-const sites=['КОМУС','ВсеИнструменты','Железная мебель','profsafe.ru'],siteName=s=>s==='profsafe.ru'?'Альфа-Гарант':s;
+const sites=['КОМУС','ВсеИнструменты','Железная мебель','profsafe.ru','dimaxmet.ru','evrosafe.ru'],siteName=s=>({'profsafe.ru':'Альфа-Гарант','dimaxmet.ru':'ДиМакс','evrosafe.ru':'МетМебель · EvroSafe'}[s]||s);
 const modelName=s=>D.selected.find(m=>m.sku===s)?.models||s;
 const types=o=>[o.price!=null?(o.oldPrice>o.price?'Акционная':'Обычная'):null,o.conditionalPrice!=null?'Условная':null,o.unavailablePrice!=null?'Цена отсутствующего товара':null].filter(Boolean);
 const dealerSku=o=>o.dealerSku|| (o.site==='КОМУС'?o.url.match(/\/p\/(\d+)/)?.[1]:o.site==='ВсеИнструменты'?o.url.match(/-(\d+)\/?$/)?.[1]:null)||'Не зафиксирован';
@@ -12,6 +12,9 @@ let saved={};try{saved=JSON.parse(localStorage.getItem('promet-market-real-v1')|
 const defaults={city:'Москва',page:'overview',period:30,model:'all',search:'',dealers:sites.slice(),makers:[...new Set(D.analogs.map(x=>x.maker))],status:'Все статусы',type:'Все типы цен',quality:'Все данные',cheaper:false,better:false,sort:'price',eventType:'Все события'};
 let state={...defaults,...saved.state},settings={day:'Понедельник',time:'09:00',threshold:5,price:true,stock:true,errors:true,promo:true,emailOn:false,...saved.settings},resolved=saved.resolved||[];
 const host=window.openai?.widgetState?.modelContent?.marketFilters;if(host)Object.assign(state,host);
+// Expand a previously selected full dealer set; preserve intentional subsets.
+if(!state.dealerRegistryVersion&&Array.isArray(state.dealers)&&state.dealers.length===4&&sites.slice(0,4).every(s=>state.dealers.includes(s)))state.dealers=sites.slice();
+state.dealerRegistryVersion=2;
 let detailId=null,detailPeriod=30;
 function persist(){try{localStorage.setItem('promet-market-real-v1',JSON.stringify({state,settings,resolved}))}catch{}window.openai?.setWidgetState?.({modelContent:{marketFilters:state},privateContent:{settings,resolved}})?.catch(()=>{});}
 const numeric=n=>typeof n==='number'&&Number.isFinite(n);
