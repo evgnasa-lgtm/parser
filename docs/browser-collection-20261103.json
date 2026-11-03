@@ -1,0 +1,675 @@
+{
+  "date": "2026-11-03",
+  "expected": 405,
+  "verified": 334,
+  "failed": 2,
+  "skipped": 69,
+  "safeReferenceVerified": 13,
+  "sources": [
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "review": 15,
+      "total": 36,
+      "verified": 21,
+      "failed": 1,
+      "skipped": 14
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "review": 0,
+      "total": 33,
+      "verified": 33,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "review": 0,
+      "total": 36,
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "review": 0,
+      "total": 65,
+      "verified": 65,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "review": 0,
+      "total": 32,
+      "verified": 32,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "review": 0,
+      "total": 33,
+      "verified": 33,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "review": 36,
+      "total": 36,
+      "verified": 0,
+      "failed": 0,
+      "skipped": 36
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "review": 20,
+      "total": 33,
+      "verified": 13,
+      "failed": 1,
+      "skipped": 19
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "review": 0,
+      "total": 36,
+      "verified": 36,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "review": 0,
+      "total": 65,
+      "verified": 65,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "changes": [
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "M-18",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-m-18-s20499380302-751126/",
+      "field": "price",
+      "before": 12455,
+      "after": 12180.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "LS-41",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-razdevalok-praktik-ls-le-41-s23099541102-750864/",
+      "field": "price",
+      "before": 20075,
+      "after": 20760.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ML-11-30",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ml-11-30-s23099401102-1100144/",
+      "field": "price",
+      "before": 7416,
+      "after": 6470.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ML-11-50U",
+      "url": "https://www.vseinstrumenti.ru/product/universalnyj-shkaf-praktik-ml-11-50u-s23099404602-1100145/",
+      "field": "price",
+      "before": 13535,
+      "after": 14155.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ML-21-60",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ml-21-60-s23099402502-1100143/",
+      "field": "price",
+      "before": 11130,
+      "after": 10570.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-600",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-60-s23099521902-763689/",
+      "field": "price",
+      "before": 10130,
+      "after": 10026.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "LS-22",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-dlya-razdevalok-praktik-ls-le-22-s23099522102-750849/",
+      "field": "price",
+      "before": 11689,
+      "after": 11805.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-80-s23099552102-763691/",
+      "field": "price",
+      "before": 13409,
+      "after": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-80-s23099552102-763691/",
+      "field": "unavailablePrice",
+      "before": null,
+      "after": 13140.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "LS-21-80",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-praktik-ls-21-80-s23099552102-763691/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ML-21-60",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy-dvukhsektsionnye/shkaf_dlya_razdevalok_praktik_usilennyy_ml_21_60_ml_11_30_ml_01_30/",
+      "field": "soldUnits",
+      "before": 16073,
+      "after": 16123
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ML-21-80",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy-dvukhsektsionnye/shkaf-dlya-razdevalok-praktik-usilennyy-ml-21-80/",
+      "field": "soldUnits",
+      "before": 6162,
+      "after": 6165
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "LS-21-600",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-praktik-ls-21-60/",
+      "field": "soldUnits",
+      "before": 36263,
+      "after": 36265
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "LS-41",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-praktik-ls-41/",
+      "field": "soldUnits",
+      "before": 10430,
+      "after": 10431
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ML-11-50U",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-dlya-khoz-inventarya/shkaf-praktik-ls-11-50/",
+      "field": "soldUnits",
+      "before": 10634,
+      "after": 10647
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "M-18",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-praktik/shkaf-praktik-m-18/",
+      "field": "soldUnits",
+      "before": 3748,
+      "after": 3750
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "CB-12",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-praktik/shkaf-praktik-sv-12/",
+      "field": "soldUnits",
+      "before": 11781,
+      "after": 11786
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "CB-22",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-praktik/shkaf-praktik-sv-22/",
+      "field": "soldUnits",
+      "before": 3009,
+      "after": 3014
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ML/LS 22-60",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-razdevalok-praktik/shkafy-dlya-odezhdy-ls-le/shkaf_dlya_razdevalok_usilennyy_ml_ls_22_60/",
+      "field": "soldUnits",
+      "before": 1774,
+      "after": 1789
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ML-11-50U",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/mebel-khozyajstvennaya/shkafy-khozyajstvennye/shkaf-khozyajstvennyj-metallicheskij-praktik-ml-11-50u-ls-11-50-seryj-500kh500kh1830-mm-/p/1436687/",
+      "field": "price",
+      "before": null,
+      "after": 10895.0
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ML-11-50U",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/mebel-khozyajstvennaya/shkafy-khozyajstvennye/shkaf-khozyajstvennyj-metallicheskij-praktik-ml-11-50u-ls-11-50-seryj-500kh500kh1830-mm-/p/1436687/",
+      "field": "statusObserved",
+      "before": "Нет в наличии",
+      "after": "В наличии"
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод ШРК(1850) 22-600",
+      "url": "https://www.vseinstrumenti.ru/product/odezhnyj-shkaf-metall-zavod-shrk-1850-22-600-1103448/",
+      "field": "price",
+      "before": null,
+      "after": 10694.0
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ПАКС ШРМ-22-М",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-dlya-razdevalki-shrm-22-m/",
+      "field": "soldUnits",
+      "before": 1535,
+      "after": 1536
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-125453-836470/",
+      "field": "price",
+      "before": 9500,
+      "after": 9070.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Церера ШР-22 L600 УТ000001647",
+      "url": "https://www.vseinstrumenti.ru/product/metallicheskij-shkaf-dlya-razdevalok-tserera-mebel-shr-22-l600-2-sektsii-1850x600x500-mm-ut000001647-9221750/",
+      "field": "price",
+      "before": 9785,
+      "after": 9939.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Церера ШР-22 L600 УТ000001647",
+      "url": "https://www.vseinstrumenti.ru/product/metallicheskij-shkaf-dlya-razdevalok-tserera-mebel-shr-22-l600-2-sektsii-1850x600x500-mm-ut000001647-9221750/",
+      "field": "statusObserved",
+      "before": "От поставщика",
+      "after": "В наличии"
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-paks-shrm-ak-800-125454-836460/",
+      "field": "price",
+      "before": 15410,
+      "after": 12563.0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "METOS / Завод металлоизделий ШМ-22 500 11120510",
+      "url": "https://www.vseinstrumenti.ru/product/shkaf-zavod-metalloizdelij-metos-shm-22-500-11120510-2762474/",
+      "field": "price",
+      "before": 12430,
+      "after": 12125.0
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-paks-metall-shrm-ak-seryj-600x500x1860-mm-/p/125453/",
+      "field": "price",
+      "before": null,
+      "after": 10361.0
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-paks-metall-shrm-ak-seryj-600x500x1860-mm-/p/125453/",
+      "field": "statusObserved",
+      "before": "Нет в наличии",
+      "after": "В наличии"
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-dlya-razdevalki-shrm-ak-800/",
+      "field": "soldUnits",
+      "before": 8860,
+      "after": 8861
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "Металл-Завод ШРС 11-300",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkaf-dlya-odezhdy-shrs-11-300/",
+      "field": "soldUnits",
+      "before": 769,
+      "after": 775
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "METOS / Завод металлоизделий ШМ-11 11120110",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-dlya-odezhdy-shm-11/",
+      "field": "soldUnits",
+      "before": null,
+      "after": 16
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Церера ШР-22 L800 УТ000001648",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-shr-22-l800-2-otdeleniya-800kh500kh1850-mm/p/2240140/",
+      "field": "price",
+      "before": 13142,
+      "after": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Церера ШР-22 L800 УТ000001648",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-shr-22-l800-2-otdeleniya-800kh500kh1850-mm/p/2240140/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "Шкаф для одежды ТМ-12-80",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkaf-dlya-odezhdy-tm-12-80/",
+      "field": "soldUnits",
+      "before": 272,
+      "after": 282
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Металл-Завод ШРК(1850) 22-600",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-metall-zavod-shrk-22-600-2-otdeleniya/p/1454483/",
+      "field": "price",
+      "before": 12445,
+      "after": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Металл-Завод ШРК(1850) 22-600",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-metall-zavod-shrk-22-600-2-otdeleniya/p/1454483/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ML-21-60",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy-dvukhsektsionnye/shkaf_dlya_razdevalok_praktik_usilennyy_ml_21_60_ml_11_30_ml_01_30/",
+      "field": "soldUnits",
+      "before": 16073,
+      "after": 16123
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ML-21-80",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy-dvukhsektsionnye/shkaf-dlya-razdevalok-praktik-usilennyy-ml-21-80/",
+      "field": "soldUnits",
+      "before": 6162,
+      "after": 6165
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "LS-21-600",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-praktik-ls-21-60/",
+      "field": "soldUnits",
+      "before": 36263,
+      "after": 36265
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ML-11-50U",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-dlya-khoz-inventarya/shkaf-praktik-ls-11-50/",
+      "field": "soldUnits",
+      "before": 10634,
+      "after": 10645
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "M-18",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-praktik/shkaf-praktik-m-18/",
+      "field": "soldUnits",
+      "before": 3748,
+      "after": 3750
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "CB-12",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-praktik/shkaf-praktik-sv-12/",
+      "field": "soldUnits",
+      "before": 11786,
+      "after": 11788
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "CB-22",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-praktik/shkaf-praktik-sv-22/",
+      "field": "soldUnits",
+      "before": 3009,
+      "after": 3014
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ML/LS 22-60",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-razdevalok-praktik/shkafy-dlya-odezhdy-ls-le/shkaf_dlya_razdevalok_usilennyy_ml_ls_22_60/",
+      "field": "soldUnits",
+      "before": 1774,
+      "after": 1789
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "CB-12",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-arkhivnye/shkafy-dlya-bumag/shkaf-metallicheskij-arkhivnyj-dlya-dokumentov-praktik-cb-12-seryj-850x400x1860-mm-/p/1697913/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Под заказ"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ML-11-50U",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/mebel-khozyajstvennaya/shkafy-khozyajstvennye/shkaf-khozyajstvennyj-metallicheskij-praktik-ml-11-50u-ls-11-50-seryj-500kh500kh1830-mm-/p/1436687/",
+      "field": "price",
+      "before": 10895,
+      "after": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ML-11-50U",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/mebel-khozyajstvennaya/shkafy-khozyajstvennye/shkaf-khozyajstvennyj-metallicheskij-praktik-ml-11-50u-ls-11-50-seryj-500kh500kh1830-mm-/p/1436687/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-dlya-razdevalki-shrm-ak/",
+      "field": "soldUnits",
+      "before": 17228,
+      "after": 17244
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-dlya-razdevalki-shrm-ak-800/",
+      "field": "soldUnits",
+      "before": 8860,
+      "after": 8861
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-paks-metall-shrm-ak-800-seryj-800x500x1860-mm-/p/125454/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Под заказ"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ПАКС ШРМ-АК-500",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-paks-metall-shrm-ak-500-seryj-500x500x1860-mm-/p/355307/",
+      "field": "price",
+      "before": null,
+      "after": 10868.0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ПАКС ШРМ-АК-500",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-paks-metall-shrm-ak-500-seryj-500x500x1860-mm-/p/355307/",
+      "field": "statusObserved",
+      "before": "Нет в наличии",
+      "after": "Под заказ"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "Металл-Завод ШРС 11-300",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkaf-dlya-odezhdy-shrs-11-300/",
+      "field": "soldUnits",
+      "before": 769,
+      "after": 775
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "METOS / Завод металлоизделий ШМ-11 11120110",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkafy-dlya-odezhdy/shkaf-dlya-odezhdy-shm-11/",
+      "field": "soldUnits",
+      "before": null,
+      "after": 16
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ПАКС ШАМ-11/400",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/metallicheskie-arkhivnye-shkafy/shkaf-serii-sham/shkaf-arkhivnyy-sham-11-400/",
+      "field": "soldUnits",
+      "before": 947,
+      "after": 948
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ПАКС ШАМ-11/920-370",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/metallicheskie-arkhivnye-shkafy/shkaf-serii-sham/shkaf-arkhivnyy-sham-11-920-370/",
+      "field": "soldUnits",
+      "before": 693,
+      "after": 694
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Церера ШР-22 L800 УТ000001648",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-shr-22-l800-2-otdeleniya-800kh500kh1850-mm/p/2240140/",
+      "field": "price",
+      "before": 12767,
+      "after": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Церера ШР-22 L800 УТ000001648",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-shr-22-l800-2-otdeleniya-800kh500kh1850-mm/p/2240140/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Металл-Завод ШРК(1850) 22-800",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-metall-zavod-shrk-22-800-2-otdeleniya/p/1454484/",
+      "field": "price",
+      "before": 16336,
+      "after": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Металл-Завод ШРК(1850) 22-800",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-dlya-odezhdy/shkafy-dlya-odezhdy-metallicheskie/shkaf-dlya-odezhdy-metallicheskij-metall-zavod-shrk-22-800-2-otdeleniya/p/1454484/",
+      "field": "statusObserved",
+      "before": "В наличии",
+      "after": "Нет в наличии"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "Шкаф для одежды ТМ-12-80",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/shkafy-metallicheskie-dlya-razdevalok/shkaf-dlya-odezhdy-tm-12-80/",
+      "field": "soldUnits",
+      "before": 272,
+      "after": 282
+    }
+  ],
+  "limitations": [
+    "ВсеИнструменты: CAPTCHA, неполный сбор.",
+    "Альфа-Гарант СПб: HTTP 429 после 13 карточек.",
+    "ДиМакс и EvroSafe: только Москва; отдельного подтверждения региона СПб нет.",
+    "safe.ru: рекомендованная цена Москвы, общая справочная карточка для двух городов по решению пользователя."
+  ]
+}
