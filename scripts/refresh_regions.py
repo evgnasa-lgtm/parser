@@ -20,6 +20,7 @@ from urllib.request import Request, urlopen, HTTPRedirectHandler, HTTPCookieProc
 from urllib.robotparser import RobotFileParser
 
 from build import ROOT, atomic_write, render
+from request_pacing import RequestPacing, RateLimited
 from merge_release import merge_release
 
 AGENT = 'PrometPriceMonitor/1.0'
@@ -196,7 +197,8 @@ def regional_adapter(host, city):
     return None
 
 class Collector:
-    def __init__(self, region_config=None):
+    def __init__(self, region_config=None, pacing=None):
+        self.pacing = pacing or RequestPacing()
         self.robots, self.last_request = {}, {}
         self.region_config = region_config or {}
         self.sessions = {}
@@ -215,7 +217,9 @@ class Collector:
         if origin not in self.robots:
             robot = RobotFileParser()
             try:
-                robot.parse(download(origin + '/robots.txt', 500_000).splitlines())
+                robot.parse(self.pacing.request(download, origin + '/robots.txt', 500_000).splitlines())
+            except RateLimited:
+                raise
             except Exception as exc:
                 # A robots fetch failure is not permission to crawl.
                 self.robots[origin] = str(exc)
@@ -245,10 +249,10 @@ class Collector:
                     validate_url(region['initUrl'])
                     if not robot.can_fetch(AGENT, region['initUrl']):
                         raise ValueError('Выбор региона запрещён robots.txt')
-                    download(region['initUrl'], opener=opener)
+                    self.pacing.request(download, region['initUrl'], opener=opener)
                     time.sleep(interval)
                 self.sessions[session_key] = opener
-            source = download(url, headers=headers, opener=self.sessions[session_key])
+            source = self.pacing.request(download, url, headers=headers, opener=self.sessions[session_key])
             match = re.search(region['cityPattern'], source, re.S)
             if not match or 'city' not in match.groupdict() or html.unescape(match.group('city')).strip() != city:
                 raise ValueError('Выбранный город не подтверждён в ответе дилера: ' + city)
@@ -331,7 +335,7 @@ def run(args, fetch=None):
             atomic_write(state / 'last-refresh.json', json.dumps(report, ensure_ascii=False, indent=2))
         config_path = getattr(args, 'region_config', None) or state / 'regions.json'
         config = json.loads(config_path.read_text(encoding='utf-8')) if config_path.exists() else {}
-        fetch = fetch or Collector(config).fetch
+        fetch = fetch or Collector(config, RequestPacing(state / "request-pacing.json")).fetch
         cache = {}
         checkpoint()
         try:
@@ -343,6 +347,9 @@ def run(args, fetch=None):
                         ident = (city, row['url'])
                         stats = cr['sources'].setdefault(row['site'], {'expected': 0, 'updated': 0, 'failed': 0, 'skipped': 0})
                         stats['expected'] += 1
+                        if (getattr(args, 'sites', None) and row['site'] not in args.sites) or (getattr(args, 'resume_since', None) and row.get('lastAttemptStatus') == 'verified' and row.get('checkedAt', '') >= args.resume_since):
+                            cr['skipped'] += 1; report['skipped'] += 1; stats['skipped'] += 1
+                            continue
                         if args.limit and len(cache) >= args.limit and ident not in cache:
                             cr['skipped'] += 1; report['skipped'] += 1; stats['skipped'] += 1
                             continue
@@ -408,6 +415,8 @@ if __name__ == '__main__':
     parser.add_argument('--allow-large-change', action='store_true')
     parser.add_argument('--cities', nargs='+', choices=CITIES, default=list(CITIES))
     parser.add_argument('--region-config', type=Path, help='Local region selection and proof configuration (not committed)')
+    parser.add_argument('--sites', nargs='+', help='Only specified dealer site IDs')
+    parser.add_argument('--resume-since', help='Skip verified observations since ISO timestamp/date')
     args = parser.parse_args()
     try:
         raise SystemExit(run(args))
