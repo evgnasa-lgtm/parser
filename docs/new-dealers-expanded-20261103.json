@@ -1,0 +1,623 @@
+{
+  "date": "2026-11-03T09:34:49.720Z",
+  "city": "Москва",
+  "checked": 65,
+  "sources": [
+    {
+      "site": "dimaxmet.ru",
+      "own": 13,
+      "analogs": 19,
+      "priced": 32
+    },
+    {
+      "site": "evrosafe.ru",
+      "own": 11,
+      "analogs": 22,
+      "priced": 32
+    }
+  ],
+  "issues": [
+    {
+      "site": "evrosafe.ru",
+      "model": "ML-21-50",
+      "reason": "Точная карточка не найдена в полном каталоге локеров и поиске; наличие модели у дилера не опровергнуто."
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ML/LS 22-60",
+      "reason": "Точная карточка не найдена в полном каталоге локеров и поиске; наличие модели у дилера не опровергнуто."
+    }
+  ],
+  "limitations": [
+    "Санкт-Петербург отдельно не проверен, московские данные не подставлены.",
+    "65 закреплённых карточек проверены; перечень всех возможных коммерческих аналогов не объявляется исчерпывающим.",
+    "Серверный автоматический сбор новых дилеров не включён."
+  ],
+  "offers": [
+    {
+      "site": "dimaxmet.ru",
+      "model": "ML-21-60",
+      "url": "https://dimaxmet.ru/product/ml21-60/",
+      "price": 11353,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:29.193Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ML-21-80",
+      "url": "https://dimaxmet.ru/product/ml21-80/",
+      "price": 14426,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:30.256Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "LS-21-600",
+      "url": "https://dimaxmet.ru/product/shkaf-praktik-ls-21-60/",
+      "price": 11537,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:32:31.335Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ML-21-50",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-razdevalok-usilennyy-ml-21-50/",
+      "price": 10783,
+      "unavailablePrice": null,
+      "status": "Неизвестно",
+      "checkedAt": "2026-11-03T09:32:32.229Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "LS-21-80",
+      "url": "https://dimaxmet.ru/product/praktik-le-21-80/",
+      "price": 14610,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:33.207Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "CB-12",
+      "url": "https://dimaxmet.ru/product/praktik-sv-12/",
+      "price": 14155,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:34.135Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "LS-41",
+      "url": "https://dimaxmet.ru/product/praktik-ls-le-41/",
+      "price": 21970,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:36.454Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ML/LS 22-60",
+      "url": "https://dimaxmet.ru/product/ml-ls-22-60/",
+      "price": 12641,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:37.462Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ML-11-50U",
+      "url": "https://dimaxmet.ru/product/shkaf-ml-11-50u-universalnyj/",
+      "price": 11556,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:38.367Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "CB-22",
+      "url": "https://dimaxmet.ru/product/metallicheskiy-shkaf-dlya-ofisa-praktik-sv-22/",
+      "price": 18966,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:32:39.261Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "LS-22",
+      "url": "https://dimaxmet.ru/product/praktik-le-22/",
+      "price": 13269,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:01.779Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ML-11-30 (LS-01)",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-razdevalok-praktik-ml-11-30-bazovyiy-modul/",
+      "price": 7048,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:02.797Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ML-21-60",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ml_mlh/shkaf_dlya_odezhdy_usilennyy_praktik_ml_21_60.html",
+      "price": 9100,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:09.914Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ML-21-80",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ml_mlh/shkaf_dlya_odezhdy_usilennyy_praktik_ml_21_80.html",
+      "price": 18700,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:11.255Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "LS-21-600",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ls/praktik-ls-21-60.html",
+      "price": 9630,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:12.565Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "LS-21-80",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ls/praktik-ls-21-80.html",
+      "price": 12190,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:14.059Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "CB-12",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/arhivnye-schkafy-praktik/shkafy_praktik/praktik-sv-12.html",
+      "price": 12570,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:15.462Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "LS-41",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ls/praktik-ls-41.html",
+      "price": 18330,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:16.747Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ML-11-50U",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ml_mlh/shkaf_dlya_odezhdy_modulnyy_ml_11_50u_universalnyy.html",
+      "price": 12190,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:18.281Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "CB-22",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/arhivnye-schkafy-praktik/shkafy_praktik/praktik-sv-22.html",
+      "price": 16850,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:19.559Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "LS-22",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ls/praktik-ls-22.html",
+      "price": 10690,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:24.826Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШАМ-11/400",
+      "url": "https://dimaxmet.ru/product/shkaf-arhivnyj-sham-11-400/",
+      "price": 14122,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:25.702Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Шкаф архивный ШХА-850(40)",
+      "url": "https://dimaxmet.ru/product/shkaf-arhivnyj-shha-85040-okrashen-ral7035/",
+      "price": 13802,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:26.715Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-АК-500",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-ak-500/",
+      "price": 9965,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:27.838Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-dlya-odegdy-shrm-ak/",
+      "price": 10698,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:28.933Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-ak-800/",
+      "price": 13338,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:29.852Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-22-М",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-22-m/",
+      "price": 11036,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:30.878Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод ШРК(1850) 22-600",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odejdy-shrk1850-22-600-korpus-ral7035-dveri-ral7035/",
+      "price": 10504,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:31.858Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод ШРК(1850) 22-800",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odejdy-shrk1850-22-800-korpus-ral7035-dveri-ral7035/",
+      "price": 13052,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:32.888Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШАМ-11/400",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/arhivnye-schkafy-praktik/shkafy_arkhivnye_sham/schkaf-arhivnyy-scham-11-400.html",
+      "price": 12590,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:34.344Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Шкаф архивный ШХА-850(40)",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/arhivnye-schkafy-praktik/shkafy_arkhivnye_sham/shkaf_arkhivnyy_shkha_850_40.html",
+      "price": 17630,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:35.740Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-11",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-11.html",
+      "price": 5970,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:37.110Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-АК-500",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-ak-500.html",
+      "price": 9120,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:43.705Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-АК",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-ak.html",
+      "price": 9800,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:33:44.873Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-24",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-24/",
+      "price": 12090,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:47.744Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-АК-У",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-ak-u/",
+      "price": 11492,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:48.666Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-11",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-11/",
+      "price": 6711,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:49.586Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "ПАКС ШРМ-22-М/800",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odegdy-shrm-22-m-800/",
+      "price": 13628,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:50.552Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод ШРС 11-300",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odejdy-shrs-11-300-korpus-ral7035-dveri-ral7035/",
+      "price": 6545,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:51.444Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод ШРК(1850) 24-600 CB003252084",
+      "url": "https://dimaxmet.ru/product/shrk-24-600/",
+      "price": 12243,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:52.445Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод ТМ-12-60",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-hraneniya-odejdy-tm-12-60-korpus-ral7035-dveri-ral7035/",
+      "price": 12243,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:53.519Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Шкаф для одежды ТМ-12-80",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-hraneniya-odejdy-tm-12-80-korpus-ral7035-dveri-ral7035/",
+      "price": 15323,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:54.547Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Шкаф для одежды ШР 22-600 сварной",
+      "url": "https://dimaxmet.ru/product/shkaf-dlya-odejdyi-shr-1850-22-600-korpus-ral7035-dveri-ral7035/",
+      "price": 12012,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:57.320Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Шкаф для одежды ШР 22-800 сварной",
+      "url": "https://dimaxmet.ru/product/shr-1850-22-800-shkaf-dlya-odejdyi/",
+      "price": 14553,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:58.181Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод ШРК 22-600 ВСК",
+      "url": "https://dimaxmet.ru/product/shrk-22-600-vsk/",
+      "price": 11330,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:33:59.318Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-С/500",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-s-500.html",
+      "price": 9960,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:04.030Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-С",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-s.html",
+      "price": 10380,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:05.176Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-С/800",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-s-800.html",
+      "price": 12830,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:06.372Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-АК-800",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-ak-800.html",
+      "price": 12220,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:07.522Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-24",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-24.html",
+      "price": 11070,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:08.951Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-АК-У",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-ak-u.html",
+      "price": 10180,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:11.547Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-22-М/800",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/shkaf_shrm_22_m_800.html",
+      "price": 12460,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:15.379Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-22-М",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/shkaf_shrm_22_m.html",
+      "price": 10150,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:19.475Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-22",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-22.html",
+      "price": null,
+      "unavailablePrice": null,
+      "status": "Нет в наличии",
+      "checkedAt": "2026-11-03T09:34:21.873Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШРМ-22/800",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevaok_shrm/schkaf-garderobnyy-schrm-22-800.html",
+      "price": null,
+      "unavailablePrice": 9050,
+      "status": "Нет в наличии",
+      "checkedAt": "2026-11-03T09:34:23.952Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Металл-Завод ШРК(1850) 22-600",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_shrek/shkaf_razdevalnyy_shrk_22_600.html",
+      "price": 14790,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:34.558Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Металл-Завод ШРК(1850) 22-800",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_shrek/shkaf_razdevalnyy_shrk_22_800.html",
+      "price": 17990,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:36.622Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Металл-Завод ШРС 11-300",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_shrek/shkaf_razdevalnyy_shrs.html",
+      "price": 8890,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:38.988Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Металл-Завод ШРК(1850) 24-600 CB003252084",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_shrek/shkaf_razdevalnyy_shrk_24_600.html",
+      "price": 15890,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:40.703Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Шкаф для одежды ШР 22-600 сварной",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_shrek/shkaf_razdevalnyy_shr_22_600.html",
+      "price": 14790,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:41.977Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "Шкаф для одежды ШР 22-800 сварной",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_shrek/shkaf_razdevalnyy_shr_22_800.html",
+      "price": 17990,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:43.197Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ПАКС ШАМ-11/920-370",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/arhivnye-schkafy-praktik/shkafy_arkhivnye_sham/shkaf_sham_11_920_370.html",
+      "price": 12550,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:34:44.608Z"
+    },
+    {
+      "site": "dimaxmet.ru",
+      "model": "M-18",
+      "url": "https://dimaxmet.ru/product/shkaf-metallicheskiy-praktik-m-18/",
+      "price": 13251,
+      "unavailablePrice": null,
+      "status": "Под заказ",
+      "checkedAt": "2026-11-03T09:34:46.184Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "M-18",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/arhivnye-schkafy-praktik/shkafy_praktik/praktik-m-18.html",
+      "price": 11800,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:47.642Z"
+    },
+    {
+      "site": "evrosafe.ru",
+      "model": "ML-11-30 (LS-01)",
+      "url": "https://evrosafe.ru/catalog/metallicheskaya-mebel/schkafy-dlya-odezhdy/shkafy_dlya_razdevalok_praktik_ml_mlh/shkaf_dlya_odezhdy_ml_11_30.html",
+      "price": 5920,
+      "unavailablePrice": null,
+      "status": "В наличии",
+      "checkedAt": "2026-11-03T09:34:49.720Z"
+    }
+  ]
+}

@@ -13,7 +13,8 @@ const defaults={city:'Москва',page:'overview',period:30,model:'all',search
 let state={...defaults,...saved.state},settings={day:'Понедельник',time:'09:00',threshold:5,price:true,stock:true,errors:true,promo:true,emailOn:false,...saved.settings},resolved=saved.resolved||[];
 const host=window.openai?.widgetState?.modelContent?.marketFilters;if(host)Object.assign(state,host);
 // Expand a previously selected full dealer set; preserve intentional subsets.
-if(!state.dealerRegistryVersion&&Array.isArray(state.dealers)&&state.dealers.length===4&&sites.slice(0,4).every(s=>state.dealers.includes(s)))state.dealers=sites.slice();
+const filterSource=host||saved.state||{};
+if(!filterSource.dealerRegistryVersion&&Array.isArray(state.dealers)&&state.dealers.length===4&&sites.slice(0,4).every(s=>state.dealers.includes(s)))state.dealers=sites.slice();
 state.dealerRegistryVersion=2;
 let detailId=null,detailPeriod=30;
 function persist(){try{localStorage.setItem('promet-market-real-v1',JSON.stringify({state,settings,resolved}))}catch{}window.openai?.setWidgetState?.({modelContent:{marketFilters:state},privateContent:{settings,resolved}})?.catch(()=>{});}

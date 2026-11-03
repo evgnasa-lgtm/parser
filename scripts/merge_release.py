@@ -55,6 +55,8 @@ def merge_release(seed, runtime):
         if row['sku'] not in refs or stamp(row.get('checkedAt')) >= stamp(refs[row['sku']].get('checkedAt')):
             refs[row['sku']] = copy.deepcopy(row)
     out['manufacturerPrices'] = list(refs.values())
+    if stamp(seed.get('additionalDealerRun', {}).get('date')) > stamp(runtime.get('additionalDealerRun', {}).get('date')):
+        out['additionalDealerRun'] = copy.deepcopy(seed['additionalDealerRun'])
     if stamp(seed.get('monitoringRun', {}).get('date')) > stamp(runtime.get('monitoringRun', {}).get('date')):
         out['monitoringRun'] = copy.deepcopy(seed['monitoringRun'])
     elif 'monitoringRun' not in out and 'monitoringRun' in seed:

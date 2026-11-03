@@ -17,7 +17,7 @@ class MergeTests(unittest.TestCase):
         merged = merge_release(self.seed, self.seed)
         self.assertEqual(merged, merge_release(self.seed, merged))
         self.assertEqual(self.seed, original)
-        self.assertEqual(len(merged['own']) + len(merged['analogs']), 170)
+        self.assertEqual(len(merged['own']) + len(merged['analogs']), len(self.seed['own']) + len(self.seed['analogs']))
 
     def test_newer_runtime_wins_and_release_additions_survive(self):
         runtime = copy.deepcopy(self.seed)
@@ -28,7 +28,7 @@ class MergeTests(unittest.TestCase):
         merged = merge_release(self.seed, runtime)
         self.assertEqual(merged['own'][0]['price'], 15000)
         self.assertEqual(len(merged['manufacturerPrices']), 13)
-        self.assertEqual(len(merged['analogs']), 122)
+        self.assertEqual(len(merged['analogs']), len(self.seed['analogs']))
         self.assertTrue(any(x.get('price') == self.seed['own'][0]['price'] for x in merged['history']['own']))
 
     def test_newer_failure_keeps_successful_price(self):
@@ -37,6 +37,17 @@ class MergeTests(unittest.TestCase):
         merged=merge_release(self.seed,runtime)
         self.assertEqual(merged['own'][0]['price'],self.seed['own'][0]['price'])
         self.assertEqual(merged['own'][0]['refreshError'],'HTTP 403')
+
+    def test_new_dealers_reach_existing_server_without_cross_city_copy(self):
+        runtime=copy.deepcopy(self.seed)
+        new_sites={'dimaxmet.ru','evrosafe.ru'}
+        for group in ('own','analogs'):
+            runtime[group]=[x for x in runtime[group] if x['site'] not in new_sites]
+        runtime.pop('additionalDealerRun',None)
+        merged=merge_release(self.seed,runtime)
+        self.assertEqual(merged['additionalDealerRun'],self.seed['additionalDealerRun'])
+        self.assertEqual(sum(x['site'] in new_sites for g in ('own','analogs') for x in merged[g]),65)
+        self.assertEqual(merged['cities'],runtime['cities'])
 
     def test_city_release_added_to_legacy_runtime(self):
         runtime = copy.deepcopy(self.seed)
