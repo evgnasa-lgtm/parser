@@ -20,6 +20,7 @@ server {
 }
 '''
 
+@unittest.skipUnless(os.name == 'posix', 'Nginx account/permissions tests require Linux')
 class PasswordSetupTests(unittest.TestCase):
     def exercise(self, fail=False):
         with tempfile.TemporaryDirectory() as tmp:
@@ -38,7 +39,7 @@ class PasswordSetupTests(unittest.TestCase):
                 if fail and args[0] == 'nginx':
                     raise subprocess.CalledProcessError(1, args)
                 return SimpleNamespace(returncode=0)
-            with patch('getpass.getpass', return_value='test-only'), patch('grp.getgrnam', return_value=SimpleNamespace(gr_gid=os.getgid())), patch('subprocess.run', side_effect=command):
+            with patch('getpass.getpass', return_value='test-only'), patch('grp.getgrnam', return_value=SimpleNamespace(gr_gid=os.getgid())), patch('subprocess.run', side_effect=command), patch('os.fchown') as ownership:
                 if fail:
                     with self.assertRaises(subprocess.CalledProcessError):
                         exec(compile(source, '<password-setup>', 'exec'), {})
@@ -52,6 +53,7 @@ class PasswordSetupTests(unittest.TestCase):
                     self.assertEqual(changed.count('include '), 2)
                     self.assertEqual(credential.stat().st_mode & 0o777, 0o640)
                     self.assertTrue(credential.read_text().startswith('MEBELPROMET:$6$'))
+                self.assertEqual(ownership.call_args.args[1:], (0, os.getgid()))
 
     def test_preserves_https_and_protects_password_file(self):
         self.exercise()

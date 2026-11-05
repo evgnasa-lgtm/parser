@@ -9,9 +9,13 @@ import argparse
 ROOT = Path(__file__).resolve().parents[1]
 
 def render(data):
-    assert all(key in data for key in ('selected', 'own', 'analogs', 'pairs'))
+    from data_quality import validate_registry
+    validate_registry(data)
+    if not all(key in data for key in ('selected', 'own', 'analogs', 'pairs')):
+        raise ValueError('Неполная схема данных')
     skus = {r['sku'] for r in data['selected']}
-    assert all(set(r['skus']) <= skus for r in data['analogs'])
+    if not all(set(r['skus']) <= skus for r in data['analogs']):
+        raise ValueError('Неизвестный SKU в соответствии аналогов')
     import re
     def encoded(value):
         return json.dumps(value, ensure_ascii=False).replace('<', '\\u003c')

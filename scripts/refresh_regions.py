@@ -22,6 +22,8 @@ from urllib.robotparser import RobotFileParser
 from build import ROOT, atomic_write, render
 from request_pacing import RequestPacing, RateLimited
 from merge_release import merge_release
+from data_quality import number, same_page, apply_result, compact_history, lock_run, canonical_url, timestamp
+from monitoring import Checkpoint
 
 AGENT = 'PrometPriceMonitor/1.0'
 HOSTS = {'www.vseinstrumenti.ru', 'vseinstrumenti.ru', 'www.komus.ru',
@@ -105,15 +107,6 @@ class ProductHTML(HTMLParser):
         if self.script is not None:
             self.script.append(data)
 
-def number(value):
-    if isinstance(value, bool):
-        raise ValueError('Некорректная цена')
-    raw = re.sub(r'[\s\u00a0\u202f]', '', str(value)).replace(',', '.')
-    result = float(raw)
-    if not math.isfinite(result) or not 0 < result < 10_000_000:
-        raise ValueError('Некорректная цена')
-    return round(result, 2)
-
 def json_products(value):
     if isinstance(value, list):
         for item in value:
@@ -131,9 +124,6 @@ def json_products(value):
         if main:
             yield from json_products(main)
 
-def same_page(first, second):
-    return urlsplit(first).path.rstrip('/') == urlsplit(second).path.rstrip('/')
-
 def parse_product(source, url):
     parser = ProductHTML()
     parser.feed(source)
@@ -144,7 +134,7 @@ def parse_product(source, url):
     matching = [p for p in candidates if isinstance(p.get('url'), str) and same_page(p['url'], url)]
     if matching:
         candidates = matching
-    elif len(candidates) != 1:
+    elif len(candidates) != 1 or any(p.get('url') for p in candidates):
         raise ValueError('Не найдена однозначная разметка основного товара')
     observations = []
     for product in candidates:
@@ -163,13 +153,16 @@ def parse_product(source, url):
                         raise ValueError('Несколько разных цен или условий в карточке')
                     return v[0]
                 return v
-            if str(single('priceCurrency')).upper() not in ('RUB', 'RUR'):
+            if str(single('priceCurrency')).strip().upper() not in ('RUB', 'RUR'):
                 continue
             raw_availability = single('availability')
             availability = str(raw_availability).rsplit('/', 1)[-1]
-            if availability not in STATUSES or single('price') is None:
+            if availability not in STATUSES:
                 continue
-            observations.append((number(single('price')), STATUSES[availability]))
+            raw_price = single('price')
+            if raw_price is None and STATUSES[availability] != 'Нет в наличии':
+                continue
+            observations.append((number(raw_price) if raw_price is not None else None, STATUSES[availability]))
     unique = set(observations)
     if len(unique) != 1:
         raise ValueError('Цена RUB и наличие не определены однозначно')
@@ -249,10 +242,10 @@ class Collector:
                     validate_url(region['initUrl'])
                     if not robot.can_fetch(AGENT, region['initUrl']):
                         raise ValueError('Выбор региона запрещён robots.txt')
-                    self.pacing.request(download, region['initUrl'], opener=opener)
+                    self.pacing.request(download, region['initUrl'], opener=opener, min_interval=interval)
                     time.sleep(interval)
                 self.sessions[session_key] = opener
-            source = self.pacing.request(download, url, headers=headers, opener=self.sessions[session_key])
+            source = self.pacing.request(download, url, headers=headers, opener=self.sessions[session_key], min_interval=interval)
             match = re.search(region['cityPattern'], source, re.S)
             if not match or 'city' not in match.groupdict() or html.unescape(match.group('city')).strip() != city:
                 raise ValueError('Выбранный город не подтверждён в ответе дилера: ' + city)
@@ -262,34 +255,12 @@ class Collector:
         finally:
             self.last_request[origin] = time.monotonic()
 
-def apply_result(row, result, now, allow_large=False):
-    previous = row.get('price') or row.get('unavailablePrice')
-    current = result.get('price') or result.get('unavailablePrice')
-    if previous and abs(current / previous - 1) > .5 and not allow_large:
-        raise ValueError('Изменение цены более 50%; требуется ручная проверка')
-    old = copy.deepcopy(row)
-    row.update(result)
-    row.update(checkedAt=now, lastAttemptAt=now, refreshError=None, collectionError=None, lastAttemptStatus="verified",
-               collectionMethod='Product/Offer structured data', availability=result['statusObserved'],
-               delivery='Автоматически не проверено', oldPrice=None, conditionalPrice=None,
-               conditionalType='', promo='Акции автоматически не проверены',
-               conditions='Публичная цена из разметки карточки. Условия доставки автоматически не проверены.')
-    return old
-
 CITIES = ('Москва', 'Санкт-Петербург')
 
-def lock_run(lock):
-    if fcntl is not None:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    else:
-        import msvcrt
-        lock.write('0'); lock.flush(); lock.seek(0)
-        try:
-            msvcrt.locking(lock.fileno(), msvcrt.LK_NBLCK, 1)
-        except OSError as exc:
-            raise BlockingIOError('Обновление уже выполняется') from exc
-
 def run(args, fetch=None):
+    if args.limit < 0:
+        raise ValueError('Лимит не может быть отрицательным')
+    resume_since = timestamp(args.resume_since) if getattr(args, 'resume_since', None) else None
     cities = getattr(args, 'cities', None) or list(CITIES)
     if any(city not in CITIES for city in cities):
         raise ValueError('Неизвестный город')
@@ -329,13 +300,12 @@ def run(args, fetch=None):
             dataset['refresh'] = city_report
             report['cities'][city] = city_report
             report['expected'] += total
-        def checkpoint():
-            atomic_write(path, json.dumps(data, ensure_ascii=False, indent=2))
-            atomic_write(args.publish / 'index.html', render(data))
-            atomic_write(state / 'last-refresh.json', json.dumps(report, ensure_ascii=False, indent=2))
+        checkpoint = Checkpoint(state, args.publish, render, data, report)
         config_path = getattr(args, 'region_config', None) or state / 'regions.json'
         config = json.loads(config_path.read_text(encoding='utf-8')) if config_path.exists() else {}
-        fetch = fetch or Collector(config, RequestPacing(state / "request-pacing.json")).fetch
+        pacing = RequestPacing(state / 'request-pacing.json')
+        report['network'] = pacing.metrics
+        fetch = fetch or Collector(config, pacing).fetch
         cache = {}
         checkpoint()
         try:
@@ -344,10 +314,10 @@ def run(args, fetch=None):
                 for kind in ('own', 'analogs'):
                     history = dataset.setdefault('history', {}).setdefault(kind, [])
                     for row in sorted(dataset[kind], key=lambda r: r['site'] == 'profsafe.ru'):
-                        ident = (city, row['url'])
+                        ident = (city, canonical_url(row['url']))
                         stats = cr['sources'].setdefault(row['site'], {'expected': 0, 'updated': 0, 'failed': 0, 'skipped': 0})
                         stats['expected'] += 1
-                        if (getattr(args, 'sites', None) and row['site'] not in args.sites) or (getattr(args, 'resume_since', None) and row.get('lastAttemptStatus') == 'verified' and row.get('checkedAt', '') >= args.resume_since):
+                        if (getattr(args, 'sites', None) and row['site'] not in args.sites) or (resume_since and row.get('lastAttemptStatus') == 'verified' and row.get('checkedAt') and timestamp(row['checkedAt']) >= resume_since):
                             cr['skipped'] += 1; report['skipped'] += 1; stats['skipped'] += 1
                             continue
                         if args.limit and len(cache) >= args.limit and ident not in cache:
@@ -374,19 +344,9 @@ def run(args, fetch=None):
                             cr['failed'] += 1; report['failed'] += 1; stats['failed'] += 1
                             error = {'city': city, 'site': row['site'], 'url': row['url'], 'error': row['refreshError']}
                             cr['errors'].append(error); report['errors'].append(error)
-                        print(json.dumps({'city': city, 'site': row['site'], 'id': row['id'], 'error': row.get('refreshError')}, ensure_ascii=False), flush=True)
+                        print(json.dumps({'event': 'observation', 'runId': now, 'at': checked, 'city': city, 'site': row['site'], 'id': row['id'], 'error': row.get('refreshError')}, ensure_ascii=False), flush=True)
                         checkpoint()
-                    # Retain the last observation per offer/week for two years, separately per city.
-                    weekly = {}
-                    for old in history:
-                        stamp = datetime.fromisoformat(old['checkedAt'].replace('Z', '+00:00'))
-                        if stamp.tzinfo is None:
-                            stamp = stamp.replace(tzinfo=timezone.utc)
-                        year, week, _ = stamp.astimezone(timezone(timedelta(hours=3))).isocalendar()
-                        key = (old['url'], old.get('sku'), year, week)
-                        if (datetime.now(timezone.utc) - stamp).days < 735 and (key not in weekly or old['checkedAt'] > weekly[key]['checkedAt']):
-                            weekly[key] = old
-                    history[:] = sorted(weekly.values(), key=lambda x: x['checkedAt'])
+                    history[:] = compact_history(history)
                 cr['running'] = False
                 cr['completedAt'] = datetime.now(timezone.utc).isoformat()
                 cr['complete'] = cr['updated'] == cr['expected'] and not cr['skipped']

@@ -1,7 +1,6 @@
 """Conservative collection of product structured data. Python 3.10+, no packages."""
 import argparse
 import copy
-import fcntl
 import html
 from html.parser import HTMLParser
 import json
@@ -17,6 +16,9 @@ from urllib.robotparser import RobotFileParser
 
 from build import ROOT, atomic_write, render
 from merge_release import merge_release
+from data_quality import number, same_page, apply_result, compact_history, lock_run, canonical_url
+from monitoring import Checkpoint
+from request_pacing import RequestPacing, RateLimited
 
 AGENT = 'PrometPriceMonitor/1.0'
 HOSTS = {'www.vseinstrumenti.ru', 'vseinstrumenti.ru', 'www.komus.ru',
@@ -99,15 +101,6 @@ class ProductHTML(HTMLParser):
         if self.script is not None:
             self.script.append(data)
 
-def number(value):
-    if isinstance(value, bool):
-        raise ValueError('Некорректная цена')
-    raw = re.sub(r'[\s\u00a0\u202f]', '', str(value)).replace(',', '.')
-    result = float(raw)
-    if not math.isfinite(result) or not 0 < result < 10_000_000:
-        raise ValueError('Некорректная цена')
-    return round(result, 2)
-
 def json_products(value):
     if isinstance(value, list):
         for item in value:
@@ -125,9 +118,6 @@ def json_products(value):
         if main:
             yield from json_products(main)
 
-def same_page(first, second):
-    return urlsplit(first).path.rstrip('/') == urlsplit(second).path.rstrip('/')
-
 def parse_product(source, url):
     parser = ProductHTML()
     parser.feed(source)
@@ -138,7 +128,7 @@ def parse_product(source, url):
     matching = [p for p in candidates if isinstance(p.get('url'), str) and same_page(p['url'], url)]
     if matching:
         candidates = matching
-    elif len(candidates) != 1:
+    elif len(candidates) != 1 or any(p.get('url') for p in candidates):
         raise ValueError('Не найдена однозначная разметка основного товара')
     observations = []
     for product in candidates:
@@ -157,13 +147,16 @@ def parse_product(source, url):
                         raise ValueError('Несколько разных цен или условий в карточке')
                     return v[0]
                 return v
-            if str(single('priceCurrency')).upper() not in ('RUB', 'RUR'):
+            if str(single('priceCurrency')).strip().upper() not in ('RUB', 'RUR'):
                 continue
             raw_availability = single('availability')
             availability = str(raw_availability).rsplit('/', 1)[-1]
-            if availability not in STATUSES or single('price') is None:
+            if availability not in STATUSES:
                 continue
-            observations.append((number(single('price')), STATUSES[availability]))
+            raw_price = single('price')
+            if raw_price is None and STATUSES[availability] != 'Нет в наличии':
+                continue
+            observations.append((number(raw_price) if raw_price is not None else None, STATUSES[availability]))
     unique = set(observations)
     if len(unique) != 1:
         raise ValueError('Цена RUB и наличие не определены однозначно')
@@ -180,7 +173,8 @@ def parse_product(source, url):
             'statusObserved': status, 'soldUnits': sold}
 
 class Collector:
-    def __init__(self):
+    def __init__(self, pacing=None):
+        self.pacing = pacing or RequestPacing()
         self.robots, self.last_request = {}, {}
 
     def fetch(self, url):
@@ -190,7 +184,7 @@ class Collector:
         if origin not in self.robots:
             robot = RobotFileParser()
             try:
-                robot.parse(download(origin + '/robots.txt', 500_000).splitlines())
+                robot.parse(self.pacing.request(download, origin + '/robots.txt', 500_000).splitlines())
             except Exception as exc:
                 # A robots fetch failure is not permission to crawl.
                 self.robots[origin] = str(exc)
@@ -207,90 +201,75 @@ class Collector:
             raise ValueError('Слишком большой crawl-delay; источник пропущен')
         time.sleep(max(0, self.last_request.get(origin, 0) + interval - time.monotonic()))
         try:
-            return parse_product(download(url), url)
+            return parse_product(self.pacing.request(download, url, min_interval=interval), url)
         finally:
             self.last_request[origin] = time.monotonic()
 
-def apply_result(row, result, now, allow_large=False):
-    previous = row.get('price') or row.get('unavailablePrice')
-    current = result.get('price') or result.get('unavailablePrice')
-    if previous and abs(current / previous - 1) > .5 and not allow_large:
-        raise ValueError('Изменение цены более 50%; требуется ручная проверка')
-    old = copy.deepcopy(row)
-    row.update(result)
-    row.update(checkedAt=now, lastAttemptAt=now, refreshError=None, collectionError=None, lastAttemptStatus="verified",
-               collectionMethod='Product/Offer structured data', availability=result['statusObserved'],
-               delivery='Автоматически не проверено', oldPrice=None, conditionalPrice=None,
-               conditionalType='', promo='Акции автоматически не проверены',
-               conditions='Публичная цена из разметки карточки. Регион и условия доставки уточняйте у продавца.')
-    return old
-
 def run(args, fetch=None):
+    if args.limit < 0:
+        raise ValueError('Лимит не может быть отрицательным')
     state = args.state
     state.mkdir(parents=True, exist_ok=True)
-    with (state / 'refresh.lock').open('w') as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    with (state / 'refresh.lock').open('a+') as lock:
+        lock_run(lock)
         path = state / 'observations.json'
-        data = json.loads((path if path.exists() else ROOT / 'data/observations.json').read_text())
+        data = json.loads((path if path.exists() else ROOT / 'data/observations.json').read_text(encoding='utf-8'))
         original = copy.deepcopy(data)
         data = merge_release(json.loads((ROOT / "data/observations.json").read_text(encoding="utf-8")), data)
         now = datetime.now(timezone.utc).isoformat()
-        report = {'attemptedAt': now, 'running': True, 'updated': 0, 'failed': 0, 'sources': {}, 'errors': []}
+        report = {'attemptedAt': now, 'running': True, 'updated': 0, 'failed': 0,
+                  'skipped': 0, 'expected': sum(len(data[k]) for k in ('own', 'analogs')),
+                  'sources': {}, 'errors': []}
         backup = state / 'backups' / (now.replace(':', '-') + '.json')
         atomic_write(backup, json.dumps(original, ensure_ascii=False))
         data['refresh'] = report
-        def checkpoint():
-            page = render(data)
-            atomic_write(path, json.dumps(data, ensure_ascii=False, indent=2))
-            atomic_write(args.publish / 'index.html', page)
-            atomic_write(state / 'last-refresh.json', json.dumps(report, ensure_ascii=False, indent=2))
+        checkpoint = Checkpoint(state, args.publish, render, data, report)
         checkpoint()
-        fetch = fetch or Collector().fetch
+        pacing = RequestPacing(state / 'request-pacing.json')
+        report['network'] = pacing.metrics
+        fetch = fetch or Collector(pacing).fetch
         cache = {}
-        for kind in ('own', 'analogs'):
-            history = data.setdefault('history', {}).setdefault(kind, [])
-            # Process faster sources before the five-minute profsafe crawl delay.
-            for row in sorted(data[kind], key=lambda r: r['site'] == 'profsafe.ru'):
-                if args.limit and len(cache) >= args.limit and row['url'] not in cache:
-                    continue
-                url = row['url']
-                if url not in cache:
+        try:
+            for kind in ('own', 'analogs'):
+                history = data.setdefault('history', {}).setdefault(kind, [])
+                # Process faster sources before the five-minute profsafe crawl delay.
+                for row in sorted(data[kind], key=lambda r: r['site'] == 'profsafe.ru'):
+                    if args.limit and len(cache) >= args.limit and canonical_url(row['url']) not in cache:
+                        report['skipped'] += 1
+                        continue
+                    url = canonical_url(row['url'])
+                    if url not in cache:
+                        try:
+                            result = fetch(url)
+                        except Exception as exc:
+                            result = str(exc)[:350]
+                        cache[url] = (result, datetime.now(timezone.utc).isoformat())
+                    result, checked = cache[url]
+                    stats = report['sources'].setdefault(row['site'], {'updated': 0, 'failed': 0})
                     try:
-                        result = fetch(url)
+                        if isinstance(result, str):
+                            raise ValueError(result)
+                        old = apply_result(row, dict(result, cityVerified=False), checked, args.allow_large_change)
+                        if old.get('checkedAt'):
+                            history.append(old)
+                        report['updated'] += 1
+                        stats['updated'] += 1
                     except Exception as exc:
-                        result = str(exc)[:350]
-                    cache[url] = (result, datetime.now(timezone.utc).isoformat())
-                result, checked = cache[url]
-                stats = report['sources'].setdefault(row['site'], {'updated': 0, 'failed': 0})
-                try:
-                    if isinstance(result, str):
-                        raise ValueError(result)
-                    old = apply_result(row, result, checked, args.allow_large_change)
-                    history.append(old)
-                    report['updated'] += 1
-                    stats['updated'] += 1
-                except Exception as exc:
-                    row['lastAttemptAt'] = checked
-                    row['refreshError'] = str(exc)[:350]
-                    # Preserve price AND checkedAt. Failure is not a new observation.
-                    report['failed'] += 1
-                    stats['failed'] += 1
-                    report['errors'].append({'url': url, 'error': row['refreshError']})
-                print(json.dumps({'site': row['site'], 'id': row['id'], 'error': row.get('refreshError')}, ensure_ascii=False), flush=True)
-                checkpoint()
-            # Keep one final observation per week and offer for two years.
-            weekly = {}
-            for old in history:
-                stamp = datetime.fromisoformat(old['checkedAt'].replace('Z', '+00:00'))
-                year, week, _ = stamp.astimezone(ZoneInfo('Europe/Moscow')).isocalendar()
-                key = (old['url'], old.get('sku'), year, week)
-                if key not in weekly or old['checkedAt'] > weekly[key]['checkedAt']:
-                    weekly[key] = old
-            history[:] = sorted(weekly.values(), key=lambda x: x['checkedAt'])
-            history[:] = [x for x in history if (datetime.now(timezone.utc) - datetime.fromisoformat(x['checkedAt'].replace('Z', '+00:00'))).days < 735]
-        report['running'] = False
-        report['completedAt'] = datetime.now(timezone.utc).isoformat()
-        checkpoint()
+                        row['lastAttemptAt'] = checked
+                        row['lastAttemptStatus'] = 'failed'
+                        row['refreshError'] = str(exc)[:350]
+                        # Preserve price AND checkedAt. Failure is not a new observation.
+                        report['failed'] += 1
+                        stats['failed'] += 1
+                        report['errors'].append({'url': url, 'error': row['refreshError']})
+                    print(json.dumps({'event': 'observation', 'runId': now, 'at': checked, 'site': row['site'], 'id': row['id'], 'error': row.get('refreshError')}, ensure_ascii=False), flush=True)
+                    checkpoint()
+                history[:] = compact_history(history)
+        finally:
+            report['running'] = False
+            report['complete'] = report['updated'] == report['expected']
+            report['completedAt'] = datetime.now(timezone.utc).isoformat()
+            checkpoint()
         for old in sorted((state / 'backups').glob('*.json'))[:-30]:
             old.unlink()
         print(json.dumps({k: v for k, v in report.items() if k != 'errors'}, ensure_ascii=False), flush=True)

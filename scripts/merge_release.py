@@ -1,16 +1,17 @@
 """Merge release additions with server observations without losing newer snapshots."""
 import copy
 import json
+from data_quality import timestamp, observation_key, validate_registry
 from datetime import datetime, timezone
 
 def stamp(value):
     try:
-        return datetime.fromisoformat(value.replace('Z', '+00:00')).replace(tzinfo=timezone.utc) if len(value)==10 else datetime.fromisoformat(value.replace('Z', '+00:00'))
+        return timestamp(value)
     except (ValueError, TypeError, AttributeError):
         return datetime.min.replace(tzinfo=timezone.utc)
 
 def key(row):
-    return row.get('site'), row.get('url')
+    return observation_key(row)
 
 def union(a, b):
     found = {}
@@ -19,6 +20,8 @@ def union(a, b):
     return list(found.values())
 
 def merge_release(seed, runtime):
+    validate_registry(seed)
+    validate_registry(runtime)
     out = copy.deepcopy(runtime)
     for name in ('selected', 'pairs', 'coverage', 'candidates', 'excluded'):
         if isinstance(seed.get(name), list):
@@ -42,14 +45,14 @@ def merge_release(seed, runtime):
             if group == 'analogs':
                 combined['skus'] = list(dict.fromkeys(release.get('skus', []) + row.get('skus', [])))
             if stamp(loser.get('checkedAt')) < stamp(winner.get('checkedAt')):
-                histories = union(histories, [loser])
+                histories.append(copy.deepcopy(loser))
             # A later failed attempt does not change the successful price/date.
             if stamp(loser.get('lastAttemptAt')) > stamp(winner.get('lastAttemptAt')):
                 for field in ('lastAttemptAt', 'lastAttemptStatus', 'refreshError', 'collectionError'):
                     if field in loser: combined[field] = copy.deepcopy(loser[field])
             merged[ident] = combined
         out[group] = list(merged.values())
-        out['history'][group] = histories
+        out['history'][group] = union(histories, [])
     refs = {x['sku']: copy.deepcopy(x) for x in seed.get('manufacturerPrices', [])}
     for row in runtime.get('manufacturerPrices', []):
         if row['sku'] not in refs or stamp(row.get('checkedAt')) >= stamp(refs[row['sku']].get('checkedAt')):
