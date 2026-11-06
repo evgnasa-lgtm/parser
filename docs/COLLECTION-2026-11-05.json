@@ -1,0 +1,188 @@
+{
+  "startedAt": "2026-11-05T07:29:59.256117+00:00",
+  "completedAt": "2026-11-06T04:54:09.649195+00:00",
+  "sources": [
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "total": 32,
+      "verified": 32,
+      "review": 0
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "total": 33,
+      "verified": 33,
+      "review": 0
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "total": 33,
+      "verified": 33,
+      "review": 0
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "total": 36,
+      "verified": 36,
+      "review": 0
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "total": 65,
+      "verified": 65,
+      "review": 0
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "total": 36,
+      "verified": 36,
+      "review": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "total": 33,
+      "verified": 33,
+      "review": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "total": 36,
+      "verified": 36,
+      "review": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "total": 65,
+      "verified": 65,
+      "review": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "total": 36,
+      "verified": 36,
+      "review": 0
+    }
+  ],
+  "scope": "405 закреплённых карточек дилеров и 13 цен производителя; не полный ассортимент сайтов.",
+  "httpRun": {
+    "attemptedAt": "2026-11-06T04:04:15.342344+00:00",
+    "running": false,
+    "updated": 8,
+    "failed": 0,
+    "skipped": 397,
+    "expected": 405,
+    "cities": {
+      "Москва": {
+        "attemptedAt": "2026-11-06T04:04:15.342344+00:00",
+        "running": false,
+        "expected": 235,
+        "updated": 0,
+        "failed": 0,
+        "skipped": 235,
+        "sources": {
+          "ВсеИнструменты": {
+            "expected": 36,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 36
+          },
+          "КОМУС": {
+            "expected": 36,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 36
+          },
+          "Железная мебель": {
+            "expected": 65,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 65
+          },
+          "dimaxmet.ru": {
+            "expected": 32,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 32
+          },
+          "evrosafe.ru": {
+            "expected": 33,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 33
+          },
+          "profsafe.ru": {
+            "expected": 33,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 33
+          }
+        },
+        "errors": [],
+        "completedAt": "2026-11-06T04:04:15.644098+00:00",
+        "complete": false
+      },
+      "Санкт-Петербург": {
+        "attemptedAt": "2026-11-06T04:04:15.342344+00:00",
+        "running": false,
+        "expected": 170,
+        "updated": 8,
+        "failed": 0,
+        "skipped": 162,
+        "sources": {
+          "ВсеИнструменты": {
+            "expected": 36,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 36
+          },
+          "КОМУС": {
+            "expected": 36,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 36
+          },
+          "Железная мебель": {
+            "expected": 65,
+            "updated": 0,
+            "failed": 0,
+            "skipped": 65
+          },
+          "profsafe.ru": {
+            "expected": 33,
+            "updated": 8,
+            "failed": 0,
+            "skipped": 25
+          }
+        },
+        "errors": [],
+        "completedAt": "2026-11-06T04:49:44.483355+00:00",
+        "complete": false
+      }
+    },
+    "errors": [],
+    "network": {
+      "requests": 10,
+      "retries": 1,
+      "failed": 1,
+      "seconds": 29.695284300018102
+    },
+    "durationSeconds": 2730.748,
+    "rowsPerSecond": 0.003,
+    "renderCount": 10,
+    "completedAt": "2026-11-06T04:49:44.518318+00:00",
+    "complete": false
+  },
+  "manufacturerReferences": 13,
+  "verified": 405,
+  "review": 0
+}
