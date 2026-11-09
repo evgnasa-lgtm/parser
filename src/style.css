@@ -54,3 +54,5 @@
 #promet-market-real .safe-baseline{margin-left:auto;min-width:180px;padding:14px 18px;border-radius:8px;background:#1256ad;color:#fff;display:flex;flex-direction:column;gap:7px;box-sizing:border-box}#promet-market-real .safe-baseline strong{font-size:25px;color:#fff}#promet-market-real .safe-baseline small,#promet-market-real .safe-baseline a{color:#e6efff}#promet-market-real .safe-baseline a{text-decoration:underline;font-size:12px}@media(max-width:700px){#promet-market-real .safe-baseline{margin-left:0;flex:1 1 100%}}
 
 #promet-market-real header{height:auto;min-height:76px;gap:12px;flex-wrap:wrap;padding:12px 0}#promet-market-real header label{display:flex;align-items:center;gap:8px}#promet-market-real button:disabled{opacity:.55;cursor:not-allowed} @media(max-width:700px){#promet-market-real header>div{width:100%}#promet-market-real header label{flex:1}#promet-market-real header select{max-width:200px}}
+
+.model-comparison + .model-comparison{margin-top:12px;padding-top:10px;border-top:1px solid #e6eaf0}
