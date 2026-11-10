@@ -34,6 +34,12 @@ assert(c.dealerFilter().includes('aria-pressed="true"'));assert(c.dealerFilter()
 c.setCatalogCategory('filing');const sku=c.state.catalogModels[0];
 c.offers=[{kind:'own',skus:[sku],site:'profsafe.ru',price:123,key:'shown'},{kind:'own',skus:[sku],site:'КОМУС',price:987,key:'hidden'}];
 const html=c.catalog();assert(html.includes('data-offer="shown"'));assert(!html.includes('data-offer="hidden"'));assert(!html.includes('<h2>CB-12</h2>'));
+c.offers=[{price:14155,key:'expensive'},{price:null,key:'missing'},{price:12650,key:'low1'},{price:12850,key:'middle'},{price:12650,key:'low2'}].map(o=>({...o,kind:'own',skus:[sku],site:'profsafe.ru'}));
+const ordered=c.catalog();
+const keys=[...ordered.matchAll(/data-offer="([^"]+)"/g)].map(m=>m[1]);
+assert.deepEqual(keys,['low1','low2','middle','expensive','missing']);
+assert.equal(c.offers[0].key,'expensive');
+assert.equal(c.catalogPrice({price:0}),Infinity);
 const compare={dataset:{compareModel:sku}},category={dataset:{catalogCategory:'lockers'}},city={};
 c.$=selector=>selector==='#city'?city:null;
 c.all=selector=>selector==='[data-compare-model]'?[compare]:selector==='[data-catalog-category]'?[category]:[];
