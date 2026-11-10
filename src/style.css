@@ -61,3 +61,25 @@
 #promet-market-real button.price-changes-card:hover{border-color:#315d99;background:#f4f8ff}
 #promet-market-real button.price-changes-card:focus-visible{outline:3px solid #315d99;outline-offset:3px}
 #promet-market-real .price-changes-card small{display:block;color:#7b889b}
+
+#promet-market-real .catalog-categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
+#promet-market-real .catalog-categories button{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;font-size:16px;font-weight:600;padding:18px}
+#promet-market-real .catalog-categories button span{border-radius:20px;padding:4px 9px;background:#edf2f8;font-size:14px}
+#promet-market-real .catalog-categories button[aria-pressed=true],#promet-market-real .dealer-option button[aria-pressed=true]{background:#1554a2;border-color:#1554a2;color:white}
+#promet-market-real .catalog-categories button[aria-pressed=true] span{background:#ffffff26;color:white}
+#promet-market-real .catalog-tools #catalogSearch{flex:1;max-width:420px;min-width:210px}
+#promet-market-real .catalog-tools #catalog-picker{flex:0 1 260px}
+#promet-market-real .catalog-picker-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+#promet-market-real .dealer-filter{border:1px solid #dce2e9;background:#fff;border-radius:10px;padding:14px 16px;margin:0 0 20px}
+#promet-market-real .dealer-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+#promet-market-real .dealer-heading strong span{font-weight:400;color:#6c7889;margin-left:6px}
+#promet-market-real .dealer-heading>div{display:flex;gap:8px}
+#promet-market-real .dealer-heading button{padding:6px 10px}
+#promet-market-real .dealer-options{display:flex;flex-wrap:wrap;gap:10px}
+#promet-market-real .dealer-option{display:flex;flex-direction:column;align-items:stretch;gap:2px}
+#promet-market-real .dealer-option>button:first-child{min-height:44px}
+#promet-market-real .dealer-option .dealer-only{border:0;background:transparent;font-size:11px;padding:5px 8px;color:#53729a}
+#promet-market-real .dealer-option .dealer-only:hover{text-decoration:underline}
+#promet-market-real .catalog-categories button:focus-visible,#promet-market-real .dealer-filter button:focus-visible{outline:3px solid #6e9ddd;outline-offset:3px}
+@media(max-width:1000px){#promet-market-real .catalog-categories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){#promet-market-real .catalog-categories{gap:8px}#promet-market-real .catalog-categories button{padding:12px;font-size:14px;min-height:64px}#promet-market-real .dealer-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
