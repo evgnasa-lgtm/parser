@@ -46,7 +46,7 @@ class MergeTests(unittest.TestCase):
         runtime.pop('additionalDealerRun',None)
         merged=merge_release(self.seed,runtime)
         self.assertEqual(merged['additionalDealerRun'],self.seed['additionalDealerRun'])
-        self.assertEqual(sum(x['site'] in new_sites for g in ('own','analogs') for x in merged[g]),65)
+        self.assertEqual(sum(x['site'] in new_sites for g in ('own','analogs') for x in merged[g]),sum(x['site'] in new_sites for g in ('own','analogs') for x in self.seed[g]))
         self.assertEqual(merged['cities'],runtime['cities'])
 
     def test_city_release_added_to_legacy_runtime(self):

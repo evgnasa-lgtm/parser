@@ -1,0 +1,470 @@
+{
+  "schema_version": 1,
+  "research_as_of": "2026-11-10",
+  "scope": "База для будущего блока Картотеки; интеграция в сбор ещё не выполнена",
+  "rules": [
+    "А4 и Foolscap (FS) — два отдельных формата подвесных папок. Не объединять в один признак.",
+    "Формат документа А4 не подтверждает поддержку подвесных папок А4. А4+ не приравнивать к FS без подтверждения производителя.",
+    "confirmed означает прямое подтверждение; unconfirmed — не подтверждено выбранным источником, а не отсутствие поддержки; not_applicable — другое назначение.",
+    "Нагрузка на ящик не равна паспортной грузоподъёмности пары направляющих. Отдельная нагрузка направляющих не установлена.",
+    "Неизвестные нагрузки хранить null, не нулём. Цвет ROMMEL не выводить из фотографий или другой серии.",
+    "Сопоставлять назначение, формат, количество ящиков, исполнение и комплектацию. С/сварное, разборное, А5/А6 и число замков не смешивать.",
+    "Размеры всегда В×Ш×Г, мм. Источники разных редакций могут расходиться: у AFC-06/07 инструкция содержит 30 кг, текущие карточки — 20 кг; для КР-7 паспорт и каталог расходятся по размерам.",
+    "Преимущество AFC-02–05: подтверждённые подвесные А4 и FS; оно не уникально относительно ROMMEL ШК-2–5.",
+    "Сохранённая база — исследование на 10.11.2026, не новые наблюдения цен. Цен в этом файле нет.",
+    "Будущий блок «Картотеки»: отдельная категория и идентификаторы моделей; сначала утвердить соответствия и карточки площадок, затем подключить сбор с существующими правилами истории, наличия и акций.",
+    "При публикации сравнений показывать источник и дату проверки, неизвестные поля и различие точного аналога и функциональной альтернативы."
+  ],
+  "products": [
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-02",
+      "drawers": 2,
+      "dimensions_hwd_mm": [
+        693,
+        470,
+        646
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7038, полуматовый",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-02/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-03",
+      "drawers": 3,
+      "dimensions_hwd_mm": [
+        1007,
+        470,
+        646
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7038, полуматовый",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-03/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-04",
+      "drawers": 4,
+      "dimensions_hwd_mm": [
+        1320,
+        470,
+        646
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7038, полуматовый",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-04/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-05",
+      "drawers": 5,
+      "dimensions_hwd_mm": [
+        1634,
+        470,
+        646
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7038, полуматовый",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-05/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-06C",
+      "drawers": 6,
+      "dimensions_hwd_mm": [
+        1327,
+        553,
+        631
+      ],
+      "drawer_load_kg": 20,
+      "color": "RAL 7038, шагрень",
+      "document_formats": "А5 / А6",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-06c/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-07",
+      "drawers": 7,
+      "dimensions_hwd_mm": [
+        1327,
+        515,
+        631
+      ],
+      "drawer_load_kg": 20,
+      "color": "RAL 7038, полуматовый",
+      "document_formats": "А5",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-07/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПРОМЕТ",
+      "model": "AFC-09C",
+      "drawers": 9,
+      "dimensions_hwd_mm": [
+        1327,
+        470,
+        631
+      ],
+      "drawer_load_kg": 20,
+      "color": "RAL 7038, шагрень",
+      "document_formats": "А6",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://www.safe.ru/products/kartotechnyy-shkaf-praktik-afc-09c/",
+      "comparison_base": null,
+      "note": ""
+    },
+    {
+      "brand": "ПАКС",
+      "model": "КР-2",
+      "drawers": 2,
+      "dimensions_hwd_mm": [
+        715,
+        465,
+        630
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://paksmet.ru/catalog/katalog.pdf",
+      "comparison_base": "AFC-02",
+      "note": "В выбранном каталоге указаны файлы А4; подвесные А4 и FS отдельно не подтверждены."
+    },
+    {
+      "brand": "ПАКС",
+      "model": "КР-3",
+      "drawers": 3,
+      "dimensions_hwd_mm": [
+        1025,
+        465,
+        630
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://paksmet.ru/catalog/katalog.pdf",
+      "comparison_base": "AFC-03",
+      "note": "В выбранном каталоге указаны файлы А4; подвесные А4 и FS отдельно не подтверждены."
+    },
+    {
+      "brand": "ПАКС",
+      "model": "КР-4",
+      "drawers": 4,
+      "dimensions_hwd_mm": [
+        1335,
+        465,
+        630
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://paksmet.ru/catalog/katalog.pdf",
+      "comparison_base": "AFC-04",
+      "note": "В выбранном каталоге указаны файлы А4; подвесные А4 и FS отдельно не подтверждены."
+    },
+    {
+      "brand": "ПАКС",
+      "model": "КР-5",
+      "drawers": 5,
+      "dimensions_hwd_mm": [
+        1645,
+        465,
+        630
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://paksmet.ru/catalog/katalog.pdf",
+      "comparison_base": "AFC-05",
+      "note": "В выбранном каталоге указаны файлы А4; подвесные А4 и FS отдельно не подтверждены."
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-2",
+      "drawers": 2,
+      "dimensions_hwd_mm": [
+        710,
+        485,
+        600
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://rommel.ru/catalog/filecabinet/shkaf-kartotechnyj-shk-2.html",
+      "comparison_base": "AFC-02",
+      "note": ""
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-3",
+      "drawers": 3,
+      "dimensions_hwd_mm": [
+        1010,
+        485,
+        600
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://rommel.ru/catalog/filecabinet/shkaf-kartotechnyj-shk-3.html",
+      "comparison_base": "AFC-03",
+      "note": ""
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-4",
+      "drawers": 4,
+      "dimensions_hwd_mm": [
+        1310,
+        485,
+        600
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://rommel.ru/catalog/filecabinet/shkaf-kartotechnyj-shk-4.html",
+      "comparison_base": "AFC-04",
+      "note": ""
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-5",
+      "drawers": 5,
+      "dimensions_hwd_mm": [
+        1610,
+        485,
+        600
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "confirmed",
+      "source": "https://rommel.ru/catalog/filecabinet/shkaf-kartotechnyj-shk-5.html",
+      "comparison_base": "AFC-05",
+      "note": ""
+    },
+    {
+      "brand": "Металл-Завод",
+      "model": "DK-2",
+      "drawers": 2,
+      "dimensions_hwd_mm": [
+        731,
+        460,
+        620
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://metall-zavod.ru/catalog/shkafy_kartotechnye/45027/",
+      "comparison_base": "AFC-02",
+      "note": "Нужна проверка именно подвесных папок каждого формата; упоминание формата документа недостаточно."
+    },
+    {
+      "brand": "Металл-Завод",
+      "model": "DK-3",
+      "drawers": 3,
+      "dimensions_hwd_mm": [
+        1031,
+        460,
+        620
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4 / FS",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://metall-zavod.ru/catalog/shkafy_kartotechnye/45028/",
+      "comparison_base": "AFC-03",
+      "note": "Нужна проверка именно подвесных папок каждого формата; упоминание формата документа недостаточно."
+    },
+    {
+      "brand": "Металл-Завод",
+      "model": "DK-4",
+      "drawers": 4,
+      "dimensions_hwd_mm": [
+        1331,
+        460,
+        620
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А4",
+      "suspended_a4": "unconfirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://metall-zavod.ru/catalog/shkafy_kartotechnye/45029/",
+      "comparison_base": "AFC-04",
+      "note": "Нужна проверка именно подвесных папок каждого формата; упоминание формата документа недостаточно."
+    },
+    {
+      "brand": "Церера",
+      "model": "КО-41Т",
+      "drawers": 4,
+      "dimensions_hwd_mm": [
+        1245,
+        500,
+        600
+      ],
+      "drawer_load_kg": null,
+      "color": "RAL 7035",
+      "document_formats": "А4 / А4+",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://cerera-mebel.ru/product/kartoteka-ko-41t/",
+      "comparison_base": "AFC-04",
+      "note": "А4+ не приравнивать к FS. Нагрузка в карточке не указана."
+    },
+    {
+      "brand": "Церера",
+      "model": "КО-51Т",
+      "drawers": 5,
+      "dimensions_hwd_mm": [
+        1530,
+        500,
+        600
+      ],
+      "drawer_load_kg": null,
+      "color": "RAL 7035",
+      "document_formats": "А4 / А4+",
+      "suspended_a4": "confirmed",
+      "suspended_fs": "unconfirmed",
+      "source": "https://cerera-mebel.ru/product/kartoteka-ko-51t/",
+      "comparison_base": "AFC-05",
+      "note": "А4+ не приравнивать к FS. Нагрузка в карточке не указана."
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-6",
+      "drawers": 6,
+      "dimensions_hwd_mm": [
+        1190,
+        525,
+        585
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А5; отдельное исполнение А6",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://rommel.ru/catalog/filecabinet/shkaf-kartotechnyj-shk-6.html",
+      "comparison_base": "AFC-06C",
+      "note": "Исполнения А5 и А6 различать при подборе."
+    },
+    {
+      "brand": "ПАКС",
+      "model": "КР-7",
+      "drawers": 7,
+      "dimensions_hwd_mm": [
+        1365,
+        509,
+        575
+      ],
+      "drawer_load_kg": 30,
+      "color": "RAL 7035",
+      "document_formats": "А5",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://paksmet.ru/catalog/katalog.pdf",
+      "comparison_base": "AFC-07",
+      "note": "Размеры по каталогу; старый общий паспорт содержит другие размеры."
+    },
+    {
+      "brand": "Церера",
+      "model": "КО-71.2Т",
+      "drawers": 7,
+      "dimensions_hwd_mm": [
+        1400,
+        519,
+        585
+      ],
+      "drawer_load_kg": null,
+      "color": "RAL 7035",
+      "document_formats": "А5; А6 с разделителями",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://cerera-mebel.ru/product/kartoteka-ko-71-2t/",
+      "comparison_base": "AFC-07",
+      "note": "Нагрузка в карточке не указана; функциональная альтернатива для А5/А6, не равная вместимость."
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-7",
+      "drawers": 7,
+      "dimensions_hwd_mm": [
+        1370,
+        525,
+        585
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А5",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://rommel.ru/catalog/filecabinet.html",
+      "comparison_base": "AFC-07",
+      "note": ""
+    },
+    {
+      "brand": "ROMMEL",
+      "model": "ШК-9 А6",
+      "drawers": 9,
+      "dimensions_hwd_mm": [
+        1730,
+        525,
+        585
+      ],
+      "drawer_load_kg": 15,
+      "color": "RAL не подтверждён",
+      "document_formats": "А6",
+      "suspended_a4": "not_applicable",
+      "suspended_fs": "not_applicable",
+      "source": "https://rommel.ru/catalog/filecabinet/shkaf-kartotechnyj-shk-9.html",
+      "comparison_base": "AFC-09C",
+      "note": "Выбирать исполнение А6, не базовое А5. Выше AFC на 403 мм."
+    }
+  ]
+}
