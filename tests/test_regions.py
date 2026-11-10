@@ -13,6 +13,26 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from refresh_regions import run, Collector, regional_adapter
 
 class RegionsTests(unittest.TestCase):
+    def test_sku_scope_fetches_linked_analogs_and_preserves_other_models(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'data').mkdir()
+            row=lambda i,**extra:dict(id=i,site='КОМУС',url=f'https://www.komus.ru/p/{i}/',price=100,checkedAt='2026-11-01T00:00:00Z',**extra)
+            seed={'selected':[],'pairs':[],'own':[row(1,sku='afc'),row(2,sku='locker')],
+                  'analogs':[row(3,skus=['afc']),row(4,skus=['locker'])],
+                  'history':{'own':[row(2,sku='locker')], 'analogs':[]}}
+            (root/'data/observations.json').write_text(json.dumps(seed),encoding='utf8')
+            args=argparse.Namespace(state=root/'runtime',publish=root/'public',limit=0,allow_large_change=False,cities=['Москва'],skus=['afc'])
+            calls=[]
+            def fetch(url,city):
+                calls.append(url);return dict(price=110,statusObserved='В наличии',city=city,cityVerified=True)
+            with patch('refresh_regions.ROOT',root),patch('refresh_regions.render',return_value='test'),redirect_stdout(io.StringIO()):
+                self.assertEqual(run(args,fetch),0)
+            data=json.loads((args.state/'observations.json').read_text(encoding='utf8'))
+            self.assertEqual(calls,['https://www.komus.ru/p/1/','https://www.komus.ru/p/3/'])
+            self.assertEqual(data['own'][1],seed['own'][1]);self.assertEqual(data['analogs'][1],seed['analogs'][1])
+            self.assertEqual(data['history']['own'][0],seed['history']['own'][0])
+            self.assertEqual(data['refreshSummary']['expected'],2)
+
     def execute(self, fetch, cities=None, limit=0):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp)

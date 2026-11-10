@@ -1,0 +1,1144 @@
+{
+  "scope": "Только AFC-04, AFC-05 и закреплённые аналоги в двух городах",
+  "startedAt": "2026-11-10T04:25:47.815769+00:00",
+  "generatedAt": "2026-11-10T05:37:17.156563+00:00",
+  "httpRunning": false,
+  "expected": 57,
+  "confirmed": 54,
+  "manufacturerReferences": 2,
+  "sources": [
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "expected": 4,
+      "confirmed": 4
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "expected": 4,
+      "confirmed": 4
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "expected": 6,
+      "confirmed": 6
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "expected": 5,
+      "confirmed": 4
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "expected": 7,
+      "confirmed": 7
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "expected": 4,
+      "confirmed": 4
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "expected": 1,
+      "confirmed": 0
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "expected": 4,
+      "confirmed": 4
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "expected": 6,
+      "confirmed": 6
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "expected": 5,
+      "confirmed": 4
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "expected": 7,
+      "confirmed": 7
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "expected": 4,
+      "confirmed": 4
+    }
+  ],
+  "exceptions": [
+    {
+      "city": "Москва",
+      "model": "ПАКС КР-5",
+      "site": "ВсеИнструменты",
+      "error": "Противоречивое наличие: 3 шт. от поставщика с 13 ноября и одновременно товар снят с поставок. Цена 45865 не принята."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "model": "AFC-05",
+      "site": "dimaxmet.ru",
+      "error": "Регион не настроен: требуется проверенный адаптер выбора города Санкт-Петербург"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "model": "ПАКС КР-5",
+      "site": "ВсеИнструменты",
+      "error": "Противоречивое наличие: 3 шт. от поставщика с 15 ноября и одновременно «товар был снят с поставок». Цена 45865 руб. не принята в сравнение."
+    }
+  ],
+  "extraRunning": false,
+  "confirmedPrices": 50,
+  "confirmedUnavailable": 4,
+  "coverageMatrix": [
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "AFC-04",
+      "price": 28290.0,
+      "checkedAt": "2026-11-10T04:54:15.968950+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-praktik-afc-04-s20299040102-763702/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "AFC-05",
+      "price": null,
+      "checkedAt": "2026-11-10T04:48:49.530852+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-praktik-afc-05-s20299050102-763694/",
+      "status": "verified",
+      "availability": "Нет в наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС КР-4",
+      "price": 31952.0,
+      "checkedAt": "2026-11-10T05:03:56.366506+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-paks-kr-4-125462-836402/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС КР-5",
+      "price": null,
+      "checkedAt": null,
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-paks-kr-5-125463-836406/",
+      "status": "failed",
+      "availability": "Неизвестно",
+      "error": "Противоречивое наличие: 3 шт. от поставщика с 13 ноября и одновременно товар снят с поставок. Цена 45865 не принята."
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "checkedAt": "2026-11-10T04:54:15.968950+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartotechnyj-shkaf-kartoteka-rommel-shk-4-00009563-5943343/",
+      "status": "verified",
+      "availability": "Нет в наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "AFC-04",
+      "price": 23370.0,
+      "checkedAt": "2026-11-10T04:30:49.291137+00:00",
+      "url": "https://profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-praktik/kartotechnyy_shkaf_praktik_afc_04.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "AFC-05",
+      "price": 26360.0,
+      "checkedAt": "2026-11-10T04:35:49.821264+00:00",
+      "url": "https://profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-praktik/kartotechnyy_shkaf_praktik_afc_05.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "ПАКС КР-4",
+      "price": 22070.0,
+      "checkedAt": "2026-11-10T04:40:50.289088+00:00",
+      "url": "https://profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-kr/kartotechnyiy-shkaf-kr-4.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "ПАКС КР-5",
+      "price": 27550.0,
+      "checkedAt": "2026-11-10T05:16:23.424536+00:00",
+      "url": "https://profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-kr/kartotechnyiy-shkaf-kr-5.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "ROMMEL ШК-4",
+      "price": 24100.0,
+      "checkedAt": "2026-11-10T04:45:50.939997+00:00",
+      "url": "https://profsafe.ru/metal-cabinets/filing-cabinets/kartoteki_shk/kartotechnyy_shkaf_shk_4.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "ROMMEL ШК-5",
+      "price": 31630.0,
+      "checkedAt": "2026-11-10T05:21:24.740090+00:00",
+      "url": "https://profsafe.ru/metal-cabinets/filing-cabinets/kartoteki_shk/kartotechnyy_shkaf_shk_5.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "profsafe.ru",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "AFC-04",
+      "price": 22780.0,
+      "checkedAt": "2026-11-10T04:26:53.967000+00:00",
+      "url": "https://www.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-praktik-afc-04.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "AFC-05",
+      "price": 25690.0,
+      "checkedAt": "2026-11-10T04:27:03.280000+00:00",
+      "url": "https://www.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-praktik-afc-05.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "ПАКС КР-4",
+      "price": 23030.0,
+      "checkedAt": "2026-11-10T04:27:10.882000+00:00",
+      "url": "https://www.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-paks-kr-4.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "ПАКС КР-5",
+      "price": 28750.0,
+      "checkedAt": "2026-11-10T04:27:18.352000+00:00",
+      "url": "https://www.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-paks-kr-5.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "evrosafe.ru",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "AFC-04",
+      "price": 28111.0,
+      "checkedAt": "2026-11-10T04:49:49.636715+00:00",
+      "url": "https://dimaxmet.ru/product/kartoteka-praktik-afc-04/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "AFC-05",
+      "price": 31702.0,
+      "checkedAt": "2026-11-10T05:03:56.366479+00:00",
+      "url": "https://dimaxmet.ru/product/kartoteka-praktik-afc-05/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "ПАКС КР-4",
+      "price": 24767.0,
+      "checkedAt": "2026-11-10T04:57:00.420049+00:00",
+      "url": "https://dimaxmet.ru/product/kartoteka-kr-4/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "ПАКС КР-5",
+      "price": 30917.0,
+      "checkedAt": "2026-11-10T04:57:00.420049+00:00",
+      "url": "https://dimaxmet.ru/product/kartoteka-kr-5/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "AFC-04",
+      "price": 23670.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-praktik-afc-04/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "AFC-05",
+      "price": 26690.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-praktik-afc-05/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ПАКС КР-4",
+      "price": 23910.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-kr-4/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ПАКС КР-5",
+      "price": 27070.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-kr-5/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "Церера КО-41Т",
+      "price": 23290.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy_shkaf_ko_41t/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "Церера КО-51Т",
+      "price": 32080.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy_shkaf_ko_51t/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "Железная мебель",
+      "model": "Металл-Завод DK-4",
+      "price": 25610.0,
+      "checkedAt": "2026-11-10T04:52:18.151110+00:00",
+      "url": "https://xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnye-shkafy-s-vydvizhnymi-yashchikami/shkaf_kartotechnyy_dk_4/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "AFC-04",
+      "price": 24203.0,
+      "checkedAt": "2026-11-10T04:55:26.178339+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-praktik-afc-04-dlya-dokumentov-a4-ili-foolscap-seryj-470x646x1320-mm-/p/31573/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "AFC-05",
+      "price": 27532.0,
+      "checkedAt": "2026-11-10T04:55:26.178339+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-praktik-afc-05-dlya-dokumentov-a4-ili-foolscap-seryj-1634x470x646-mm-/p/115914/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ПАКС КР-4",
+      "price": 25171.0,
+      "checkedAt": "2026-11-10T04:55:26.178339+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-paks-metall-kr-4-seryj-465x630x1335-mm-4-yashhika-/p/125462/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ПАКС КР-5",
+      "price": 31422.0,
+      "checkedAt": "2026-11-10T04:55:26.178339+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-paks-metall-kr-5-seryj-465kh630kh1645-mm-5-yashhikov-/p/1200042/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Москва",
+      "site": "КОМУС",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "AFC-04",
+      "price": 28290.0,
+      "checkedAt": "2026-11-10T04:54:15.968950+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-praktik-afc-04-s20299040102-763702/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "AFC-05",
+      "price": null,
+      "checkedAt": "2026-11-10T04:54:15.968950+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-praktik-afc-05-s20299050102-763694/",
+      "status": "verified",
+      "availability": "Нет в наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС КР-4",
+      "price": 26985.0,
+      "checkedAt": "2026-11-10T05:03:56.366514+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-paks-kr-4-125462-836402/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ПАКС КР-5",
+      "price": null,
+      "checkedAt": null,
+      "url": "https://www.vseinstrumenti.ru/product/kartoteka-paks-kr-5-125463-836406/",
+      "status": "failed",
+      "availability": "Неизвестно",
+      "error": "Противоречивое наличие: 3 шт. от поставщика с 15 ноября и одновременно «товар был снят с поставок». Цена 45865 руб. не принята в сравнение."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "checkedAt": "2026-11-10T04:54:15.968950+00:00",
+      "url": "https://www.vseinstrumenti.ru/product/kartotechnyj-shkaf-kartoteka-rommel-shk-4-00009563-5943343/",
+      "status": "verified",
+      "availability": "Нет в наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "ВсеИнструменты",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "AFC-04",
+      "price": 23370.0,
+      "checkedAt": "2026-11-10T04:51:20.190210+00:00",
+      "url": "https://spb.profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-praktik/kartotechnyy_shkaf_praktik_afc_04.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "AFC-05",
+      "price": 26360.0,
+      "checkedAt": "2026-11-10T04:56:21.149454+00:00",
+      "url": "https://spb.profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-praktik/kartotechnyy_shkaf_praktik_afc_05.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "ПАКС КР-4",
+      "price": 22070.0,
+      "checkedAt": "2026-11-10T05:01:21.990897+00:00",
+      "url": "https://spb.profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-kr/kartotechnyiy-shkaf-kr-4.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "ПАКС КР-5",
+      "price": 27550.0,
+      "checkedAt": "2026-11-10T05:31:25.685745+00:00",
+      "url": "https://spb.profsafe.ru/metal-cabinets/filing-cabinets/kartoteki-kr/kartotechnyiy-shkaf-kr-5.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "ROMMEL ШК-4",
+      "price": 24100.0,
+      "checkedAt": "2026-11-10T05:06:22.595075+00:00",
+      "url": "https://spb.profsafe.ru/metal-cabinets/filing-cabinets/kartoteki_shk/kartotechnyy_shkaf_shk_4.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "ROMMEL ШК-5",
+      "price": 31630.0,
+      "checkedAt": "2026-11-10T05:36:26.372041+00:00",
+      "url": "https://spb.profsafe.ru/metal-cabinets/filing-cabinets/kartoteki_shk/kartotechnyy_shkaf_shk_5.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "profsafe.ru",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "AFC-04",
+      "price": 24580.0,
+      "checkedAt": "2026-11-10T04:50:16+00:00",
+      "url": "https://spb.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-praktik-afc-04.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "AFC-05",
+      "price": 27730.0,
+      "checkedAt": "2026-11-10T04:50:32.818000+00:00",
+      "url": "https://spb.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-praktik-afc-05.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "ПАКС КР-4",
+      "price": 25170.0,
+      "checkedAt": "2026-11-10T04:50:33.510000+00:00",
+      "url": "https://spb.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-paks-kr-4.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "ПАКС КР-5",
+      "price": 31420.0,
+      "checkedAt": "2026-11-10T04:50:34.201000+00:00",
+      "url": "https://spb.evrosafe.ru/catalog/metallicheskaya-mebel/kartotechnye-schkafy/kartoteka-paks-kr-5.html",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "evrosafe.ru",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "AFC-04",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "AFC-05",
+      "price": null,
+      "checkedAt": null,
+      "url": "https://dimaxmet.ru/product/kartoteka-praktik-afc-05/",
+      "status": "failed",
+      "availability": "Неизвестно",
+      "error": "Регион не настроен: требуется проверенный адаптер выбора города Санкт-Петербург"
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "ПАКС КР-4",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "ПАКС КР-5",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "dimaxmet.ru",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "region_unconfirmed",
+      "note": "Региональная цена Санкт-Петербурга не подтверждена; московские цены не перенесены."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "AFC-04",
+      "price": 23670.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-praktik-afc-04/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "AFC-05",
+      "price": 26690.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-praktik-afc-05/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ПАКС КР-4",
+      "price": 25420.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-kr-4/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ПАКС КР-5",
+      "price": 28630.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy-shkaf-kr-5/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "Церера КО-41Т",
+      "price": 33150.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy_shkaf_ko_41t/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "Церера КО-51Т",
+      "price": 45670.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnyy_shkaf_ko_51t/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "Железная мебель",
+      "model": "Металл-Завод DK-4",
+      "price": 21490.0,
+      "checkedAt": "2026-11-10T04:53:16.490293+00:00",
+      "url": "https://xn----7sbeiia6axumbcqds.xn----7sbenacbbl2bhik1tlb.xn--p1ai/catalog/metallicheskie-shkafy/kartotechnye-shkafy/kartotechnye-shkafy-s-vydvizhnymi-yashchikami/shkaf_kartotechnyy_dk_4/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "AFC-04",
+      "price": 24203.0,
+      "checkedAt": "2026-11-10T04:56:04.031386+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-praktik-afc-04-dlya-dokumentov-a4-ili-foolscap-seryj-470x646x1320-mm-/p/31573/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "AFC-05",
+      "price": 27532.0,
+      "checkedAt": "2026-11-10T04:56:04.031386+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-praktik-afc-05-dlya-dokumentov-a4-ili-foolscap-seryj-1634x470x646-mm-/p/115914/",
+      "status": "verified",
+      "availability": "В наличии",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ПАКС КР-4",
+      "price": 25171.0,
+      "checkedAt": "2026-11-10T04:56:04.031386+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-paks-metall-kr-4-seryj-465x630x1335-mm-4-yashhika-/p/125462/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ПАКС КР-5",
+      "price": 31422.0,
+      "checkedAt": "2026-11-10T04:56:04.031386+00:00",
+      "url": "https://www.komus.ru/katalog/mebel/mebel-metallicheskaya-/shkafy-kartotechnye-i-kartoteki/shkafy-kartotechnye/kartoteka-paks-metall-kr-5-seryj-465kh630kh1645-mm-5-yashhikov-/p/1200042/",
+      "status": "verified",
+      "availability": "Под заказ",
+      "error": null
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ROMMEL ШК-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "ROMMEL ШК-5",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Церера КО-41Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Церера КО-51Т",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    },
+    {
+      "city": "Санкт-Петербург",
+      "site": "КОМУС",
+      "model": "Металл-Завод DK-4",
+      "price": null,
+      "status": "not_found",
+      "note": "Подтверждённая карточка для этой пары площадка–город не найдена в проверенном каталоге/поиске; это не означает отсутствие товара в продаже."
+    }
+  ],
+  "status": "completed_with_exceptions"
+}

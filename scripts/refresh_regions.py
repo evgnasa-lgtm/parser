@@ -265,6 +265,9 @@ def run(args, fetch=None):
     if any(city not in CITIES for city in cities):
         raise ValueError('Неизвестный город')
     cities = list(dict.fromkeys(cities))
+    skus = set(getattr(args, 'skus', None) or [])
+    def selected(row):
+        return not skus or bool(skus.intersection(row.get('skus', [row.get('sku')])))
     state = args.state
     state.mkdir(parents=True, exist_ok=True)
     with (state / 'refresh.lock').open('a+') as lock:
@@ -294,7 +297,7 @@ def run(args, fetch=None):
                     dataset.update(history={}, manufacturerPrices=[])
                     data['cities'][city] = dataset
             datasets[city] = dataset
-            total = sum(len(dataset[k]) for k in ('own', 'analogs'))
+            total = sum(selected(row) for k in ('own', 'analogs') for row in dataset[k])
             city_report = {'attemptedAt': now, 'running': True, 'expected': total,
                            'updated': 0, 'failed': 0, 'skipped': 0, 'sources': {}, 'errors': []}
             dataset['refresh'] = city_report
@@ -314,6 +317,8 @@ def run(args, fetch=None):
                 for kind in ('own', 'analogs'):
                     history = dataset.setdefault('history', {}).setdefault(kind, [])
                     for row in sorted(dataset[kind], key=lambda r: r['site'] == 'profsafe.ru'):
+                        if not selected(row):
+                            continue
                         ident = (city, canonical_url(row['url']))
                         stats = cr['sources'].setdefault(row['site'], {'expected': 0, 'updated': 0, 'failed': 0, 'skipped': 0})
                         stats['expected'] += 1
@@ -346,7 +351,8 @@ def run(args, fetch=None):
                             cr['errors'].append(error); report['errors'].append(error)
                         print(json.dumps({'event': 'observation', 'runId': now, 'at': checked, 'city': city, 'site': row['site'], 'id': row['id'], 'error': row.get('refreshError')}, ensure_ascii=False), flush=True)
                         checkpoint()
-                    history[:] = compact_history(history)
+                    if not skus:
+                        history[:] = compact_history(history)
                 cr['running'] = False
                 cr['completedAt'] = datetime.now(timezone.utc).isoformat()
                 cr['complete'] = cr['updated'] == cr['expected'] and not cr['skipped']
@@ -376,6 +382,7 @@ if __name__ == '__main__':
     parser.add_argument('--cities', nargs='+', choices=CITIES, default=list(CITIES))
     parser.add_argument('--region-config', type=Path, help='Local region selection and proof configuration (not committed)')
     parser.add_argument('--sites', nargs='+', help='Only specified dealer site IDs')
+    parser.add_argument('--skus', nargs='+', help='Only own models and analogs linked to these PROMET SKUs')
     parser.add_argument('--resume-since', help='Skip verified observations since ISO timestamp/date')
     args = parser.parse_args()
     try:

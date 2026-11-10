@@ -6,7 +6,7 @@ const sites=['КОМУС','ВсеИнструменты','Железная ме�
 const modelName=s=>D.selected.find(m=>m.sku===s)?.models||s;
 const types=o=>[o.price!=null?(o.oldPrice>o.price?'Акционная':'Обычная'):null,o.conditionalPrice!=null?'Условная':null,o.unavailablePrice!=null?'Цена отсутствующего товара':null].filter(Boolean);
 const dealerSku=o=>o.dealerSku|| (o.site==='КОМУС'?o.url.match(/\/p\/(\d+)/)?.[1]:o.site==='ВсеИнструменты'?o.url.match(/-(\d+)\/?$/)?.[1]:null)||'Не зафиксирован';
-function normalize(o,kind){return {...o,key:kind+'-'+o.id,kind,maker:kind==='own'?'ПРОМЕТ':o.maker,skus:kind==='own'?[o.sku]:o.skus,error:o.refreshError||o.collectionError||null};}
+function normalize(o,kind){return {...o,url:o.cityVerified&&o.regionalSourceUrl?o.regionalSourceUrl:o.url,key:kind+'-'+o.id,kind,maker:kind==='own'?'ПРОМЕТ':o.maker,skus:kind==='own'?[o.sku]:o.skus,error:o.refreshError||o.collectionError||null};}
 let offers=[...D.own.map(o=>normalize(o,'own')),...D.analogs.map(o=>normalize(o,'analog'))];
 let saved={};try{saved=JSON.parse(localStorage.getItem('promet-market-real-v1')||'{}')}catch{}
 const defaults={city:'Москва',page:'overview',period:30,model:'all',search:'',dealers:sites.slice(),makers:[...new Set(D.analogs.map(x=>x.maker))],status:'Все статусы',type:'Все типы цен',quality:'Все данные',cheaper:false,better:false,sort:'price',eventType:'Все события',eventDays:'all'};

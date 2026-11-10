@@ -27,7 +27,7 @@ class MergeTests(unittest.TestCase):
         runtime['own'][0].update(price=15000, checkedAt=newer)
         merged = merge_release(self.seed, runtime)
         self.assertEqual(merged['own'][0]['price'], 15000)
-        self.assertEqual(len(merged['manufacturerPrices']), 13)
+        self.assertEqual(len(merged['manufacturerPrices']), len(self.seed['manufacturerPrices']))
         self.assertEqual(len(merged['analogs']), len(self.seed['analogs']))
         self.assertTrue(any(x.get('price') == self.seed['own'][0]['price'] for x in merged['history']['own']))
 
